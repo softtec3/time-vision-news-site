@@ -681,7 +681,7 @@
                   <div class="col-md-6 ptop--30 pbottom--30">
                     <!-- Post Items Title Start -->
                     <div class="post--items-title" data-ajax="tab">
-                      <h2 class="h4">অনলাইন</h2>
+                      <h2 class="h4">আন্তর্জাতিক</h2>
 
                       <!-- <div class="nav">
                         <a
@@ -711,54 +711,59 @@
                       data-ajax-content="outer"
                     >
                       <ul class="nav" data-ajax-content="inner">
-                        <li>
+                        <?php
+                          if(($international_news && count($international_news) > 0)){
+                            $slice_int_news = array_slice($international_news, 0,2);
+                              foreach($slice_int_news as $int_news){
+                                $news_desc = strip_tags($int_news["news_description"]);
+                                $short_news_desc = substr($news_desc, 0, 205);
+                                $img_url = "./admin/ElaAdmin-master/" . $int_news["news_image"];
+                                echo "
+                                  <li>
                           <!-- Post Item Start -->
-                          <div class="post--item post--layout-1">
-                            <div class="post--img">
+                          <div class='post--item post--layout-1'>
+                            <div class='post--img'>
                               <a
-                                href="news-single-v1-boxed.html"
-                                class="thumb"
-                                style="min-height: 180px; max-height: 180px"
+                                href='./news-single-v1-boxed.php?id={$int_news["id"]}'
+                                class='thumb'
+                                style='min-height: 180px; max-height: 180px'
                                 ><img
-                                  style="min-height: 180px; max-height: 180px"
-                                  src="https://media.prothomalo.com/prothomalo-bangla%2F2025-09-30%2Fgh2vylt0%2FHemonto_01.jpg?rect=59%2C0%2C1080%2C720&w=370&auto=format%2Ccompress&fmt=avif"
-                                  alt=""
+                                  style='min-height: 180px; max-height: 180px'
+                                  src='$img_url'
+                                  alt=''
                               /></a>
-                              <a href="#" class="cat">অনলাইন</a>
-                              <a href="#" class="icon"
-                                ><i class="fa fa-flash"></i
+                              <a href='#' class='cat'>{$int_news["news_category"]}</a>
+                              <a href='#' class='icon'
+                                ><i class='fa fa-flash'></i
                               ></a>
 
-                              <div class="post--info">
-                                <ul class="nav meta">
-                                  <li><a href="#">ফাইজার মো. শাওলীন</a></li>
-                                  <li><a href="#">০১ অক্টোবর ২০২৫</a></li>
+                              <div class='post--info'>
+                                <ul class='nav meta'>
+                                  <li><a href='#'>Admin</a></li>
+                                  <li><a href='#'>{$int_news["news_datetime"]}</a></li>
                                 </ul>
 
-                                <div class="title">
-                                  <h3 class="h4">
+                                <div class='title'>
+                                  <h3 class='h4'>
                                     <a
-                                      href="news-single-v1-boxed.html"
-                                      class="btn-link"
-                                      >অক্টোবর এলেই ছোটবেলার যে কথাগুলো মনে
-                                      পড়ে</a
+                                      href='./news-single-v1-boxed.php?id={$int_news["id"]}'
+                                      class='btn-link'
+                                      >{$int_news["news_heading"]}</a
                                     >
                                   </h3>
                                 </div>
                               </div>
                             </div>
-
-                            <div class="post--content">
+                            
+                            <div class='post--content'>
                               <p>
-                                ঘুমিয়ে আছি। সেই মুহূর্তে শিওরের জানালায় টোকা!
-                                এক, দুই, তিন! কবাট খুলতেই ওপাশে দাঁড়িয়ে
-                                কৃষ্ণ—আমার বন্ধু। মুখে অমলিন হাসি আর হাতে ফুল
-                                তোলার সাজি।
+                                 $short_news_desc
+                                 ...
                               </p>
                             </div>
-
-                            <div class="post--action">
-                              <a href="news-single-v1-boxed.html"
+                       
+                            <div class='post--action'>
+                              <a href='./news-single-v1-boxed.php?id={$int_news["id"]}'
                                 >পড়তে থাকুন...
                               </a>
                             </div>
@@ -767,63 +772,13 @@
                         </li>
                         <li>
                           <!-- Divider Start -->
-                          <hr class="divider" />
+                          <hr class='divider' />
                           <!-- Divider End -->
                         </li>
-                        <li>
-                          <!-- Post Item Start -->
-                          <div class="post--item post--layout-1">
-                            <div class="post--img">
-                              <a
-                                href="news-single-v1-boxed.html"
-                                class="thumb"
-                                style="min-height: 180px; max-height: 180px"
-                                ><img
-                                  style="min-height: 180px; max-height: 180px"
-                                  src="https://media.prothomalo.com/prothomalo-bangla%2F2025-05-30%2F49sur0oq%2FGsIxaB9aUAAj1Vl.jpg?rect=0%2C0%2C1280%2C853&w=370&auto=format%2Ccompress&fmt=avif"
-                                  alt=""
-                              /></a>
-                              <a href="#" class="cat">অনলাইন</a>
-                              <a href="#" class="icon"
-                                ><i class="fa fa-flash"></i
-                              ></a>
-
-                              <div class="post--info">
-                                <ul class="nav meta">
-                                  <li><a href="#">ফাইজার মো. শাওলীন</a></li>
-                                  <li><a href="#">০১ অক্টোবর ২০২৫</a></li>
-                                </ul>
-
-                                <div class="title">
-                                  <h3 class="h4">
-                                    <a
-                                      href="news-single-v1-boxed.html"
-                                      class="btn-link"
-                                      >অক্টোবর এলেই ছোটবেলার যে কথাগুলো মনে
-                                      পড়ে</a
-                                    >
-                                  </h3>
-                                </div>
-                              </div>
-                            </div>
-
-                            <div class="post--content">
-                              <p>
-                                ঘুমিয়ে আছি। সেই মুহূর্তে শিওরের জানালায় টোকা!
-                                এক, দুই, তিন! কবাট খুলতেই ওপাশে দাঁড়িয়ে
-                                কৃষ্ণ—আমার বন্ধু। মুখে অমলিন হাসি আর হাতে ফুল
-                                তোলার সাজি।
-                              </p>
-                            </div>
-
-                            <div class="post--action">
-                              <a href="news-single-v1-boxed.html"
-                                >পড়তে থাকুন...
-                              </a>
-                            </div>
-                          </div>
-                          <!-- Post Item End -->
-                        </li>
+                                ";
+                              }
+                          }
+                        ?> 
                       </ul>
 
                       <!-- Preloader Start -->

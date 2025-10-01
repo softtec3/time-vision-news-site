@@ -222,41 +222,19 @@
 
           <div class="news-updates--list" data-marquee="true">
             <ul class="nav">
-              <li>
-                <h3 class="h3">
-                  <a href="#"
-                    >খাগড়াছড়িতে সহিংসতা ‘ওরা আমার নতুন বইও পুড়িয়ে দিল’</a
+              <?php
+                if(count($latest_five)>0){
+                  foreach($latest_five as $latest){
+                    echo "<li>
+                <h3 class='h3'>
+                  <a href='./news-single-v1-boxed.php?id={$latest["id"]}'
+                    >{$latest["news_heading"]}</a
                   >
                 </h3>
-              </li>
-              <li>
-                <h3 class="h3">
-                  <a href="#"
-                    >গাজায় ‘তাৎক্ষণিকভাবে’ যুদ্ধ বন্ধে ট্রাম্পের ঘোষিত ২০ দফা
-                    পরিকল্পনায় কী আছে</a
-                  >
-                </h3>
-              </li>
-              <li>
-                <h3 class="h3">
-                  <a href="#"
-                    >যে শর্তে সূর্যকুমারদের ট্রফি ফিরিয়ে দেবেন নাকভি</a
-                  >
-                </h3>
-              </li>
-              <li>
-                <h3 class="h3">
-                  <a href="#"
-                    >সাকিবকে আর কখনো বাংলাদেশের হয়ে খেলতে দেওয়া হবে না, বললেন
-                    ক্রীড়া উপদেষ্টা আসিফ</a
-                  >
-                </h3>
-              </li>
-              <li>
-                <h3 class="h3">
-                  <a href="#">মিথিলার পাসপোর্টে কি সৃজিতের নাম আছে?</a>
-                </h3>
-              </li>
+              </li>";
+                  }
+                }
+              ?>
             </ul>
           </div>
         </div>
@@ -283,6 +261,7 @@
           <!-- Main Content Start -->
           <div class="main--content">
             <!-- Post Items Start -->
+             <!-- Latest Five -->
             <div class="post--items post--items-1 pd--30-0">
               <div class="row gutter--15">
                 <div class="col-md-3">
@@ -292,7 +271,13 @@
                       <div class="post--item post--layout-1 post--title-large">
                         <div class="post--img">
                           <a
-                            href="news-single-v1-boxed.html"
+                            href="<?php
+                           if ($latest_five[1]["id"] ?? NULL){
+                              echo "./news-single-v1-boxed.php?id={$latest_five[1]["id"]}";
+                            }else{
+                              echo "";
+                            }
+                          ?>"
                             class="thumb"
                             style="
                               max-height: 186px;
@@ -301,26 +286,56 @@
                             "
                             ><img
                               style="min-height: 186px; max-height: 186px"
-                              src="https://media.prothomalo.com/prothomalo-bangla%2F2025-09-30%2Fjipt9jeo%2F165.JPG?rect=0%2C120%2C752%2C501&w=370&auto=format%2Ccompress&fmt=avif"
+                              src="<?php
+                           if ($latest_five[1]["news_image"] ?? NULL){
+                              echo "./admin/ElaAdmin-master/".$latest_five[1]["news_image"];
+                            }else{
+                              echo "";
+                            }
+                          ?>"
                               alt=""
                           /></a>
-                          <a href="#" class="cat">ড্রোন</a>
+                          <a href="#" class="cat"><?php
+                           if ($latest_five[1]["news_category"] ?? NULL){
+                              echo $latest_five[1]["news_category"];
+                            }else{
+                              echo "";
+                            }
+                          ?></a>
                           <a href="#" class="icon"
                             ><i class="fa fa-flash"></i
                           ></a>
 
                           <div class="post--info">
                             <ul class="nav meta">
-                              <li><a href="#">ফাইজার মো. শাওলীন</a></li>
-                              <li><a href="#">০১ অক্টোবর ২০২৫</a></li>
+                              <li><a href="#">Admin</a></li>
+                              <li><a href="#"><?php
+                           if ($latest_five[1]["news_datetime"]??NULL){
+                              echo $latest_five[1]["news_datetime"];
+                            }else{
+                              echo "";
+                            }
+                          ?></a></li>
                             </ul>
 
                             <div class="title">
                               <h2 class="h4">
                                 <a
-                                  href="news-single-v1-boxed.html"
+                                      href="<?php
+                              if ($latest_five[1]["id"] ?? NULL){
+                                  echo "./news-single-v1-boxed.php?id={$latest_five[1]["id"]}";
+                                }else{
+                                  echo "";
+                                }
+                                  ?>"
                                   class="btn-link"
-                                  >জাহাঙ্গীরনগরের সামিয়া ইসলামের তিন...</a
+                                  ><?php
+                                  if ($latest_five[1]["news_heading"] ?? NULL){
+                                      echo $latest_five[1]["news_heading"];
+                                    }else{
+                                      echo "";
+                                    }
+                          ?>...</a
                                 >
                               </h2>
                             </div>
@@ -335,7 +350,13 @@
                       <div class="post--item post--layout-1 post--title-large">
                         <div class="post--img">
                           <a
-                            href="news-single-v1-boxed.html"
+                            href="<?php
+                           if ($latest_five[2]["id"] ?? NULL){
+                              echo "./news-single-v1-boxed.php?id={$latest_five[2]["id"]}";
+                            }else{
+                              echo "";
+                            }
+                          ?>"
                             class="thumb"
                             style="
                               max-height: 186px;
@@ -344,27 +365,56 @@
                             "
                             ><img
                               style="min-height: 186px; max-height: 186px"
-                              src="https://media.prothomalo.com/prothomalo-bangla%2F2025-09-30%2Fwla3u38g%2F176.jpg?rect=0%2C0%2C4464%2C2976&w=370&auto=format%2Ccompress&fmt=avif"
+                              src="<?php
+                           if ($latest_five[2]["news_image"] ?? NULL){
+                              echo "./admin/ElaAdmin-master/".$latest_five[2]["news_image"];
+                            }else{
+                              echo "";
+                            }
+                          ?>"
                               alt=""
                           /></a>
-                          <a href="#" class="cat">গ্যাজেট</a>
+                          <a href="#" class="cat"><?php
+                           if ($latest_five[2]["news_category"] ?? NULL){
+                              echo $latest_five[2]["news_category"];
+                            }else{
+                              echo "";
+                            }
+                          ?></a>
                           <a href="#" class="icon"
                             ><i class="fa fa-support"></i
                           ></a>
 
                           <div class="post--info">
                             <ul class="nav meta">
-                              <li><a href="#">ফাইজার মো. শাওলীন</a></li>
-                              <li><a href="#">০১ অক্টোবর ২০২৫</a></li>
+                              <li><a href="#">Admin</a></li>
+                              <li><a href="#"><?php
+                           if ($latest_five[2]["news_datetime"]??NULL){
+                              echo $latest_five[2]["news_datetime"];
+                            }else{
+                              echo "";
+                            }
+                          ?></a></li>
                             </ul>
 
                             <div class="title">
                               <h2 class="h4">
                                 <a
-                                  href="news-single-v1-boxed.html"
+                                      href="<?php
+                              if ($latest_five[2]["id"] ?? NULL){
+                                  echo "./news-single-v1-boxed.php?id={$latest_five[2]["id"]}";
+                                }else{
+                                  echo "";
+                                }
+                                  ?>"
                                   class="btn-link"
-                                  >চাকরির ইন্টারভিউ প্রস্তুতিতে এবার ভিআর
-                                  প্রযুক্তি</a
+                                  ><?php
+                                  if ($latest_five[2]["news_heading"] ?? NULL){
+                                      echo $latest_five[2]["news_heading"];
+                                    }else{
+                                      echo "";
+                                    }
+                          ?>...</a
                                 >
                               </h2>
                             </div>
@@ -381,7 +431,13 @@
                   <div class="post--item post--layout-1 post--title-larger">
                     <div class="post--img">
                       <a
-                        href="news-single-v1-boxed.html"
+                        href="<?php
+                           if ($latest_five[0]["id"] ?? NULL){
+                              echo "./news-single-v1-boxed.php?id={$latest_five[0]["id"]}";
+                            }else{
+                              echo "";
+                            }
+                          ?>"
                         class="thumb"
                         style="
                           max-height: 387px;
@@ -390,23 +446,52 @@
                         "
                         ><img
                           style="max-height: 387px; min-height: 387px"
-                          src="https://media.prothomalo.com/prothomalo-bangla%2F2025-09-30%2F1vl7cme3%2F5524590938409324719299031223843392619068035n.jpg?rect=0%2C0%2C2048%2C1365&w=370&auto=format%2Ccompress&fmt=avif"
+                          src="<?php
+                           if ($latest_five[0]["news_image"] ?? NULL){
+                              echo "./admin/ElaAdmin-master/".$latest_five[0]["news_image"];
+                            }else{
+                              echo "";
+                            }
+                          ?>"
                           alt=""
                       /></a>
-                      <a href="#" class="cat">কম্পিউটার</a>
+                      <a href="#" class="cat"><?php
+                           if ($latest_five[0]["news_category"] ?? NULL){
+                              echo "{$latest_five[0]["news_category"]}";
+                            }else{
+                              echo "";
+                            }
+                          ?></a>
                       <a href="#" class="icon"><i class="fa fa-star-o"></i></a>
 
                       <div class="post--info">
                         <ul class="nav meta">
-                          <li><a href="#">ফাইজার মো. শাওলীন</a></li>
-                          <li><a href="#">০১ অক্টোবর ২০২৫</a></li>
+                          <li><a href="#">Admin</a></li>
+                          <li><a href="#"><?php
+                           if ($latest_five[0]["news_datetime"]??NULL){
+                              echo $latest_five[0]["news_datetime"];
+                            }else{
+                              echo "";
+                            }
+                          ?></a></li>
                         </ul>
 
                         <div class="title">
                           <h2 class="h4">
-                            <a href="news-single-v1-boxed.html" class="btn-link"
-                              >পাকিস্তান এখন ‘লাল্লু-কাট্টু’দের দল, লড়াকুদের নয়:
-                              শোয়েব আখতার</a
+                            <a href="<?php
+                           if ($latest_five[0]["id"] ?? NULL){
+                              echo "./news-single-v1-boxed.php?id={$latest_five[0]["id"]}";
+                            }else{
+                              echo "";
+                            }
+                          ?>" class="btn-link"
+                              ><?php
+                                  if ($latest_five[0]["news_heading"] ?? NULL){
+                                      echo $latest_five[0]["news_heading"];
+                                    }else{
+                                      echo "";
+                                    }
+                          ?></a
                             >
                           </h2>
                         </div>
@@ -420,10 +505,16 @@
                   <div class="row gutter--15">
                     <div class="col-md-12 col-xs-6 col-xxs-12">
                       <!-- Post Item Start -->
-                      <div class="post--item post--layout-1 post--title-large">
+                     <div class="post--item post--layout-1 post--title-large">
                         <div class="post--img">
                           <a
-                            href="news-single-v1-boxed.html"
+                            href="<?php
+                           if ($latest_five[3]["id"] ?? NULL){
+                              echo "./news-single-v1-boxed.php?id={$latest_five[3]["id"]}";
+                            }else{
+                              echo "";
+                            }
+                          ?>"
                             class="thumb"
                             style="
                               max-height: 186px;
@@ -432,27 +523,56 @@
                             "
                             ><img
                               style="min-height: 186px; max-height: 186px"
-                              src="https://media.prothomalo.com/prothomalo-bangla%2F2025-09-28%2Fli3dibou%2Fchina-01.avif?rect=1%2C0%2C621%2C414&w=370&auto=format%2Ccompress&fmt=avif"
+                              src="<?php
+                           if ($latest_five[3]["news_image"] ?? NULL){
+                              echo "./admin/ElaAdmin-master/".$latest_five[3]["news_image"];
+                            }else{
+                              echo "";
+                            }
+                          ?>"
                               alt=""
                           /></a>
-                          <a href="#" class="cat">গ্যাজেট</a>
+                          <a href="#" class="cat"><?php
+                           if ($latest_five[3]["news_category"] ?? NULL){
+                              echo $latest_five[3]["news_category"];
+                            }else{
+                              echo "";
+                            }
+                          ?></a>
                           <a href="#" class="icon"
                             ><i class="fa fa-flash"></i
                           ></a>
 
                           <div class="post--info">
                             <ul class="nav meta">
-                              <li><a href="#">ফাইজার মো. শাওলীন</a></li>
-                              <li><a href="#">০১ অক্টোবর ২০২৫</a></li>
+                              <li><a href="#">Admin</a></li>
+                              <li><a href="#"><?php
+                           if ($latest_five[3]["news_datetime"]??NULL){
+                              echo $latest_five[3]["news_datetime"];
+                            }else{
+                              echo "";
+                            }
+                          ?></a></li>
                             </ul>
 
                             <div class="title">
                               <h2 class="h4">
                                 <a
-                                  href="news-single-v1-boxed.html"
+                                      href="<?php
+                              if ($latest_five[3]["id"] ?? NULL){
+                                  echo "./news-single-v1-boxed.php?id={$latest_five[3]["id"]}";
+                                }else{
+                                  echo "";
+                                }
+                                  ?>"
                                   class="btn-link"
-                                  >মাও থেকে সি—কোন কৌশলে যুক্তরাষ্ট্রকে তাড়িয়ে
-                                  বেড়াচ্ছে চীন</a
+                                  ><?php
+                                  if ($latest_five[3]["news_heading"] ?? NULL){
+                                      echo $latest_five[3]["news_heading"];
+                                    }else{
+                                      echo "";
+                                    }
+                          ?>...</a
                                 >
                               </h2>
                             </div>
@@ -467,7 +587,13 @@
                       <div class="post--item post--layout-1 post--title-large">
                         <div class="post--img">
                           <a
-                            href="news-single-v1-boxed.html"
+                            href="<?php
+                           if ($latest_five[4]["id"] ?? NULL){
+                              echo "./news-single-v1-boxed.php?id={$latest_five[4]["id"]}";
+                            }else{
+                              echo "";
+                            }
+                          ?>"
                             class="thumb"
                             style="
                               max-height: 186px;
@@ -476,26 +602,56 @@
                             "
                             ><img
                               style="min-height: 186px; max-height: 186px"
-                              src="https://media.prothomalo.com/prothomalo-bangla%2F2025-09-30%2Fa4xih2i0%2Fda3fe8c1-de4e-4d00-88d5-eb976e0fb770.jpg?rect=0%2C0%2C1600%2C1067&w=370&auto=format%2Ccompress&fmt=avif"
+                              src="<?php
+                           if ($latest_five[4]["news_image"] ?? NULL){
+                              echo "./admin/ElaAdmin-master/".$latest_five[4]["news_image"];
+                            }else{
+                              echo "";
+                            }
+                          ?>"
                               alt=""
                           /></a>
-                          <a href="#" class="cat">ম্যাগাজিন</a>
+                          <a href="#" class="cat"><?php
+                           if ($latest_five[4]["news_category"] ?? NULL){
+                              echo $latest_five[4]["news_category"];
+                            }else{
+                              echo "";
+                            }
+                          ?></a>
                           <a href="#" class="icon"
                             ><i class="fa fa-book"></i
                           ></a>
 
                           <div class="post--info">
                             <ul class="nav meta">
-                              <li><a href="#">ফাইজার মো. শাওলীন</a></li>
-                              <li><a href="#">০১ অক্টোবর ২০২৫</a></li>
+                              <li><a href="#">Admin</a></li>
+                              <li><a href="#"><?php
+                           if ($latest_five[4]["news_datetime"]??NULL){
+                              echo $latest_five[4]["news_datetime"];
+                            }else{
+                              echo "";
+                            }
+                          ?></a></li>
                             </ul>
 
                             <div class="title">
                               <h2 class="h4">
                                 <a
-                                  href="news-single-v1-boxed.html"
+                                      href="<?php
+                              if ($latest_five[4]["id"] ?? NULL){
+                                  echo "./news-single-v1-boxed.php?id={$latest_five[4]["id"]}";
+                                }else{
+                                  echo "";
+                                }
+                                  ?>"
                                   class="btn-link"
-                                  >মিম, সিঁথি থেকে ঋতুরাজ—পূজায় কে কোথায়</a
+                                  ><?php
+                                  if ($latest_five[4]["news_heading"] ?? NULL){
+                                      echo $latest_five[4]["news_heading"];
+                                    }else{
+                                      echo "";
+                                    }
+                          ?>...</a
                                 >
                               </h2>
                             </div>
@@ -508,6 +664,7 @@
                 </div>
               </div>
             </div>
+            <!-- Latest Five -->
             <!-- Post Items End -->
           </div>
           <!-- Main Content End -->

@@ -3,8 +3,8 @@
 
 $host = 'localhost';
 $dbname = 'timevision24_newdb';
-$username = 'timevision24_ovi';
-$password = 'Timevision24ovi';
+$username = 'root';
+$password = '';
 
 // Create a connection
 $conn = new mysqli($host, $username, $password, $dbname);

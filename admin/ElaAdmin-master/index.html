@@ -30,6 +30,14 @@
       href="https://cdn.quilljs.com/1.3.6/quill.snow.css"
       rel="stylesheet"
     />
+    <!-- fontawesome cdn -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
 
     <style>
       /* Custom styles to complement Tailwind and handle Quill.js */
@@ -104,7 +112,7 @@
       <div class="flex items-center">
         <a href="#" class="text-xl font-bold text-gray-800 flex items-center">
           <img
-            src="/favicon.png"
+            src="./images/favicon.png"
             alt="Logo"
             class="h-10 w-10 mr-2 rounded-full"
           />
@@ -124,143 +132,212 @@
     </header>
 
     <!-- Main content wrapper to center the form -->
-    <div
-      class="flex-grow flex justify-center items-center w-full"
-      style="margin-top: 50px"
-    >
+    <div id="mainContainer" class="mt-[70px] flex">
+      <!-- Side bar -->
       <div
-        class="form-container bg-white p-6 md:p-8 lg:p-10 rounded-xl shadow-lg w-full max-w-md md:max-w-lg lg:max-w-2xl my-12"
+        id="sideBar"
+        class="w-[250px] border-r border-r-gray-400 pt-10 h-screen"
       >
-        <h2
-          class="text-2xl md:text-3xl font-bold text-gray-800 text-center mb-6"
-        >
-          নতুন নিউজ যোগ করুন
-        </h2>
-
-        <!-- Message Display Area -->
-        <div id="messageDisplay" class="message-display mb-4"></div>
-
-        <form
-          id="myForm"
-          action="php/process_news.php"
-          method="post"
-          enctype="multipart/form-data"
-          class="flex flex-col space-y-5"
-        >
-          <div class="form-group">
-            <label
-              for="imageUpload"
-              class="block text-gray-700 text-sm font-medium mb-2"
-              >ছবি আপলোড করুন:</label
-            >
-            <input
-              type="file"
-              id="imageUpload"
-              name="news_image"
-              accept="image/*"
-              class="block w-full text-sm text-gray-500 cursor-pointer"
-            />
-            <div
-              class="image-preview-container mt-4 p-4 border border-dashed border-gray-300 rounded-lg bg-gray-50 text-center"
-            >
-              <img
-                src="#"
-                alt="Image Preview"
-                class="image-preview"
-                id="imagePreview"
-              />
-              <p id="imagePlaceholderText" class="image-placeholder-text">
-                এখানে আপনার ছবি দেখা যাবে।
-              </p>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label
-              for="heading"
-              class="block text-gray-700 text-sm font-medium mb-2"
-              >শিরোনাম:</label
-            >
-            <input
-              type="text"
-              id="heading"
-              name="news_heading"
-              placeholder="শিরোনাম লিখুন"
-              required
-              class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm outline-none text-sm mt-1 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
-            />
-          </div>
-
-          <div class="form-group">
-            <label
-              for="description"
-              class="block text-gray-700 text-sm font-medium mb-2"
-              >বিবরণ:</label
-            >
-            <!-- Quill.js editor will be initialized here -->
-            <div id="editor-container"></div>
-            <!-- Hidden input to store Quill.js content -->
-            <input
-              type="hidden"
-              id="hiddenDescription"
-              name="news_description"
-            />
-          </div>
-
-          <div class="form-group">
-            <label
-              for="category"
-              class="block text-gray-700 text-sm font-medium mb-2"
-              >বিভাগ:</label
-            >
-            <select
-              id="category"
-              name="news_category"
-              required
-              class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm outline-none text-sm mt-1 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
-            >
-              <option value="">একটি বিভাগ নির্বাচন করুন</option>
-              <option value="national">জাতীয়</option>
-              <option value="international">আন্তর্জাতিক</option>
-              <option value="finance">অর্থনৈতিক</option>
-              <option value="politics">রাজনীতি</option>
-              <option value="entertainment">বিনোদন</option>
-              <option value="lifestyle">লাইফস্টাইল</option>
-              <option value="technology">প্রযুক্তি</option>
-              <option value="sports">খেলাধুলা</option>
-              <option value="health">স্বাস্থ্য</option>
-              <option value="education">শিক্ষা</option>
-              <option value="religion">ধর্ম</option>
-              <option value="poem">কবি ও কবিতা</option>
-              <option value="all_bangla">সারা বাংলা</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label class="block text-gray-700 text-sm font-medium mb-2"
-              >সময় ও তারিখ:</label
-            >
-            <div class="datetime-display" id="currentDateTime"></div>
-            <input type="hidden" id="hiddenDateTime" name="news_datetime" />
-          </div>
-
-          <div
-            class="button-group flex flex-col sm:flex-row justify-between gap-4 mt-6"
+        <div class="flex items-center justify-center flex-col gap-1">
+          <img
+            class="h-[100px] w-[100px] rounded-full"
+            src="./placeholder.jpg"
+            alt=""
+          />
+          <span class="font-bold text-2xl">এডমিন</span>
+        </div>
+        <ul class="flex flex-col gap-2 p-3">
+          <li
+            onclick="showHide('addNews')"
+            class="p-2 shadow-sm border border-slate-200 rounded-sm cursor-pointer"
           >
-            <button
-              type="submit"
-              class="submit-btn flex-1 font-bold py-2 px-4 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:-translate-y-1 outline-none border-none cursor-pointer bg-green-600 text-white hover:bg-green-700 focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
+            <i class="fa-solid fa-circle-plus"></i> নিউজ যোগ করুন
+          </li>
+          <li
+            onclick="showHide('allNews')"
+            class="p-2 shadow-sm border border-slate-200 rounded-sm cursor-pointer"
+          >
+            <i class="fa-solid fa-newspaper"></i>
+            সকল সংবাদ
+          </li>
+        </ul>
+      </div>
+      <div id="mainContainerWraper" class="flex-1">
+        <!-- Add news -->
+        <div
+          id="addNews"
+          class="flex-grow flex justify-center items-center w-full"
+          style="margin-top: 50px; display: none"
+        >
+          <div
+            class="form-container bg-white p-6 md:p-8 lg:p-10 rounded-xl shadow-lg w-full max-w-md md:max-w-lg lg:max-w-2xl my-12"
+          >
+            <h2
+              class="text-2xl md:text-3xl font-bold text-gray-800 text-center mb-6"
             >
-              পোস্ট করুন
-            </button>
-            <button
-              type="reset"
-              class="reset-btn flex-1 font-bold py-2 px-4 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:-translate-y-1 outline-none border-none cursor-pointer bg-red-600 text-white hover:bg-red-700 focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
+              নতুন নিউজ যোগ করুন
+            </h2>
+
+            <!-- Message Display Area -->
+            <div id="messageDisplay" class="message-display mb-4"></div>
+
+            <form
+              id="myForm"
+              action="php/process_news.php"
+              method="post"
+              enctype="multipart/form-data"
+              class="flex flex-col space-y-5"
             >
-              পুনরায় সেট করুন
-            </button>
+              <div class="form-group">
+                <label
+                  for="imageUpload"
+                  class="block text-gray-700 text-sm font-medium mb-2"
+                  >ছবি আপলোড করুন:</label
+                >
+                <input
+                  type="file"
+                  id="imageUpload"
+                  name="news_image"
+                  accept="image/*"
+                  class="block w-full text-sm text-gray-500 cursor-pointer"
+                />
+                <div
+                  class="image-preview-container mt-4 p-4 border border-dashed border-gray-300 rounded-lg bg-gray-50 text-center"
+                >
+                  <img
+                    src="#"
+                    alt="Image Preview"
+                    class="image-preview"
+                    id="imagePreview"
+                  />
+                  <p id="imagePlaceholderText" class="image-placeholder-text">
+                    এখানে আপনার ছবি দেখা যাবে।
+                  </p>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label
+                  for="heading"
+                  class="block text-gray-700 text-sm font-medium mb-2"
+                  >শিরোনাম:</label
+                >
+                <input
+                  type="text"
+                  id="heading"
+                  name="news_heading"
+                  placeholder="শিরোনাম লিখুন"
+                  required
+                  class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm outline-none text-sm mt-1 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+                />
+              </div>
+
+              <div class="form-group">
+                <label
+                  for="description"
+                  class="block text-gray-700 text-sm font-medium mb-2"
+                  >বিবরণ:</label
+                >
+                <!-- Quill.js editor will be initialized here -->
+                <div id="editor-container"></div>
+                <!-- Hidden input to store Quill.js content -->
+                <input
+                  type="hidden"
+                  id="hiddenDescription"
+                  name="news_description"
+                />
+              </div>
+
+              <div class="form-group">
+                <label
+                  for="category"
+                  class="block text-gray-700 text-sm font-medium mb-2"
+                  >বিভাগ:</label
+                >
+                <select
+                  id="category"
+                  name="news_category"
+                  required
+                  class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm outline-none text-sm mt-1 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+                >
+                  <option value="">একটি বিভাগ নির্বাচন করুন</option>
+                  <option value="national">জাতীয়</option>
+                  <option value="international">আন্তর্জাতিক</option>
+                  <option value="finance">অর্থনৈতিক</option>
+                  <option value="politics">রাজনীতি</option>
+                  <option value="entertainment">বিনোদন</option>
+                  <option value="lifestyle">লাইফস্টাইল</option>
+                  <option value="technology">প্রযুক্তি</option>
+                  <option value="sports">খেলাধুলা</option>
+                  <option value="health">স্বাস্থ্য</option>
+                  <option value="education">শিক্ষা</option>
+                  <option value="religion">ধর্ম</option>
+                  <option value="poem">কবি ও কবিতা</option>
+                  <option value="all_bangla">সারা বাংলা</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="block text-gray-700 text-sm font-medium mb-2"
+                  >সময় ও তারিখ:</label
+                >
+                <div class="datetime-display" id="currentDateTime"></div>
+                <input type="hidden" id="hiddenDateTime" name="news_datetime" />
+              </div>
+
+              <div
+                class="button-group flex flex-col sm:flex-row justify-between gap-4 mt-6"
+              >
+                <button
+                  type="submit"
+                  class="submit-btn flex-1 font-bold py-2 px-4 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:-translate-y-1 outline-none border-none cursor-pointer bg-green-600 text-white hover:bg-green-700 focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
+                >
+                  পোস্ট করুন
+                </button>
+                <button
+                  type="reset"
+                  class="reset-btn flex-1 font-bold py-2 px-4 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:-translate-y-1 outline-none border-none cursor-pointer bg-red-600 text-white hover:bg-red-700 focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
+                >
+                  পুনরায় সেট করুন
+                </button>
+              </div>
+            </form>
           </div>
-        </form>
+        </div>
+        <!-- All news -->
+        <div id="allNews" class="p-5">
+          <h1 class="text-2xl font-bold">সকল সংবাদ সমূহ</h1>
+          <table class="w-full mt-10 max-h-[80vh] border text-center">
+            <thead>
+              <tr>
+                <th class="border p-2">ক্রমিক</th>
+                <th class="border p-2">ছবি</th>
+                <th class="border p-2">শিরোনাম</th>
+                <th class="border p-2">সময় ও তারিখ</th>
+                <th class="border p-2">সংবাদদাতা</th>
+                <th class="border p-2">অবস্থা</th>
+                <th class="border p-2">একশন</th>
+                <th class="border p-2">এডিট</th>
+              </tr>
+              <tr>
+                <td class="border p-2">০১</td>
+                <td class="border p-2">
+                  <img
+                    class="h-[70px] w-[100px] object-cover mx-auto"
+                    src="https://plus.unsplash.com/premium_photo-1673292293042-cafd9c8a3ab3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bmF0dXJlfGVufDB8fDB8fHww"
+                    alt="news image"
+                  />
+                </td>
+                <td class="border p-2">শিরোনাম নেম</td>
+                <td class="border p-2">১১ঃ১২ | ১২/১২/২০২৫</td>
+                <td class="border p-2">এডমিন</td>
+                <td class="border p-2">একটিভ</td>
+                <td class="border p-2">০১</td>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
       </div>
     </div>
 
@@ -443,6 +520,21 @@
         messageDisplay.classList.remove("visible", "success", "error");
         messageDisplay.textContent = "";
       });
+    </script>
+    <!-- Js for content show -->
+    <script>
+      const addNews = document.getElementById("addNews");
+      const allNews = document.getElementById("allNews");
+      const showHide = (id) => {
+        [addNews, allNews].forEach(
+          (section) => (section.style.display = "none")
+        );
+        if (id == "addNews") {
+          addNews.style.display = "flex";
+        } else if (id == "allNews") {
+          allNews.style.display = "block";
+        }
+      };
     </script>
   </body>
 </html>

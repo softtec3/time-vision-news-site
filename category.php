@@ -307,6 +307,8 @@ include_once("./php/fetch_news_by_category.php");
                         </li>
                                     ";
                             }
+                        } else {
+                            echo "<p>Not found</p>";
                         }
                         ?>
 

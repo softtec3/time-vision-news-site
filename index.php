@@ -999,7 +999,7 @@ include_once("./php/fetch_news.php");
                             <div class="col-md-6">
                               <div class="post--info">
                                 <ul class="nav meta">
-                                  <li><a href="#">এডমিন</a></li>
+                                  <li><a href="#">Admin</a></li>
                                   <li><a href="#"><?php
                                                   if ($latest_five_politics_news[0]["news_datetime"] ?? NULL) {
                                                     echo $latest_five_politics_news[0]["news_datetime"];

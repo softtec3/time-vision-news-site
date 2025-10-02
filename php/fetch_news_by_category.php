@@ -1,20 +1,5 @@
 
 <?php
-// --- DATABASE CONNECTION & FETCH ---
-
-// Note: Please update these connection details with your actual database credentials.
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "timevision24_newdb"; // <-- IMPORTANT: Replace with your database name
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
 $category_news = [];
 // Fetch news data from the database, ordered by ID in descending order based on category
 if (isset($_GET["category"]) && !empty($_GET["category"])) {

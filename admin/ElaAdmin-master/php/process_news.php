@@ -23,7 +23,9 @@ $sql_news_table = "CREATE TABLE IF NOT EXISTS new_news (
     news_description TEXT NOT NULL,
     news_category VARCHAR(100) NOT NULL,
     news_datetime VARCHAR(255) NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    status ENUM('active','inactive') DEFAULT 'active',
+    editor_choice BOOLEAN NOT NULL DEFAULT FALSE
 )";
 
 if ($conn->query($sql_news_table) === TRUE) {
@@ -210,7 +212,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Close the news_news statement
     $stmt_news->close();
-
 } else {
     // If not a POST request (e.g., direct access to process_news.php)
     echo json_encode(["success" => false, "message" => "Invalid request method. This script only accepts POST requests."]);
@@ -218,4 +219,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 // Close the database connection
 $conn->close();
-?>

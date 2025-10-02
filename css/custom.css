@@ -16,6 +16,23 @@ Author URI  : https://themeforest.net/user/themelooks
   min-height: 190px;
   max-height: 190px;
 }
+.dividers {
+  color: gainsboro;
+}
+.rajniti {
+  padding-bottom: 5px;
+  position: relative;
+  margin-bottom: 15px;
+}
+.rajniti::after {
+  content: "";
+  height: 1px;
+  width: 90%;
+  background-color: rgba(0, 0, 0, 0.274);
+  position: absolute;
+  left: 15px;
+  bottom: 0;
+}
 /* Responsive part */
 @media only screen and (max-width: 1200px) {
   .headerFlex {

@@ -96,24 +96,19 @@ include_once("./php/fetch_news_by_category.php");
                             class="header--menu-links nav navbar-nav"
                             data-trigger="hoverIntent">
                             <li>
-                                <a href="index.html">হোম</a>
+                                <a href="./index.php">হোম</a>
                             </li>
-                            <li><a href="national-boxed.html">জাতীয়</a></li>
+                            <li><a href="./category.php?category=national">জাতীয়</a></li>
 
-                            <li class="dropdown megamenu filter">
-                                <a
-                                    href="world-news-boxed.html"
-                                    class="dropdown-toggle"
-                                    data-toggle="dropdown">আন্তর্জাতিক</a>
-                            </li>
-
-                            <li><a href="financial-boxed.html">অর্থনীতি</a></li>
-                            <li><a href="entertainment-boxed.html">বিনোদন</a></li>
-                            <li><a href="lifestyle-boxed.html">লাইফস্টাইল</a></li>
-                            <li><a href="technology-boxed.html">প্রযুক্তি</a></li>
-                            <li><a href="sports-boxed.html">খেলাধুলা</a></li>
-                            <li><a href="#">স্বাস্থ</a></li>
-                            <li><a href="#">শিক্ষা</a></li>
+                            <li><a href="./category.php?category=international">আন্তর্জাতিক</a></li>
+                            <li><a href="./category.php?category=finance">অর্থনীতি</a></li>
+                            <li><a href="./category.php?category=entertainment">বিনোদন</a></li>
+                            <li><a href="./category.php?category=lifestyle">লাইফস্টাইল</a></li>
+                            <li><a href="./category.php?category=technology">প্রযুক্তি</a></li>
+                            <li><a href="./category.php?category=sports">খেলাধুলা</a></li>
+                            <li><a href="./category.php?category=health">স্বাস্থ</a></li>
+                            <li><a href="./category.php?category=education">শিক্ষা</a></li>
+                            <li><a href="./category.php?category=all_bangla">সারা বাংলা</a></li>
                         </ul>
                         <!-- Header Menu Links End -->
                     </div>

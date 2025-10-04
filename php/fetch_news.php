@@ -115,3 +115,25 @@ $latest_four_editor_choice_news = array_slice($editor_choice_news, 0, 4);
 
 
 // The $result variable now holds your news data and can be used in the file that includes this one.
+
+// Function for text cutting
+
+function cutBanglaTextByWord($text, $limit = 100)
+{
+    // যদি টেক্সট limit এর চেয়ে ছোট হয় তাহলে সরাসরি ফেরত দিন
+    if (mb_strlen($text, "UTF-8") <= $limit) {
+        return $text;
+    }
+
+    // Limit অনুযায়ী প্রথমে টেক্সট কেটে নিই
+    $shortText = mb_substr($text, 0, $limit, "UTF-8");
+
+    // শেষের দিক থেকে শেষ স্পেস (শব্দ বিচ্ছেদ) খুঁজি
+    $lastSpace = mb_strrpos($shortText, " ", 0, "UTF-8");
+
+    if ($lastSpace !== false) {
+        $shortText = mb_substr($shortText, 0, $lastSpace, "UTF-8");
+    }
+
+    return $shortText . " ...";
+}

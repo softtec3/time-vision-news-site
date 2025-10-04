@@ -11,3 +11,4 @@ if (isset($_GET["category"]) && !empty($_GET["category"])) {
     return null;
 }
 ?>
+

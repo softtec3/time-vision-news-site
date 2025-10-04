@@ -106,7 +106,7 @@ include_once("./php/fetch_news_by_category.php");
                             <li><a href="./category.php?category=lifestyle">লাইফস্টাইল</a></li>
                             <li><a href="./category.php?category=technology">প্রযুক্তি</a></li>
                             <li><a href="./category.php?category=sports">খেলাধুলা</a></li>
-                            <li><a href="./category.php?category=health">স্বাস্থ</a></li>
+                            <li><a href="./category.php?category=health">স্বাস্থ্য</a></li>
                             <li><a href="./category.php?category=education">শিক্ষা</a></li>
                             <li><a href="./category.php?category=all_bangla">সারা বাংলা</a></li>
                         </ul>
@@ -260,9 +260,9 @@ include_once("./php/fetch_news_by_category.php");
                         <?php
                         if (($category_news && count($category_news) > 0)) {
                             foreach ($category_news as $cat_news) {
-                                $short_cat_heading = substr($cat_news["news_heading"], 0, 100);
+                                $short_cat_heading = cutBanglaTextByWord($cat_news["news_heading"], 35);
                                 $short_cat_desc_without_html = strip_tags($cat_news["news_description"]);
-                                $short_cat_desc = substr($short_cat_desc_without_html, 0, 250);
+                                $short_cat_desc = cutBanglaTextByWord($short_cat_desc_without_html, 140);
                                 echo "
                                     <li>
                             <!-- Post Item Start -->
@@ -284,16 +284,16 @@ include_once("./php/fetch_news_by_category.php");
                                             </ul>
 
                                             <div class='title'>
-                                                <h3 class='h4'><a href='./news-single-v1-boxed.php?id={$cat_news["id"]}'  class='btn-link'>$short_cat_heading ...</a></h3>
+                                                <h3 class='h4'><a href='./news-single-v1-boxed.php?id={$cat_news["id"]}'  class='btn-link'>$short_cat_heading </a></h3>
                                             </div>
                                         </div>
 
                                         <div class='post--content'>
-                                            <p>$short_cat_desc ...</p>
+                                            <p>$short_cat_desc</p>
                                         </div>
 
                                         <div class='post--action'>
-                                            <a href='./news-single-v1-boxed.php?id={$cat_news["id"]}' >Continue Reading...</a>
+                                            <a href='./news-single-v1-boxed.php?id={$cat_news["id"]}' >পড়তে থাকুন...</a>
                                         </div>
                                     </div>
                                 </div>

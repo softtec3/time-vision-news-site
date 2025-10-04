@@ -105,7 +105,7 @@ include_once("./php/fetch_news.php");
               <li><a href="./category.php?category=lifestyle">লাইফস্টাইল</a></li>
               <li><a href="./category.php?category=technology">প্রযুক্তি</a></li>
               <li><a href="./category.php?category=sports">খেলাধুলা</a></li>
-              <li><a href="./category.php?category=health">স্বাস্থ</a></li>
+              <li><a href="./category.php?category=health">স্বাস্থ্য</a></li>
               <li><a href="./category.php?category=education">শিক্ষা</a></li>
               <li><a href="./category.php?category=all_bangla">সারা বাংলা</a></li>
             </ul>
@@ -312,11 +312,11 @@ include_once("./php/fetch_news.php");
                                       ?>"
                                 class="btn-link"><?php
                                                   if ($latest_five[1]["news_heading"] ?? NULL) {
-                                                    echo $latest_five[1]["news_heading"];
+                                                    echo cutBanglaTextByWord($latest_five[1]["news_heading"], 50);
                                                   } else {
                                                     echo "";
                                                   }
-                                                  ?>...</a>
+                                                  ?></a>
                             </h2>
                           </div>
                         </div>
@@ -385,11 +385,11 @@ include_once("./php/fetch_news.php");
                                       ?>"
                                 class="btn-link"><?php
                                                   if ($latest_five[2]["news_heading"] ?? NULL) {
-                                                    echo $latest_five[2]["news_heading"];
+                                                    echo cutBanglaTextByWord($latest_five[2]["news_heading"], 50);
                                                   } else {
                                                     echo "";
                                                   }
-                                                  ?>...</a>
+                                                  ?></a>
                             </h2>
                           </div>
                         </div>
@@ -458,7 +458,7 @@ include_once("./php/fetch_news.php");
                                     }
                                     ?>" class="btn-link"><?php
                                                           if ($latest_five[0]["news_heading"] ?? NULL) {
-                                                            echo $latest_five[0]["news_heading"];
+                                                            echo cutBanglaTextByWord($latest_five[0]["news_heading"], 50);
                                                           } else {
                                                             echo "";
                                                           }
@@ -533,11 +533,11 @@ include_once("./php/fetch_news.php");
                                       ?>"
                                 class="btn-link"><?php
                                                   if ($latest_five[3]["news_heading"] ?? NULL) {
-                                                    echo $latest_five[3]["news_heading"];
+                                                    echo cutBanglaTextByWord($latest_five[3]["news_heading"], 50);
                                                   } else {
                                                     echo "";
                                                   }
-                                                  ?>...</a>
+                                                  ?></a>
                             </h2>
                           </div>
                         </div>
@@ -606,11 +606,11 @@ include_once("./php/fetch_news.php");
                                       ?>"
                                 class="btn-link"><?php
                                                   if ($latest_five[4]["news_heading"] ?? NULL) {
-                                                    echo $latest_five[4]["news_heading"];
+                                                    echo cutBanglaTextByWord($latest_five[4]["news_heading"], 50);
                                                   } else {
                                                     echo "";
                                                   }
-                                                  ?>...</a>
+                                                  ?></a>
                             </h2>
                           </div>
                         </div>
@@ -672,8 +672,10 @@ include_once("./php/fetch_news.php");
                         $slice_int_news = array_slice($international_news, 0, 2);
                         foreach ($slice_int_news as $int_news) {
                           $news_desc = strip_tags($int_news["news_description"]);
-                          $short_news_desc = substr($news_desc, 0, 205);
+                          $short_news_desc = cutBanglaTextByWord($news_desc, 170);
+                          $short_news_title = cutBanglaTextByWord($int_news["news_heading"], 70);
                           $img_url = "./admin/ElaAdmin-master/" . $int_news["news_image"];
+
                           echo "
                                   <li>
                           <!-- Post Item Start -->
@@ -704,7 +706,7 @@ include_once("./php/fetch_news.php");
                                     <a
                                       href='./news-single-v1-boxed.php?id={$int_news["id"]}'
                                       class='btn-link'
-                                      >{$int_news["news_heading"]}</a
+                                      >{$short_news_title}</a
                                     >
                                   </h3>
                                 </div>
@@ -714,7 +716,6 @@ include_once("./php/fetch_news.php");
                             <div class='post--content'>
                               <p>
                                  $short_news_desc
-                                 ...
                               </p>
                             </div>
                        
@@ -838,7 +839,7 @@ include_once("./php/fetch_news.php");
                                           ?>"
                                     class="btn-link"><?php
                                                       if ($latest_five_national_news[0]["news_heading"] ?? NULL) {
-                                                        echo $latest_five_national_news[0]["news_heading"];
+                                                        echo cutBanglaTextByWord($latest_five_national_news[0]["news_heading"], 50);
                                                       } else {
                                                         echo "";
                                                       }
@@ -855,6 +856,7 @@ include_once("./php/fetch_news.php");
                         $last_four_national_news = array_slice($latest_five_national_news, 1, 5);
                         foreach ($last_four_national_news as $last_news) {
                           $img_national = "./admin/ElaAdmin-master/" . $last_news["news_image"];
+                          $last_news_short_title = cutBanglaTextByWord($last_news["news_heading"], 70);
                           echo "
                           <li>
                         <!-- Post Item Start -->
@@ -877,7 +879,7 @@ include_once("./php/fetch_news.php");
                                 <h3 class='h4'>
                                   <a
                                     href='./news-single-v1-boxed.php?id={$last_news["id"]}'
-                                    class='btn-link'>{$last_news["news_heading"]}</a>
+                                    class='btn-link'>{$last_news_short_title}</a>
                                 </h3>
                               </div>
                             </div>
@@ -1016,7 +1018,7 @@ include_once("./php/fetch_news.php");
                                             ?>"
                                       class="btn-link"><?php
                                                         if ($latest_five_politics_news[0]["news_heading"] ?? NULL) {
-                                                          echo $latest_five_politics_news[0]["news_heading"];
+                                                          echo cutBanglaTextByWord($latest_five_politics_news[0]["news_heading"], 50);
                                                         } else {
                                                           echo "";
                                                         }
@@ -1030,7 +1032,7 @@ include_once("./php/fetch_news.php");
                                   <?php
                                   if ($latest_five_politics_news[0]["news_description"] ?? NULL) {
                                     $short_desc_without_html = strip_tags($latest_five_politics_news[0]["news_description"]);
-                                    $final_short_desc = substr($short_desc_without_html, 0, 150);
+                                    $final_short_desc = cutBanglaTextByWord($short_desc_without_html, 190);
                                     echo $final_short_desc;
                                   } else {
                                     echo "";
@@ -1065,7 +1067,7 @@ include_once("./php/fetch_news.php");
                         $last_four_politics_news = array_slice($latest_five_politics_news, 1, 5);
                         foreach ($last_four_politics_news as $last_news) {
                           $img_politics = "./admin/ElaAdmin-master/" . $last_news["news_image"];
-                          $short_politics_heading = substr($last_news["news_heading"], 0, 100);
+                          $short_politics_heading = cutBanglaTextByWord($last_news["news_heading"], 50);
                           echo "
                           
                           <li class='col-md-6 rajniti' >
@@ -1151,7 +1153,8 @@ include_once("./php/fetch_news.php");
                         foreach ($latest_two_finance_news as $latest_finance) {
                           $img_finance = "./admin/ElaAdmin-master/" . $latest_finance["news_image"];
                           $finance_desc_without_html = strip_tags($latest_finance["news_description"]);
-                          $short_finance_desc = substr($finance_desc_without_html, 0, 258);
+                          $short_finance_title = cutBanglaTextByWord($latest_finance["news_heading"], 45);
+                          $short_finance_desc = cutBanglaTextByWord($finance_desc_without_html, 220);
                           echo "
                           
                           <li>
@@ -1176,7 +1179,7 @@ include_once("./php/fetch_news.php");
                                 <h3 class='h4'>
                                   <a
                                     href='./news-single-v1-boxed.php?id={$latest_finance["id"]}'
-                                    class='btn-link'>{$latest_finance["news_heading"]}</a>
+                                    class='btn-link'>{$short_finance_title}</a>
                                 </h3>
                               </div>
                             </div>
@@ -1184,8 +1187,8 @@ include_once("./php/fetch_news.php");
 
                           <div class='post--content'>
                             <p>
-                              {$short_finance_desc}
-                              ...
+                              $short_finance_desc
+                              
                             </p>
                           </div>
 
@@ -1258,7 +1261,8 @@ include_once("./php/fetch_news.php");
                         foreach ($latest_two_education_news  as $latest_education) {
                           $img_education = "./admin/ElaAdmin-master/" . $latest_education["news_image"];
                           $education_desc_without_html = strip_tags($latest_education["news_description"]);
-                          $short_education_desc = substr($education_desc_without_html, 0, 254);
+                          $short_education_title = cutBanglaTextByWord($latest_education["news_heading"], 45);
+                          $short_education_desc = cutBanglaTextByWord($education_desc_without_html, 190);
                           echo "
                           
                           <li>
@@ -1283,7 +1287,7 @@ include_once("./php/fetch_news.php");
                                 <h3 class='h4'>
                                   <a
                                     href='./news-single-v1-boxed.php?id={$latest_education["id"]}'
-                                    class='btn-link'>{$latest_education["news_heading"]}</a>
+                                    class='btn-link'>$short_education_title</a>
                                 </h3>
                               </div>
                             </div>
@@ -1291,8 +1295,8 @@ include_once("./php/fetch_news.php");
 
                           <div class='post--content'>
                             <p>
-                              {$short_education_desc}
-                              ...
+                              $short_education_desc
+                              
                             </p>
                           </div>
 
@@ -1536,7 +1540,10 @@ include_once("./php/fetch_news.php");
                       if (($latest_three_sport_news && count($latest_three_sport_news) > 0)) {
                         foreach ($latest_three_sport_news as $latest_sports) {
                           $img_sports = "./admin/ElaAdmin-master/" . $latest_sports["news_image"];
-                          $short_sports_heading = substr($latest_sports["news_heading"], 0, 109);
+                          $short_sports_heading = cutBanglaTextByWord(
+                            $latest_sports["news_heading"],
+                            45
+                          );
                           echo "
                             <li class='col-md-4 col-xs-6 col-xxs-12'>
                         <!-- Post Item Start -->
@@ -1558,7 +1565,7 @@ include_once("./php/fetch_news.php");
                                 <h3 class='h4'>
                                   <a
                                     href='./news-single-v1-boxed.php?id={$latest_sports["id"]}'
-                                    class='btn-link'>$short_sports_heading ...</a>
+                                    class='btn-link'>$short_sports_heading</a>
                                 </h3>
                               </div>
                             </div>
@@ -1624,9 +1631,9 @@ include_once("./php/fetch_news.php");
                       if (($latest_three_all_bangla_news && count($latest_three_all_bangla_news) > 0)) {
                         foreach ($latest_three_all_bangla_news as $latest_all_bangla) {
                           $img_all_bangla = "./admin/ElaAdmin-master/" . $latest_all_bangla["news_image"];
-                          $short_all_bangla_heading = substr($latest_all_bangla["news_heading"], 0, 100);
+                          $short_all_bangla_heading = cutBanglaTextByWord($latest_all_bangla["news_heading"], 50);
                           $all_bangla_desc_without_html = strip_tags($latest_all_bangla["news_description"]);
-                          $short_all_bangla_description = substr($all_bangla_desc_without_html, 0, 355);
+                          $short_all_bangla_description = cutBanglaTextByWord($all_bangla_desc_without_html, 180);
 
 
                           echo "
@@ -1660,14 +1667,14 @@ include_once("./php/fetch_news.php");
                                   <h3 class='h4'>
                                     <a
                                      href='./news-single-v1-boxed.php?id={$latest_all_bangla["id"]}'
-                                      class='btn-link'>$short_all_bangla_heading ...</a>
+                                      class='btn-link'>$short_all_bangla_heading</a>
                                   </h3>
                                 </div>
                               </div>
 
                               <div class='post--content'>
                                 <p>
-                                  $short_all_bangla_description ...
+                                  $short_all_bangla_description
                                 </p>
                               </div>
 
@@ -1791,8 +1798,7 @@ include_once("./php/fetch_news.php");
                                           ?>"
                                     class="btn-link"><?php
                                                       if ($latest_four_entertainment_news[0]["news_heading"] ?? NULL) {
-                                                        $short_en_heading = substr($latest_four_entertainment_news[0]["news_heading"], 0, 150);
-                                                        echo $short_en_heading . "...";
+                                                        echo cutBanglaTextByWord($latest_four_entertainment_news[0]["news_heading"], 70);
                                                       } else {
                                                         echo "";
                                                       }
@@ -1810,7 +1816,7 @@ include_once("./php/fetch_news.php");
                         $last_three_entertainment_news = array_slice($latest_four_entertainment_news, 1, 4);
 
                         foreach ($last_three_entertainment_news as $last_entertainment) {
-                          $short_entertainment_title = substr($last_entertainment["news_heading"], 0, 100);
+                          $short_entertainment_title = cutBanglaTextByWord($last_entertainment["news_heading"], 50);
                           echo "
                           
                           <li class='col-md-4 col-xs-6 col-xxs-12'>
@@ -1833,7 +1839,7 @@ include_once("./php/fetch_news.php");
                                 <h2 class='h4'>
                                   <a
                                      href='./news-single-v1-boxed.php?id={$last_entertainment["id"]}'
-                                    class='btn-link'>$short_entertainment_title ...</a>
+                                    class='btn-link'>$short_entertainment_title</a>
                                 </h2>
                               </div>
                             </div>
@@ -1964,7 +1970,7 @@ include_once("./php/fetch_news.php");
                       if (($latest_four_editor_choice_news && count($latest_four_editor_choice_news) > 0)) {
                         foreach ($latest_four_editor_choice_news as $latest_editor_choice) {
                           $img_editor_choice = "./admin/ElaAdmin-master/" . $latest_editor_choice["news_image"];
-                          $short_heading_editor_choice = substr($latest_editor_choice["news_heading"], 0, 105);
+                          $short_heading_editor_choice = cutBanglaTextByWord($latest_editor_choice["news_heading"], 50);
                           echo "
                             <li>
                         <!-- Post Item Start -->
@@ -1985,7 +1991,7 @@ include_once("./php/fetch_news.php");
                                 <h3 class='h4'>
                                   <a
                                     href='./news-single-v1-boxed.php?id={$latest_editor_choice["id"]}'
-                                    class='btn-link'>  $short_heading_editor_choice ...</a>
+                                    class='btn-link'> $short_heading_editor_choice</a>
                                 </h3>
                               </div>
                             </div>

@@ -92,7 +92,7 @@ $conn->close();
     <style>
         body {
             width: 85%;
-             margin: 0 auto;
+            margin: 0 auto;
             color: black;
         }
 
@@ -173,13 +173,20 @@ $conn->close();
     <!-- Wrapper Start -->
     <div class="wrapper">
         <!-- Header Section Start -->
-        <header class="header--section header--style-1">
+        <header class="header--section header--style-8">
             <!-- Header Navbar Start -->
-            <div class="header--navbar navbar bd--color-1 bg--color-1" data-trigger="sticky">
+            <div
+                class="header--navbar navbar bd--color-1 bg--color-1"
+                data-trigger="sticky">
                 <div class="container">
                     <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                            data-target="#headerNav" aria-expanded="false" aria-controls="headerNav">
+                        <button
+                            type="button"
+                            class="navbar-toggle collapsed"
+                            data-toggle="collapse"
+                            data-target="#headerNav"
+                            aria-expanded="false"
+                            aria-controls="headerNav">
                             <span class="sr-only">Toggle Navigation</span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
@@ -189,38 +196,38 @@ $conn->close();
 
                     <div id="headerNav" class="navbar-collapse collapse float--left">
                         <!-- Header Menu Links Start -->
-                        <ul class="header--menu-links nav navbar-nav" data-trigger="hoverIntent">
+                        <ul
+                            class="header--menu-links nav navbar-nav"
+                            data-trigger="hoverIntent">
                             <li>
-                                <a href="index.php">হোম</a>
+                                <a href="./index.php">হোম</a>
                             </li>
-                            <li><a href="national-boxed.html">জাতীয়</a></li>
-                            <li><a href="national-boxed.html">আন্তর্জাতিক</a></li>
+                            <li><a href="./category.php?category=national">জাতীয়</a></li>
 
-
-
-                            <li><a href="financial-boxed.html">অর্থনীতি</a></li>
-                            <li><a href="entertainment-boxed.html">বিনোদন</a></li>
-                            <!-- <li><a href="lifestyle-boxed.html">লাইফস্টাইল</a></li> -->
-                            <li><a href="technology-boxed.html">প্রযুক্তি</a></li>
-                            <li><a href="sports-boxed.html">খেলাধুলা</a></li>
-                            <li><a href="#">স্বাস্থ</a></li>
-                            <li><a href="#">শিক্ষা</a></li>
-                            <li><a href="#">কবি ও কবিতা</a></li>
-                            <li><a href="#">ধর্ম</a></li>
-                            <li><a href="#">সারা বাংলা</a></li>
-
-
-
-
-
+                            <li><a href="./category.php?category=international">আন্তর্জাতিক</a></li>
+                            <li><a href="./category.php?category=finance">অর্থনীতি</a></li>
+                            <li><a href="./category.php?category=entertainment">বিনোদন</a></li>
+                            <li><a href="./category.php?category=lifestyle">লাইফস্টাইল</a></li>
+                            <li><a href="./category.php?category=technology">প্রযুক্তি</a></li>
+                            <li><a href="./category.php?category=sports">খেলাধুলা</a></li>
+                            <li><a href="./category.php?category=health">স্বাস্থ্য</a></li>
+                            <li><a href="./category.php?category=education">শিক্ষা</a></li>
+                            <li><a href="./category.php?category=all_bangla">সারা বাংলা</a></li>
                         </ul>
                         <!-- Header Menu Links End -->
                     </div>
 
                     <!-- Header Search Form Start -->
-                    <form action="#" class="header--search-form float--right" data-form="validate">
-                        <input type="search" name="search" placeholder="Search..."
-                            class="header--search-control form-control" required />
+                    <form
+                        action="#"
+                        class="header--search-form float--right"
+                        data-form="validate">
+                        <input
+                            type="search"
+                            name="search"
+                            placeholder="Search..."
+                            class="header--search-control form-control"
+                            required />
 
                         <button type="submit" class="header--search-btn btn">
                             <i class="header--search-icon fa fa-search"></i>
@@ -232,31 +239,30 @@ $conn->close();
             <!-- Header Navbar End -->
 
             <!-- Header Mainbar Start -->
-            <div class="header--mainbar">
-                <div class="container">
+            <div class="">
+                <div class="container headerFlex">
                     <!-- Header Logo Start -->
-                    <div class="header--logo float--left float--sm-none text-sm-center">
+                    <div class="">
                         <h1 class="h1">
-                            <a href="index.php" class="btn-link">
-                                <img src="img/logo.png" alt="Logo" height="100px" width="230px">
+                            <a href="./index.php" class="btn-link">
+                                <img
+                                    src="img/logo.png"
+                                    alt="  Logo"
+                                    height="100px"
+                                    width="230px" />
                                 <span class="hidden"> Logo</span>
                             </a>
                         </h1>
                     </div>
-                    <!-- Header Logo End -->
-
-                    <!-- Header Ad Start -->
-                    <div class="header--ad float--right float--sm-none hidden-xs">
-                        <a href="#">
-                            <img src="img/ads-img/ad-728x90-01.jpg" alt="Advertisement">
-                        </a>
+                    <!-- Date and time -->
+                    <div style="color: #333">
+                        ঢাকা, মঙ্গলবার ৩০ সেপ্টেম্বর, ২০২৫ <br />
+                        ৩০ আশ্বিন, ১৪৩২, ৯ রবিউস সানি, ১৪৪৭ যুগ
                     </div>
-                    <!-- Header Ad End -->
+                    <!-- Header Logo End -->
                 </div>
             </div>
             <!-- Header Mainbar End -->
-
-
         </header>
         <!-- Header Section End -->
 
@@ -398,9 +404,9 @@ $conn->close();
                                 </div>
                                 <!-- Post Tags End -->
 
-                                
 
-                                
+
+
                             </div>
                         <?php else: ?>
                             <div class="alert alert-danger text-center" style="margin-top: 30px;">
@@ -504,13 +510,13 @@ $conn->close();
                             </div>
                             <!-- Widget End -->
 
-                           
 
-                           
-                            
-                           
 
-                           
+
+
+
+
+
                         </div>
                     </div>
                     <!-- Main Sidebar End -->

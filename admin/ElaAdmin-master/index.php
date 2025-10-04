@@ -372,6 +372,7 @@ require_once("./php/news_operation.php");
           id="deleteAlert"
           class="fixed left-[50%] top-20 transform-[translate(-50%)] bg-white z-40 p-5 border border-solid border-gray-400 rounded flex-col gap-5 hidden">
           আপনি কি এই নিউজটি ডিলিট করতে চান?
+          <p style="text-align: center;">নিউজ আইডিঃ <span id="newsId"></span></p>
           <div class="flex items-center justify-center gap-2">
             <form action="" method="get">
               <button
@@ -757,6 +758,7 @@ require_once("./php/news_operation.php");
       deleteAlert.classList.replace("hidden", "flex");
       console.log("Delete", id);
       document.getElementById("deleteButton").value = id;
+      document.getElementById("newsId").innerText = id;
     }
     document
       .getElementById("hideDeleteAlert")

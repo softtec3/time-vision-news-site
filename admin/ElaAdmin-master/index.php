@@ -329,7 +329,7 @@ require_once("./php/news_operation.php");
                   src='{$news["news_image"]}'
                   alt='news image' />
               </td>
-              <td class='border p-2'>$short_news_title</td>
+              <td class='border p-2' title='{$news["news_heading"]}'>$short_news_title</td>
               <td class='border p-2'>{$news["news_datetime"]}</td>
               <td class='border p-2'>এডমিন</td>
               <td class='border p-2 capitalize $status_color font-bold'>{$news["status"]}</td>

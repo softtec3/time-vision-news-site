@@ -312,12 +312,12 @@ require_once("./php/news_operation.php");
                 if ($news["status"] == "active") {
                   $news_status_button = "<a href='./?inactive={$news["id"]}'><button
                     title='Inactive'
-                    class='border border-solid border-gray-300 p-1 rounded-md'>
+                    class='border border-solid border-gray-300 p-1 rounded-md text-red-500'>
                     <i class='fa-solid fa-circle-xmark text-sm'></i></button></a>";
                 } else {
                   $news_status_button = "<a href='./?active={$news["id"]}'><button
                     title='Active'
-                    class='border border-solid border-gray-300 p-1 rounded-md'>
+                    class='border border-solid border-gray-300 p-1 rounded-md text-green-500'>
                     <i class='fa-solid fa-circle-check text-sm'></i></button></a>";
                 }
                 if ($news["editor_choice"] == TRUE) {
@@ -350,21 +350,21 @@ require_once("./php/news_operation.php");
                 <a href='/news-single-v1-boxed.php?id={$news["id"]}' target='_blank'>
                   <button
                     title='View'
-                    class='border border-solid border-gray-300 p-1 rounded-md'>
+                    class='border border-solid border-gray-300 p-1 rounded-md text-orange-500'>
                     <i class='fa-solid fa-eye text-sm'></i>
                   </button>
                 </a>
                 <a href='./?edit={$news["id"]}'>
                   <button
                     title='Edit'
-                    class='border border-solid border-gray-300 p-1 rounded-md'>
+                    class='border border-solid border-gray-300 p-1 rounded-md text-green-600'>
                     <i class='fa-solid fa-pen-to-square text-sm'></i>
                   </button>
                 </a>
                 <button
                   onclick=\"showDeleteAlert('{$news["id"]}')\"
                   title='Delete'
-                  class='border border-solid border-gray-300 p-1 rounded-md'>
+                  class='border border-solid border-gray-300 p-1 rounded-md text-red-600'>
                   <i class='fa-solid fa-trash text-sm'></i>
                 </button>
               {$news_status_button}

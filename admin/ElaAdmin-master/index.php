@@ -404,7 +404,30 @@ require_once("./php/news_operation.php");
             </button>
           </div>
         </div>
+
       </div>
+
+    </div>
+  </div>
+  <!-- News action status -->
+  <div
+    id=""
+    class="fixed left-[50%] top-20 transform-[translate(-50%)] bg-white z-40 p-5 border border-solid border-gray-400 rounded flex-col gap-5 <?php if ($action_message) {
+                                                                                                                                              echo "flex";
+                                                                                                                                            } else {
+                                                                                                                                              echo "hidden";
+                                                                                                                                            } ?>">
+    <div class="flex items-center justify-center gap-2 flex-col">
+      <?php echo $action_message ?>
+      <form action="" method="get">
+        <input type="hidden" name="closeActionAlert">
+        <a
+          href="./"
+          id="hideDeleteAlert"
+          class="py-1 px-4 rounded bg-red-800 text-white">
+          বন্ধ করুন
+        </a>
+      </form>
 
     </div>
   </div>

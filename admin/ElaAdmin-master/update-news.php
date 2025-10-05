@@ -553,7 +553,7 @@ require_once("./php/fetch_update_news.php");
                             showMessage(data.message, "success");
                             alert("নিউজটি আপডেট হয়েছে");
                             // Optionally, reset the form after successful submission
-                            this.reset(); // 'this' refers to the form element
+                            // this.reset(); // 'this' refers to the form element
                         } else {
                             // Display the error message on the page
                             showMessage("Error: " + data.message, "error");

@@ -44,4 +44,30 @@ if (isset($_GET["deleteId"]) && !empty($_GET["deleteId"])) {
         </script>";
     }
 }
+
+// Editor choice/remove news
+// Add to editor choice
+if (isset($_GET["addEditorChoice"]) && !empty($_GET["addEditorChoice"])) {
+    $editor_choice_news_id = $_GET["addEditorChoice"];
+    $add_editor_choice = $conn->query(("UPDATE new_news SET editor_choice=TRUE WHERE id='$editor_choice_news_id'"));
+    if ($add_editor_choice) {
+        header("Location: ./");
+    } else {
+        echo "<script>
+        alert('কোনো সমস্যা হয়েছে');
+        </script>";
+    }
+}
+// Remove from editor choice
+if (isset($_GET["removeEditorChoice"]) && !empty($_GET["removeEditorChoice"])) {
+    $editor_choice_id = $_GET["removeEditorChoice"];
+    $remove_editor_choice = $conn->query("UPDATE new_news SET editor_choice=FALSE WHERE id='$editor_choice_id'");
+    if ($remove_editor_choice) {
+        header("Location: ./");
+    } else {
+        echo "<script>
+            alert('কোনো সমস্যা হয়েছে');
+        </script>";
+    }
+}
 ?>

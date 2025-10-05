@@ -307,6 +307,7 @@ require_once("./php/news_operation.php");
                 $short_news_title = cutBanglaTextByWord($news["news_heading"], 20);
                 $status_color = $news["status"] == "active" ? "text-green-500" : "text-red-500";
                 $news_status_button = "";
+                $news_editor_choice_button = "";
 
                 if ($news["status"] == "active") {
                   $news_status_button = "<a href='./?inactive={$news["id"]}'><button
@@ -318,6 +319,18 @@ require_once("./php/news_operation.php");
                     title='Active'
                     class='border border-solid border-gray-300 p-1 rounded-md'>
                     <i class='fa-solid fa-circle-check text-sm'></i></button></a>";
+                }
+                if ($news["editor_choice"] == TRUE) {
+                  $news_editor_choice_button = "<a href='./?removeEditorChoice={$news["id"]}'><button
+                    title='Remove from editor choice'
+                    class='border border-solid border-gray-300 p-1 rounded-md'>
+                    <i class='fa-solid fa-star-half-stroke' style='color:gray;'></i></button></a>";
+                } else {
+                  $news_editor_choice_button = "<a href='./?addEditorChoice={$news["id"]}'><button
+                    title='Add to editor choice'
+                    class='border border-solid border-gray-300 p-1 rounded-md'>
+                    <i class='fa-solid fa-star' style='color:gold;'></i>
+                    </button></a>";
                 }
 
                 echo "
@@ -355,6 +368,7 @@ require_once("./php/news_operation.php");
                   <i class='fa-solid fa-trash text-sm'></i>
                 </button>
               {$news_status_button}
+              {$news_editor_choice_button}
                 
               </td>
             </tr>

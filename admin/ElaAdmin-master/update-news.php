@@ -173,7 +173,7 @@ require_once("./php/fetch_update_news.php");
                     class="form-container bg-white p-6 md:p-8 lg:p-10 rounded-xl shadow-lg w-full max-w-md md:max-w-lg lg:max-w-2xl my-12">
                     <h2
                         class="text-2xl md:text-3xl font-bold text-gray-800 text-center mb-6">
-                        নতুন নিউজ যোগ করুন
+                        নিউজ আপডেট করুন
                     </h2>
 
                     <!-- Message Display Area -->
@@ -198,12 +198,16 @@ require_once("./php/fetch_update_news.php");
                             <div
                                 class="image-preview-container mt-4 p-4 border border-dashed border-gray-300 rounded-lg bg-gray-50 text-center">
                                 <img
-                                    src="#"
+                                    src="<?php
+                                            if ($specific_news["news_image"]) {
+                                                echo $specific_news["news_image"];
+                                            }
+                                            ?>"
                                     alt="Image Preview"
                                     class="image-preview"
                                     id="imagePreview" />
                                 <p id="imagePlaceholderText" class="image-placeholder-text">
-                                    এখানে আপনার ছবি দেখা যাবে।
+                                    <!-- এখানে আপনার ছবি দেখা যাবে। -->
                                 </p>
                             </div>
                         </div>
@@ -216,6 +220,11 @@ require_once("./php/fetch_update_news.php");
                                 type="text"
                                 id="heading"
                                 name="news_heading"
+                                value="<?php if ($specific_news["news_heading"]) {
+                                            echo $specific_news["news_heading"];
+                                        } else {
+                                            echo "";
+                                        } ?>"
                                 placeholder="শিরোনাম লিখুন"
                                 required
                                 class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm outline-none text-sm mt-1 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50" />
@@ -226,7 +235,15 @@ require_once("./php/fetch_update_news.php");
                                 for="description"
                                 class="block text-gray-700 text-sm font-medium mb-2">বিবরণ:</label>
                             <!-- Quill.js editor will be initialized here -->
-                            <div id="editor-container"></div>
+                            <div id="editor-container">
+                                <?php
+                                if ($specific_news["news_description"]) {
+                                    echo $specific_news["news_description"];
+                                } else {
+                                    echo "";
+                                }
+                                ?>
+                            </div>
                             <!-- Hidden input to store Quill.js content -->
                             <input
                                 type="hidden"
@@ -244,19 +261,97 @@ require_once("./php/fetch_update_news.php");
                                 required
                                 class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm outline-none text-sm mt-1 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
                                 <option value="">একটি বিভাগ নির্বাচন করুন</option>
-                                <option value="national">জাতীয়</option>
-                                <option value="international">আন্তর্জাতিক</option>
-                                <option value="finance">অর্থনৈতিক</option>
-                                <option value="politics">রাজনীতি</option>
-                                <option value="entertainment">বিনোদন</option>
-                                <option value="lifestyle">লাইফস্টাইল</option>
-                                <option value="technology">প্রযুক্তি</option>
-                                <option value="sports">খেলাধুলা</option>
-                                <option value="health">স্বাস্থ্য্য</option>
-                                <option value="education">শিক্ষা</option>
-                                <option value="religion">ধর্ম</option>
-                                <option value="poem">কবি ও কবিতা</option>
-                                <option value="all_bangla">সারা বাংলা</option>
+                                <option value="national" <?php
+                                                            if ($specific_news["news_category"] == "national") {
+                                                                echo "selected";
+                                                            } else {
+                                                                echo "";
+                                                            }
+                                                            ?>>জাতীয়</option>
+                                <option value="international" <?php
+                                                                if ($specific_news["news_category"] == "international") {
+                                                                    echo "selected";
+                                                                } else {
+                                                                    echo "";
+                                                                }
+                                                                ?>>আন্তর্জাতিক</option>
+                                <option value="finance" <?php
+                                                        if ($specific_news["news_category"] == "finance") {
+                                                            echo "selected";
+                                                        } else {
+                                                            echo "";
+                                                        }
+                                                        ?>>অর্থনৈতিক</option>
+                                <option value="politics" <?php
+                                                            if ($specific_news["news_category"] == "politics") {
+                                                                echo "selected";
+                                                            } else {
+                                                                echo "";
+                                                            }
+                                                            ?>>রাজনীতি</option>
+                                <option value="entertainment" <?php
+                                                                if ($specific_news["news_category"] == "entertainment") {
+                                                                    echo "selected";
+                                                                } else {
+                                                                    echo "";
+                                                                }
+                                                                ?>>বিনোদন</option>
+                                <option value="lifestyle" <?php
+                                                            if ($specific_news["news_category"] == "lifestyle") {
+                                                                echo "selected";
+                                                            } else {
+                                                                echo "";
+                                                            }
+                                                            ?>>লাইফস্টাইল</option>
+                                <option value="technology" <?php
+                                                            if ($specific_news["news_category"] == "technology") {
+                                                                echo "selected";
+                                                            } else {
+                                                                echo "";
+                                                            }
+                                                            ?>>প্রযুক্তি</option>
+                                <option value="sports" <?php
+                                                        if ($specific_news["news_category"] == "sports") {
+                                                            echo "selected";
+                                                        } else {
+                                                            echo "";
+                                                        }
+                                                        ?>>খেলাধুলা</option>
+                                <option value="health" <?php
+                                                        if ($specific_news["news_category"] == "health") {
+                                                            echo "selected";
+                                                        } else {
+                                                            echo "";
+                                                        }
+                                                        ?>>স্বাস্থ্য্য</option>
+                                <option value="education" <?php
+                                                            if ($specific_news["news_category"] == "education") {
+                                                                echo "selected";
+                                                            } else {
+                                                                echo "";
+                                                            }
+                                                            ?>>শিক্ষা</option>
+                                <option value="religion" <?php
+                                                            if ($specific_news["news_category"] == "religion") {
+                                                                echo "selected";
+                                                            } else {
+                                                                echo "";
+                                                            }
+                                                            ?>>ধর্ম</option>
+                                <option value="poem" <?php
+                                                        if ($specific_news["news_category"] == "poem") {
+                                                            echo "selected";
+                                                        } else {
+                                                            echo "";
+                                                        }
+                                                        ?>>কবি ও কবিতা</option>
+                                <option value="all_bangla" <?php
+                                                            if ($specific_news["news_category"] == "all_bangla") {
+                                                                echo "selected";
+                                                            } else {
+                                                                echo "";
+                                                            }
+                                                            ?>>সারা বাংলা</option>
                             </select>
                         </div>
 
@@ -273,13 +368,15 @@ require_once("./php/fetch_update_news.php");
                             <button
                                 type="submit"
                                 class="submit-btn flex-1 font-bold py-2 px-4 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:-translate-y-1 outline-none border-none cursor-pointer bg-green-600 text-white hover:bg-green-700 focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">
-                                পোস্ট করুন
+                                আপডেট করুন
                             </button>
-                            <button
-                                type="reset"
-                                class="reset-btn flex-1 font-bold py-2 px-4 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:-translate-y-1 outline-none border-none cursor-pointer bg-red-600 text-white hover:bg-red-700 focus:ring-2 focus:ring-red-500 focus:ring-opacity-50">
-                                পুনরায় সেট করুন
-                            </button>
+                            <a href="./">
+                                <button
+                                    type="button"
+                                    class="reset-btn flex-1 font-bold py-2 px-4 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:-translate-y-1 outline-none border-none cursor-pointer bg-red-600 text-white hover:bg-red-700 focus:ring-2 focus:ring-red-500 focus:ring-opacity-50">
+                                    বাতিল
+                                </button>
+                            </a>
                         </div>
                     </form>
                 </div>
@@ -454,6 +551,7 @@ require_once("./php/fetch_update_news.php");
                         if (data.success) {
                             // Display the success message on the page
                             showMessage(data.message, "success");
+                            alert("নিউজটি আপডেট হয়েছে");
                             // Optionally, reset the form after successful submission
                             this.reset(); // 'this' refers to the form element
                         } else {

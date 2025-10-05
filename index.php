@@ -150,7 +150,7 @@ include_once("./php/fetch_news.php");
             </h1>
           </div>
           <!-- Date and time -->
-          <div style="color: #333">
+          <div id="banglaDateDiv" style="color: #333">
             ঢাকা, মঙ্গলবার ৩০ সেপ্টেম্বর, ২০২৫ <br />
             ৩০ আশ্বিন, ১৪৩২, ৯ রবিউস সানি, ১৪৪৭ যুগ
           </div>
@@ -2297,6 +2297,93 @@ include_once("./php/fetch_news.php");
       // Update copyright year
       $(".copyright-year").text(new Date().getFullYear());
     })(jQuery);
+  </script>
+  <script>
+    function toBanglaDigits(num) {
+      const banglaNums = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯'];
+      return num.toString().replace(/\d/g, d => banglaNums[d]);
+    }
+
+    const banglaMonths = ["বৈশাখ", "জ্যৈষ্ঠ", "আষাঢ়", "শ্রাবণ", "ভাদ্র", "আশ্বিন", "কার্তিক", "অগ্রহায়ণ", "পৌষ", "মাঘ", "ফাল্গুন", "চৈত্র"];
+    const banglaWeekdays = ["রবিবার", "সোমবার", "মঙ্গলবার", "বুধবার", "বৃহস্পতিবার", "শুক্রবার", "শনিবার"];
+
+    const hijriMonthsBn = ["মুহররম", "সফর", "রবিউল আউয়াল", "রবিউস সানি", "জুমাদাল উলা", "জুমাদাল সানি", "রজব", "শাবান", "রমজান", "শাওয়াল", "জিলকদ", "জিলহজ"];
+
+    function gregorianToHijri(date) {
+      const day = date.getDate();
+      const month = date.getMonth() + 1;
+      const year = date.getFullYear();
+
+      let jd = Math.floor((1461 * (year + 4800 + Math.floor((month - 14) / 12))) / 4) +
+        Math.floor((367 * (month - 2 - 12 * Math.floor((month - 14) / 12))) / 12) -
+        Math.floor((3 * Math.floor((year + 4900 + Math.floor((month - 14) / 12)) / 100)) / 4) + day - 32075;
+
+      let l = jd - 1948440 + 10632;
+      let n = Math.floor((l - 1) / 10631);
+      l = l - 10631 * n + 354;
+      let j = (Math.floor((10985 - l) / 5316)) * Math.floor((50 * l) / 17719) +
+        (Math.floor(l / 5670)) * Math.floor((43 * l) / 15238);
+      l = l - Math.floor((30 - j) / 15) * Math.floor((17719 * j) / 50) - Math.floor(j / 16) * Math.floor((15238 * j) / 43) + 29;
+      let m = Math.floor((24 * l) / 709);
+      let d = l - Math.floor((709 * m) / 24);
+      let y = 30 * n + j - 30;
+
+      return {
+        day: d,
+        month: m,
+        year: y
+      };
+    }
+
+    function gregorianToBangla(date) {
+      const gDay = date.getDate();
+      const gMonth = date.getMonth() + 1;
+      const gYear = date.getFullYear();
+
+      const banglaYear = gYear - 593;
+      const banglaStart = [14, 13, 14, 14, 15, 15, 16, 17, 17, 17, 18, 16];
+
+      let monthIndex;
+      if (gDay >= banglaStart[gMonth - 1]) {
+        monthIndex = (gMonth + 1) % 12;
+      } else {
+        monthIndex = (gMonth + 12 - 2) % 12;
+      }
+
+      let dayDiff = gDay - banglaStart[gMonth - 1] + 1;
+      if (dayDiff <= 0) {
+        const prevMonth = (gMonth + 10) % 12;
+        dayDiff += 30;
+      }
+
+      return {
+        day: dayDiff,
+        month: banglaMonths[monthIndex],
+        year: banglaYear
+      };
+    }
+
+    function showBanglaDate() {
+      const now = new Date();
+
+      const weekday = banglaWeekdays[now.getDay()];
+      const day = toBanglaDigits(now.getDate());
+      const month = now.toLocaleString("bn-BD", {
+        month: "long"
+      });
+      const year = toBanglaDigits(now.getFullYear());
+      const line1 = `ঢাকা, ${weekday} ${day} ${month}, ${year}`;
+
+      const bangla = gregorianToBangla(now);
+      const line2 = `${toBanglaDigits(bangla.day)} ${bangla.month}, ${toBanglaDigits(bangla.year)} বঙ্গাব্দ`;
+
+      const hijri = gregorianToHijri(now);
+      const line3 = `${toBanglaDigits(hijri.day)} ${hijriMonthsBn[hijri.month - 1]}, ${toBanglaDigits(hijri.year)} হিজরি`;
+
+      document.getElementById("banglaDateDiv").innerHTML = `${line1} <br/> ${line2} ${line3}`;
+    }
+
+    showBanglaDate();
   </script>
 </body>
 

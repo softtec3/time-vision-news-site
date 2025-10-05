@@ -108,6 +108,7 @@ include_once("./php/fetch_news.php");
               <li><a href="./category.php?category=health">স্বাস্থ্য</a></li>
               <li><a href="./category.php?category=education">শিক্ষা</a></li>
               <li><a href="./category.php?category=all_bangla">সারা বাংলা</a></li>
+              <li><a href="./login-boxed.php">লগিন</a></li>
             </ul>
             <!-- Header Menu Links End -->
           </div>
@@ -127,6 +128,7 @@ include_once("./php/fetch_news.php");
             <button type="submit" class="header--search-btn btn">
               <i class="header--search-icon fa fa-search"></i>
             </button>
+
           </form>
           <!-- Header Search Form End -->
         </div>

@@ -1,6 +1,10 @@
 <?php
+session_start();
 require_once("./php/fetch_all_news.php");
 require_once("./php/news_operation.php");
+if (empty($_SESSION["user"])) {
+  header("Location: /index.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -131,7 +135,9 @@ require_once("./php/news_operation.php");
     <nav>
       <ul class="flex space-x-4">
         <li>
-          <a href="#" class="text-gray-700 hover:text-blue-600 font-medium">Add News</a>
+          <form action="./php/user_logout.php">
+            <button type="submit" class="bg-red-600 text-white p-1 rounded text-sm">Logout</button>
+          </form>
         </li>
         <!-- <li><a href="#" class="text-gray-700 hover:text-blue-600 font-medium">Logout</a></li> -->
       </ul>

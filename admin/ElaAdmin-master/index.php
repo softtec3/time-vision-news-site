@@ -354,7 +354,7 @@ require_once("./php/news_operation.php");
                     <i class='fa-solid fa-eye text-sm'></i>
                   </button>
                 </a>
-                <a href='./?edit={$news["id"]}'>
+                <a href='./update-news.php?edit={$news["id"]}'>
                   <button
                     title='Edit'
                     class='border border-solid border-gray-300 p-1 rounded-md text-green-600'>
@@ -405,129 +405,7 @@ require_once("./php/news_operation.php");
           </div>
         </div>
       </div>
-      <!-- Update news -->
-      <div id="updateNews" style="display: none">
-        <div
-          id=""
-          class="flex-grow flex justify-center items-center w-full"
-          style="margin-top: 50px">
-          <div
-            class="form-container bg-white p-6 md:p-8 lg:p-10 rounded-xl shadow-lg w-full max-w-md md:max-w-lg lg:max-w-2xl my-12">
-            <h2
-              class="text-2xl md:text-3xl font-bold text-gray-800 text-center mb-6">
-              নিউজ আপডেট করুন
-            </h2>
 
-            <!-- Message Display Area -->
-            <div id="messageDisplay" class="message-display mb-4"></div>
-
-            <form
-              id="myForm"
-              action="php/process_news.php"
-              method="post"
-              enctype="multipart/form-data"
-              class="flex flex-col space-y-5">
-              <div class="form-group">
-                <label
-                  for="imageUpload"
-                  class="block text-gray-700 text-sm font-medium mb-2">ছবি আপলোড করুন:</label>
-                <input
-                  type="file"
-                  id="imageUpload"
-                  name="news_image"
-                  accept="image/*"
-                  class="block w-full text-sm text-gray-500 cursor-pointer" />
-                <div
-                  class="image-preview-container mt-4 p-4 border border-dashed border-gray-300 rounded-lg bg-gray-50 text-center">
-                  <img
-                    src="#"
-                    alt="Image Preview"
-                    class="image-preview"
-                    id="imagePreview" />
-                  <p id="imagePlaceholderText" class="image-placeholder-text">
-                    এখানে আপনার ছবি দেখা যাবে।
-                  </p>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label
-                  for="heading"
-                  class="block text-gray-700 text-sm font-medium mb-2">শিরোনাম:</label>
-                <input
-                  type="text"
-                  id="heading"
-                  name="news_heading"
-                  placeholder="শিরোনাম লিখুন"
-                  required
-                  class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm outline-none text-sm mt-1 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50" />
-              </div>
-
-              <div class="form-group">
-                <label
-                  for="description"
-                  class="block text-gray-700 text-sm font-medium mb-2">বিবরণ:</label>
-                <!-- Quill.js editor will be initialized here -->
-                <div id="editor-container"></div>
-                <!-- Hidden input to store Quill.js content -->
-                <input
-                  type="hidden"
-                  id="hiddenDescription"
-                  name="news_description" />
-              </div>
-
-              <div class="form-group">
-                <label
-                  for="category"
-                  class="block text-gray-700 text-sm font-medium mb-2">বিভাগ:</label>
-                <select
-                  id="category"
-                  name="news_category"
-                  required
-                  class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm outline-none text-sm mt-1 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
-                  <option value="">একটি বিভাগ নির্বাচন করুন</option>
-                  <option value="national">জাতীয়</option>
-                  <option value="international">আন্তর্জাতিক</option>
-                  <option value="finance">অর্থনৈতিক</option>
-                  <option value="politics">রাজনীতি</option>
-                  <option value="entertainment">বিনোদন</option>
-                  <option value="lifestyle">লাইফস্টাইল</option>
-                  <option value="technology">প্রযুক্তি</option>
-                  <option value="sports">খেলাধুলা</option>
-                  <option value="health">স্বাস্থ্য্য</option>
-                  <option value="education">শিক্ষা</option>
-                  <option value="religion">ধর্ম</option>
-                  <option value="poem">কবি ও কবিতা</option>
-                  <option value="all_bangla">সারা বাংলা</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label class="block text-gray-700 text-sm font-medium mb-2">সময় ও তারিখ:</label>
-                <div class="datetime-display" id="currentDateTime"></div>
-                <input
-                  type="hidden"
-                  id="hiddenDateTime"
-                  name="news_datetime" />
-              </div>
-
-              <div
-                class="button-group flex flex-col sm:flex-row justify-between gap-4 mt-6">
-                <button
-                  type="submit"
-                  class="submit-btn flex-1 font-bold py-2 px-4 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:-translate-y-1 outline-none border-none cursor-pointer bg-green-600 text-white hover:bg-green-700 focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">
-                  পোস্ট করুন
-                </button>
-                <button
-                  type="reset"
-                  class="reset-btn flex-1 font-bold py-2 px-4 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:-translate-y-1 outline-none border-none cursor-pointer bg-red-600 text-white hover:bg-red-700 focus:ring-2 focus:ring-red-500 focus:ring-opacity-50">
-                  পুনরায় সেট করুন
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 
@@ -737,12 +615,10 @@ require_once("./php/news_operation.php");
   <script>
     const addNews = document.getElementById("addNews");
     const allNews = document.getElementById("allNews");
-    const updateNews = document.getElementById("updateNews");
     const showHide = (id) => {
       [addNews, allNews].forEach(
         (section) => (section.style.display = "none")
       );
-      updateNews.style.display = "none";
       if (id == "addNews") {
         addNews.style.display = "flex";
       } else if (id == "allNews") {

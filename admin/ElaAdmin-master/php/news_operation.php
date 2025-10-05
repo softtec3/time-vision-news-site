@@ -70,4 +70,6 @@ if (isset($_GET["removeEditorChoice"]) && !empty($_GET["removeEditorChoice"])) {
         </script>";
     }
 }
+
+
 ?>

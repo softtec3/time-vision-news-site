@@ -1,5 +1,9 @@
 <?php
+session_start();
 require_once("./php/fetch_update_news.php");
+if (empty($_SESSION["user"])) {
+    header("Location: /login-boxed.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -130,7 +134,9 @@ require_once("./php/fetch_update_news.php");
         <nav>
             <ul class="flex space-x-4">
                 <li>
-                    <a href="#" class="text-gray-700 hover:text-blue-600 font-medium">Add News</a>
+                    <form action="./php/user_logout.php">
+                        <button type="submit" class="bg-red-600 text-white py-1 px-2 rounded text-sm">Logout</button>
+                    </form>
                 </li>
                 <!-- <li><a href="#" class="text-gray-700 hover:text-blue-600 font-medium">Logout</a></li> -->
             </ul>
@@ -370,10 +376,10 @@ require_once("./php/fetch_update_news.php");
                                 class="submit-btn flex-1 font-bold py-2 px-4 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:-translate-y-1 outline-none border-none cursor-pointer bg-green-600 text-white hover:bg-green-700 focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">
                                 আপডেট করুন
                             </button>
-                            <a href="./">
+                            <a href="./" class="block">
                                 <button
                                     type="button"
-                                    class="reset-btn flex-1 font-bold py-2 px-4 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:-translate-y-1 outline-none border-none cursor-pointer bg-red-600 text-white hover:bg-red-700 focus:ring-2 focus:ring-red-500 focus:ring-opacity-50">
+                                    class="reset-btn w-[100%] flex-1 font-bold py-2 px-4 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:-translate-y-1 outline-none border-none cursor-pointer bg-red-600 text-white hover:bg-red-700 focus:ring-2 focus:ring-red-500 focus:ring-opacity-50">
                                     বাতিল
                                 </button>
                             </a>

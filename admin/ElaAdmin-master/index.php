@@ -3,7 +3,7 @@ session_start();
 require_once("./php/fetch_all_news.php");
 require_once("./php/news_operation.php");
 if (empty($_SESSION["user"])) {
-  header("Location: /index.php");
+  header("Location: /login-boxed.php");
 }
 ?>
 <!DOCTYPE html>
@@ -136,7 +136,7 @@ if (empty($_SESSION["user"])) {
       <ul class="flex space-x-4">
         <li>
           <form action="./php/user_logout.php">
-            <button type="submit" class="bg-red-600 text-white p-1 rounded text-sm">Logout</button>
+            <button type="submit" class="bg-red-600 text-white py-1 px-2 rounded text-sm">Logout</button>
           </form>
         </li>
         <!-- <li><a href="#" class="text-gray-700 hover:text-blue-600 font-medium">Logout</a></li> -->

@@ -1084,7 +1084,6 @@ include_once("./php/fetch_news.php");
 
                             <div class='post--info'>
                               <ul class='nav meta'>
-                                <li><a href='#'>Admin</a></li>
                                 <li><a href='#'>{$last_news["news_datetime"]}</a></li>
                               </ul>
 
@@ -1092,7 +1091,7 @@ include_once("./php/fetch_news.php");
                                 <h3 class='h4'>
                                   <a
                                     href='./news-single-v1-boxed.php?id={$last_news["id"]}'
-                                    class='btn-link'>{$short_politics_heading}...</a>
+                                    class='btn-link'>{$short_politics_heading}</a>
                                 </h3>
                               </div>
                             </div>

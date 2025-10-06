@@ -11,6 +11,7 @@ if ($conn->query($login_sql) === TRUE) {
 } else {
     echo "Something went wrong";
 }
+$login_alert = NULL;
 if (isset($_POST["username"])) {
     $username = $_POST["username"];
     $password = $_POST["password"];
@@ -20,16 +21,13 @@ if (isset($_POST["username"])) {
     if ($find_user) {
         if ($find_user["password"] === $password) {
             $_SESSION["user"] = $find_user["user_name"];
+            $login_alert = NULL;
             header("Location: ./admin/ElaAdmin-master");
         } else {
-            echo "<script>
-                alert('ভুল পাসওয়ার্ড');
-            </script>";
+            $login_alert = "ভুল পাসওয়ার্ড";
         }
     } else {
-        echo "<script>
-            alert('ইউজার খুজে পাওয়া যায় নি');
-        </script>";
+        $login_alert = "ইউজার খুজে পাওয়া যায় নি";
     }
 }
 

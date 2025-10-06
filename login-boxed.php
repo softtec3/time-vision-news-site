@@ -109,6 +109,10 @@ require_once("./php/user_login.php");
               লগিন
             </button>
           </form>
+          <?php
+          if ($login_alert != NULL) echo "<p style='color: red; font-weight: bold; font-size: 16px; margin-top:10px'>$login_alert</p>";
+          ?>
+
         </div>
         <!-- Login Form End -->
       </div>

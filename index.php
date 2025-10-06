@@ -292,7 +292,7 @@ include_once("./php/fetch_news.php");
 
                         <div class="post--info">
                           <ul class="nav meta">
-                            <li><a href="#">Admin</a></li>
+                            <li><a href="#">এডমিন</a></li>
                             <li><a href="#"><?php
                                             if ($latest_five[1]["news_datetime"] ?? NULL) {
                                               echo $latest_five[1]["news_datetime"];
@@ -365,7 +365,7 @@ include_once("./php/fetch_news.php");
 
                         <div class="post--info">
                           <ul class="nav meta">
-                            <li><a href="#">Admin</a></li>
+                            <li><a href="#">এডমিন</a></li>
                             <li><a href="#"><?php
                                             if ($latest_five[2]["news_datetime"] ?? NULL) {
                                               echo $latest_five[2]["news_datetime"];
@@ -440,7 +440,7 @@ include_once("./php/fetch_news.php");
 
                     <div class="post--info">
                       <ul class="nav meta">
-                        <li><a href="#">Admin</a></li>
+                        <li><a href="#">এডমিন</a></li>
                         <li><a href="#"><?php
                                         if ($latest_five[0]["news_datetime"] ?? NULL) {
                                           echo $latest_five[0]["news_datetime"];
@@ -513,7 +513,7 @@ include_once("./php/fetch_news.php");
 
                         <div class="post--info">
                           <ul class="nav meta">
-                            <li><a href="#">Admin</a></li>
+                            <li><a href="#">এডমিন</a></li>
                             <li><a href="#"><?php
                                             if ($latest_five[3]["news_datetime"] ?? NULL) {
                                               echo $latest_five[3]["news_datetime"];
@@ -586,7 +586,7 @@ include_once("./php/fetch_news.php");
 
                         <div class="post--info">
                           <ul class="nav meta">
-                            <li><a href="#">Admin</a></li>
+                            <li><a href="#">এডমিন</a></li>
                             <li><a href="#"><?php
                                             if ($latest_five[4]["news_datetime"] ?? NULL) {
                                               echo $latest_five[4]["news_datetime"];
@@ -699,7 +699,7 @@ include_once("./php/fetch_news.php");
 
                               <div class='post--info'>
                                 <ul class='nav meta'>
-                                  <li><a href='#'>Admin</a></li>
+                                  <li><a href='#'>এডমিন</a></li>
                                   <li><a href='#'>{$int_news["news_datetime"]}</a></li>
                                 </ul>
 
@@ -819,7 +819,7 @@ include_once("./php/fetch_news.php");
 
                             <div class="post--info">
                               <ul class="nav meta">
-                                <li><a href="#">Admin</a></li>
+                                <li><a href="#">এডমিন</a></li>
                                 <li><a href="#"><?php
                                                 if ($latest_five_national_news[0]["news_datetime"] ?? NULL) {
                                                   echo $latest_five_national_news[0]["news_datetime"];
@@ -998,7 +998,7 @@ include_once("./php/fetch_news.php");
                             <div class="col-md-6">
                               <div class="post--info">
                                 <ul class="nav meta">
-                                  <li><a href="#">Admin</a></li>
+                                  <li><a href="#">এডমিন</a></li>
                                   <li><a href="#"><?php
                                                   if ($latest_five_politics_news[0]["news_datetime"] ?? NULL) {
                                                     echo $latest_five_politics_news[0]["news_datetime"];
@@ -1558,7 +1558,7 @@ include_once("./php/fetch_news.php");
 
                             <div class='post--info'>
                               <ul class='nav meta'>
-                                <li><a href='#'>Admin</a></li>
+                                <li><a href='#'>এডমিন</a></li>
                                 <li><a href='#'>{$latest_sports["news_datetime"]}</a></li>
                               </ul>
 
@@ -1660,7 +1660,7 @@ include_once("./php/fetch_news.php");
                             <div class='col-md-6'>
                               <div class='post--info'>
                                 <ul class='nav meta'>
-                                  <li><a href='#'>Admin</a></li>
+                                  <li><a href='#'>এডমিন</a></li>
                                   <li><a href='#'>{$latest_all_bangla["news_datetime"]}</a></li>
                                 </ul>
 
@@ -1777,7 +1777,7 @@ include_once("./php/fetch_news.php");
 
                             <div class="post--info">
                               <ul class="nav meta">
-                                <li><a href="#">Admin</a></li>
+                                <li><a href="#">এডমিন</a></li>
                                 <li><a href="#"><?php
                                                 if ($latest_four_entertainment_news[0]["news_datetime"] ?? NULL) {
                                                   echo $latest_four_entertainment_news[0]["news_datetime"];
@@ -1832,7 +1832,7 @@ include_once("./php/fetch_news.php");
 
                             <div class='post--info'>
                               <ul class='nav meta'>
-                                <li><a href='#'>Admin</a></li>
+                                <li><a href='#'>এডমিন</a></li>
                                 <li><a href='#'>{$last_entertainment["news_datetime"]}</a></li>
                               </ul>
 

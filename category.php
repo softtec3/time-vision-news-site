@@ -237,7 +237,7 @@ include_once("./php/fetch_news_by_category.php");
                     <li>
                         <a href="./" class="btn-link"><i class="fa fm fa-home"></i>হোম</a>
                     </li>
-                    <li class="active" style="text-transform: capitalize;"><span><?php echo $target_category ?? "" ?></span></li>
+                    <li class="active" style="text-transform: capitalize;"><span><?php echo banglaCategory($target_category) ?? "" ?></span></li>
                 </ul>
             </div>
         </div>
@@ -250,7 +250,7 @@ include_once("./php/fetch_news_by_category.php");
             <div class="col-md-12 ptop--30 pbottom--30" style="float: none;">
                 <!-- Post Items Title Start -->
                 <div class="post--items-title" data-ajax="tab">
-                    <h2 class="h4"><span><?php echo $target_category ?? "" ?></span></h2>
+                    <h2 class="h4"><span><?php echo banglaCategory($target_category) ?? "" ?></span></h2>
                 </div>
                 <!-- Post Items Title End -->
 
@@ -263,6 +263,7 @@ include_once("./php/fetch_news_by_category.php");
                                 $short_cat_heading = cutBanglaTextByWord($cat_news["news_heading"], 35);
                                 $short_cat_desc_without_html = strip_tags($cat_news["news_description"]);
                                 $short_cat_desc = cutBanglaTextByWord($short_cat_desc_without_html, 140);
+                                $bn_cat = banglaCategory($cat_news["news_category"]);
                                 echo "
                                     <li>
                             <!-- Post Item Start -->
@@ -271,7 +272,7 @@ include_once("./php/fetch_news_by_category.php");
                                     <div class='col-md-6'>
                                         <div class='post--img'>
                                             <a style='min-height: 172x; max-height:172px' href='./news-single-v1-boxed.php?id={$cat_news["id"]}' class='thumb'><img style='min-height: 172px; max-height:172px' src='./admin/ElaAdmin-master/{$cat_news["news_image"]}' alt=''></a>
-                                            <a href='#' class='cat'>{$cat_news["news_category"]}</a>
+                                            <a href='#' class='cat'>$bn_cat</a>
                                             <a href='#' class='icon'><i class='fa fa-star-o'></i></a>
                                         </div>
                                     </div>

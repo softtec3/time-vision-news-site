@@ -1,4 +1,8 @@
 <?php
+session_start();
+if (empty($_SESSION["advertise_admin"])) {
+    header("Location: ./advertise-login.php");
+}
 require_once("../php/db_connect.php");
 $table_sql = "CREATE TABLE IF NOT EXISTS advertise(
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -35,6 +39,10 @@ if (isset($_FILES["square_ad"])) {
         echo "Something went wrong";
     }
 }
+if (isset($_POST["logout"])) {
+    unset($_SESSION["advertise_admin"]);
+    header("Location: ./advertise-login.php");
+}
 ?>
 
 
@@ -53,6 +61,12 @@ if (isset($_FILES["square_ad"])) {
 </head>
 
 <body>
+    <div class="header">
+        <form action="" method="post">
+            <input type="hidden" name="logout">
+            <button>Logout</button>
+        </form>
+    </div>
     <div id="container">
         <form action="" method="post" enctype="multipart/form-data">
             <h2>Add Advertise</h2>

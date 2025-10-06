@@ -11,7 +11,7 @@
   align-items: center;
   justify-content: center;
 }
-form {
+#container form {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -22,15 +22,15 @@ form {
   min-width: 400px;
   max-width: 100%;
 }
-form h2 {
+#container form h2 {
   text-align: center;
 }
-.formElement {
+#container .formElement {
   display: flex;
   flex-direction: column;
   gap: 5px;
 }
-form input {
+#container form input {
   border: 1px solid gainsboro;
   border-radius: 3px;
   padding: 5px;
@@ -46,9 +46,27 @@ form button {
   text-transform: uppercase;
   border-radius: 3px;
 }
-.imgContainer {
+#container .imgContainer {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+#container form input:focus {
+  outline: none;
+}
+.header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 10px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  border-bottom: 2px solid gainsboro;
+}
+.header form button {
+  font-size: 14px;
+  background-color: red;
 }

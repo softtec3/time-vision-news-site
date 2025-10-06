@@ -1,5 +1,10 @@
 
 <?php
+require_once("db_connect.php");
+// Get all advertise
+
+$get_advertise = $conn->query("SELECT * FROM advertise WHERE id='1'");
+$advertise = $get_advertise->fetch_assoc();
 // Function for bangla category
 function banglaCategory($category)
 {

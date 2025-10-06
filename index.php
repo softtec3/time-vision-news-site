@@ -1390,9 +1390,17 @@ include_once("./php/bangla_category.php");
               <!-- Widget Start -->
               <div class="widget">
                 <!-- Ad Widget Start -->
+
                 <div class="ad--widget">
                   <a href="#">
-                    <img src="https://tpc.googlesyndication.com/simgad/8910295146673667468" alt="" />
+                    <img src="<?php
+                              if ($advertise && count($advertise) > 0) {
+                                $imgUrlAd = "./advertise/uploads/" . $advertise["square_ad"];
+                                echo $imgUrlAd;
+                              } else {
+                                echo "";
+                              }
+                              ?>" alt="" />
                   </a>
                 </div>
                 <!-- Ad Widget End -->
@@ -1517,7 +1525,14 @@ include_once("./php/bangla_category.php");
                 <!-- Ad Widget Start -->
                 <div class="ad--widget">
                   <a href="#">
-                    <img src="https://tpc.googlesyndication.com/simgad/8910295146673667468" alt="" />
+                    <img src="<?php
+                              if ($advertise && count($advertise) > 0) {
+                                $imgUrlAd = "./advertise/uploads/" . $advertise["square_ad"];
+                                echo $imgUrlAd;
+                              } else {
+                                echo "";
+                              }
+                              ?>" alt="" />
                   </a>
                 </div>
                 <!-- Ad Widget End -->
@@ -1538,7 +1553,14 @@ include_once("./php/bangla_category.php");
           <a href="#">
             <img
               style="min-height: 90px;max-height:90px"
-              src="https://tpc.googlesyndication.com/daca_images/simgad/9104905659729899480"
+              src="<?php
+                    if ($advertise && count($advertise) > 0) {
+                      $imgUrlAd = "./advertise/uploads/" . $advertise["long_ad"];
+                      echo $imgUrlAd;
+                    } else {
+                      echo "";
+                    }
+                    ?>"
               alt=""
               class="center-block" />
           </a>
@@ -1962,25 +1984,7 @@ include_once("./php/bangla_category.php");
               <!-- Widget End -->
 
               <!-- Widget Start -->
-              <div class="widget">
-                <!-- Ad Widget Start -->
-                <div class="ad--widget">
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <a href="#">
-                        <img src="https://tpc.googlesyndication.com/simgad/10092204584750370085" alt="" />
-                      </a>
-                    </div>
 
-                    <div class="col-sm-6">
-                      <a href="#">
-                        <img src="https://tpc.googlesyndication.com/simgad/8910295146673667468" alt="" />
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <!-- Ad Widget End -->
-              </div>
               <!-- Widget End -->
 
               <!-- Widget Start -->

@@ -383,7 +383,14 @@ $conn->close();
                                 <!-- Advertisement Start -->
                                 <div class="ad--space pd--20-0-40">
                                     <a href="#">
-                                        <img src="img/ads-img/ad-728x90-02.jpg" alt="" class="center-block">
+                                        <img src="<?php
+                                                    if ($advertise && count($advertise) > 0) {
+                                                        $imgUrlAd = "./advertise/uploads/" . $advertise["long_ad"];
+                                                        echo $imgUrlAd;
+                                                    } else {
+                                                        echo "";
+                                                    }
+                                                    ?>" alt="" class="center-block">
                                     </a>
                                 </div>
                                 <!-- Advertisement End -->
@@ -430,7 +437,14 @@ $conn->close();
                                 <!-- Ad Widget Start -->
                                 <div class="ad--widget">
                                     <a href="#">
-                                        <img src="img/ads-img/ad-300x250-1.jpg" alt="">
+                                        <img src="<?php
+                                                    if ($advertise && count($advertise) > 0) {
+                                                        $imgUrlAd = "./advertise/uploads/" . $advertise["square_ad"];
+                                                        echo $imgUrlAd;
+                                                    } else {
+                                                        echo "";
+                                                    }
+                                                    ?>" alt="" />
                                     </a>
                                 </div>
                                 <!-- Ad Widget End -->
@@ -507,7 +521,14 @@ $conn->close();
                                 <!-- Ad Widget Start -->
                                 <div class="ad--widget">
                                     <a href="#">
-                                        <img src="img/ads-img/ad-300x250-2.jpg" alt="">
+                                        <img src="<?php
+                                                    if ($advertise && count($advertise) > 0) {
+                                                        $imgUrlAd = "./advertise/uploads/" . $advertise["square_ad"];
+                                                        echo $imgUrlAd;
+                                                    } else {
+                                                        echo "";
+                                                    }
+                                                    ?>" alt="" />
                                     </a>
                                 </div>
                                 <!-- Ad Widget End -->

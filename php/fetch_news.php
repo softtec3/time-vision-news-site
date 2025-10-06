@@ -113,6 +113,10 @@ $editor_choice_news_filter = array_filter($all_news, function ($news) {
 $editor_choice_news = array_values($editor_choice_news_filter);
 $latest_four_editor_choice_news = array_slice($editor_choice_news, 0, 4);
 
+// Get all advertise
+
+$get_advertise = $conn->query("SELECT * FROM advertise WHERE id='1'");
+$advertise = $get_advertise->fetch_assoc();
 
 // The $result variable now holds your news data and can be used in the file that includes this one.
 

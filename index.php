@@ -289,7 +289,7 @@ include_once("./php/fetch_news.php");
                                   }
                                   ?>" class="cat"><?php
                                                   if ($latest_five[1]["news_category"] ?? NULL) {
-                                                    echo $latest_five[1]["news_category"];
+                                                    echo banglaCategory($latest_five[1]["news_category"]);
                                                   } else {
                                                     echo "";
                                                   }
@@ -368,7 +368,7 @@ include_once("./php/fetch_news.php");
                                   }
                                   ?>" class="cat"><?php
                                                   if ($latest_five[2]["news_category"] ?? NULL) {
-                                                    echo $latest_five[2]["news_category"];
+                                                    echo banglaCategory($latest_five[2]["news_category"]);
                                                   } else {
                                                     echo "";
                                                   }
@@ -449,7 +449,7 @@ include_once("./php/fetch_news.php");
                               }
                               ?>" class="cat"><?php
                                               if ($latest_five[0]["news_category"] ?? NULL) {
-                                                echo "{$latest_five[0]["news_category"]}";
+                                                echo banglaCategory($latest_five[0]["news_category"]);
                                               } else {
                                                 echo "";
                                               }
@@ -528,7 +528,7 @@ include_once("./php/fetch_news.php");
                                   }
                                   ?>" class="cat"><?php
                                                   if ($latest_five[3]["news_category"] ?? NULL) {
-                                                    echo $latest_five[3]["news_category"];
+                                                    echo banglaCategory($latest_five[3]["news_category"]);
                                                   } else {
                                                     echo "";
                                                   }
@@ -607,7 +607,7 @@ include_once("./php/fetch_news.php");
                                   }
                                   ?>" class="cat"><?php
                                                   if ($latest_five[4]["news_category"] ?? NULL) {
-                                                    echo $latest_five[4]["news_category"];
+                                                    echo banglaCategory($latest_five[4]["news_category"]);
                                                   } else {
                                                     echo "";
                                                   }
@@ -707,6 +707,7 @@ include_once("./php/fetch_news.php");
                           $short_news_desc = cutBanglaTextByWord($news_desc, 170);
                           $short_news_title = cutBanglaTextByWord($int_news["news_heading"], 70);
                           $img_url = "./admin/ElaAdmin-master/" . $int_news["news_image"];
+                          $bn_cat = banglaCategory($int_news["news_category"]);
 
                           echo "
                                   <li>
@@ -722,7 +723,7 @@ include_once("./php/fetch_news.php");
                                   src='$img_url'
                                   alt=''
                               /></a>
-                              <a href='./category.php?category={$int_news["news_category"]}' class='cat'>{$int_news["news_category"]}</a>
+                              <a href='./category.php?category={$int_news["news_category"]}' class='cat'>$bn_cat</a>
                               <a href='#' class='icon'
                                 ><i class='fa fa-flash'></i
                               ></a>
@@ -845,7 +846,7 @@ include_once("./php/fetch_news.php");
                                       ?>" class="cat">
                               <?php
                               if ($latest_five_national_news[0]["news_category"] ?? NULL) {
-                                echo $latest_five_national_news[0]["news_category"];
+                                echo banglaCategory($latest_five_national_news[0]["news_category"]);
                               } else {
                                 echo "";
                               }
@@ -1028,7 +1029,7 @@ include_once("./php/fetch_news.php");
                                           ?>" class="cat">
                                   <?php
                                   if ($latest_five_politics_news[0]["news_category"] ?? NULL) {
-                                    echo $latest_five_politics_news[0]["news_category"];
+                                    echo banglaCategory($latest_five_politics_news[0]["news_category"]);
                                   } else {
                                     echo "";
                                   }
@@ -1198,6 +1199,7 @@ include_once("./php/fetch_news.php");
                           $finance_desc_without_html = strip_tags($latest_finance["news_description"]);
                           $short_finance_title = cutBanglaTextByWord($latest_finance["news_heading"], 45);
                           $short_finance_desc = cutBanglaTextByWord($finance_desc_without_html, 220);
+                          $bn_cat = banglaCategory($latest_finance["news_category"]);
                           echo "
                           
                           <li>
@@ -1209,7 +1211,7 @@ include_once("./php/fetch_news.php");
                                 style='min-height: 180px;max-height:180px'
                                 src='$img_finance'
                                 alt='' /></a>
-                            <a href='./category.php?category={$latest_finance["news_category"]}' class='cat'>{$latest_finance["news_category"]}</a>
+                            <a href='./category.php?category={$latest_finance["news_category"]}' class='cat'>$bn_cat</a>
                             <a href='#' class='icon'><i class='fa fa-flash'></i></a>
 
                             <div class='post--info'>
@@ -1306,6 +1308,7 @@ include_once("./php/fetch_news.php");
                           $education_desc_without_html = strip_tags($latest_education["news_description"]);
                           $short_education_title = cutBanglaTextByWord($latest_education["news_heading"], 45);
                           $short_education_desc = cutBanglaTextByWord($education_desc_without_html, 190);
+                          $bn_cat = banglaCategory($latest_education["news_category"]);
                           echo "
                           
                           <li>
@@ -1317,7 +1320,7 @@ include_once("./php/fetch_news.php");
                                 style='min-height: 180px;max-height:180px'
                                 src='$img_education'
                                 alt='' /></a>
-                            <a href='./category.php?category={$latest_education["news_category"]}' class='cat'>{$latest_education["news_category"]}</a>
+                            <a href='./category.php?category={$latest_education["news_category"]}' class='cat'>$bn_cat</a>
                             <a href='#' class='icon'><i class='fa fa-flash'></i></a>
 
                             <div class='post--info'>
@@ -1677,6 +1680,7 @@ include_once("./php/fetch_news.php");
                           $short_all_bangla_heading = cutBanglaTextByWord($latest_all_bangla["news_heading"], 50);
                           $all_bangla_desc_without_html = strip_tags($latest_all_bangla["news_description"]);
                           $short_all_bangla_description = cutBanglaTextByWord($all_bangla_desc_without_html, 180);
+                          $bn_cat = banglaCategory($latest_all_bangla["news_category"]);
 
 
                           echo "
@@ -1694,7 +1698,7 @@ include_once("./php/fetch_news.php");
                                     style='min-height: 175px;max-height:175px'
                                     src='$img_all_bangla'
                                     alt='' /></a>
-                                <a href='./category.php?category={$latest_all_bangla["news_category"]}' class='cat'>{$latest_all_bangla["news_category"]}</a>
+                                <a href='./category.php?category={$latest_all_bangla["news_category"]}' class='cat'>$bn_cat</a>
                                 <a href='#' class='icon'><i class='fa fa-star-o'></i></a>
                               </div>
                             </div>
@@ -1816,7 +1820,7 @@ include_once("./php/fetch_news.php");
                                       }
                                       ?>" class="cat"><?php
                                                       if ($latest_four_entertainment_news[0]["news_category"] ?? NULL) {
-                                                        echo $latest_four_entertainment_news[0]["news_category"];
+                                                        echo banglaCategory($latest_four_entertainment_news[0]["news_category"]);
                                                       } else {
                                                         echo "";
                                                       }

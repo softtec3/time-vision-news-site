@@ -390,16 +390,18 @@ $conn->close();
                                 <div class="post--tags">
                                     <ul class="nav">
                                         <li><span><i class="fa fa-tags"></i></span></li>
-                                        <li><a href="#">Fashion</a></li>
-                                        <li><a href="#">News</a></li>
-                                        <li><a href="#">Image</a></li>
-                                        <li><a href="#">Music</a></li>
-                                        <li><a href="#">Video</a></li>
-                                        <li><a href="#">Audio</a></li>
-                                        <li><a href="#">Latest</a></li>
-                                        <li><a href="#">Trendy</a></li>
-                                        <li><a href="#">Special</a></li>
-                                        <li><a href="#">Recipe</a></li>
+                                        <li><a href="./category.php?category=national">জাতীয়</a></li>
+                                        <li><a href="./category.php?category=international">আন্তর্জাতিক</a></li>
+                                        <li><a href="./category.php?category=finance">অর্থনৈতিক</a></li>
+                                        <li><a href="./category.php?category=politics">রাজনীতি</a></li>
+                                        <li><a href="./category.php?category=entertainment">বিনোদন</a></li>
+                                        <li><a href="./category.php?category=lifestyle">লাইফস্টাইল</a></li>
+                                        <li><a href="./category.php?category=technology">প্রযুক্তি</a></li>
+                                        <li><a href="./category.php?category=sports">খেলাধুলা</a></li>
+                                        <li><a href="./category.php?category=health">স্বাস্থ্য</a></li>
+                                        <li><a href="./category.php?category=education">শিক্ষা</a></li>
+                                        <li><a href="./category.php?category=poem">কবি ও কবিতা</a></li>
+                                        <li><a href="./category.php?category=all_bangla">সারা বাংলা</a></li>
                                     </ul>
                                 </div>
                                 <!-- Post Tags End -->
@@ -535,7 +537,7 @@ $conn->close();
                             <!-- Widget Start -->
                             <div class="widget">
                                 <div class="widget--title">
-                                    <h2 class="h4">About Us</h2>
+                                    <h2 class="h4">আমাদের সম্পর্কে</h2>
 
                                     <i class="icon fa fa-exclamation"></i>
                                 </div>
@@ -543,19 +545,21 @@ $conn->close();
                                 <!-- About Widget Start -->
                                 <div class="about--widget">
                                     <div class="content">
-                                        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
-                                            praesentium laborum et dolorum fuga.</p>
+                                        <p>
+                                            বস্তুনিষ্ঠ, স্বাধীন ও দলনিরপেক্ষ একটি দৈনিক পত্রিকা হিসেবে এমন এক সময়ে এর যাত্রা শুরু
+
+
+                                        </p>
                                     </div>
 
                                     <div class="action">
-                                        <a href="#" class="btn-link">Read More<i
-                                                class="fa flm fa-angle-double-right"></i></a>
+                                        <a href="#" class="btn-link">আরও পড়ুন<i class="fa flm fa-angle-double-right"></i></a>
                                     </div>
 
                                     <ul class="nav">
                                         <li>
                                             <i class="fa fa-map"></i>
-                                            <span>143/C, Fake Street, Melborne, Australia</span>
+                                            <span>১১২ মনিহার, যশোর , খুলনা</span>
                                         </li>
                                         <li>
                                             <i class="fa fa-envelope-o"></i>
@@ -563,7 +567,7 @@ $conn->close();
                                         </li>
                                         <li>
                                             <i class="fa fa-phone"></i>
-                                            <a href="tel:+123456789">+123 456 (789)</a>
+                                            <a href="tel:+123456789">+১২৩৪৫৬৭৮৯</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -576,7 +580,7 @@ $conn->close();
                             <!-- Widget Start -->
                             <div class="widget">
                                 <div class="widget--title">
-                                    <h2 class="h4">Usefull Info Links</h2>
+                                    <h2 class="h4">দরকারী তথ্যের লিঙ্ক</h2>
 
                                     <i class="icon fa fa-expand"></i>
                                 </div>
@@ -584,13 +588,18 @@ $conn->close();
                                 <!-- Links Widget Start -->
                                 <div class="links--widget">
                                     <ul class="nav">
-                                        <li><a href="#" class="fa-angle-right">Gadgets</a></li>
-                                        <li><a href="#" class="fa-angle-right">Shop</a></li>
-                                        <li><a href="#" class="fa-angle-right">Term and Conditions</a></li>
-                                        <li><a href="#" class="fa-angle-right">Forums</a></li>
-                                        <li><a href="#" class="fa-angle-right">Top News of This Week</a></li>
-                                        <li><a href="#" class="fa-angle-right">Special Recipes</a></li>
-                                        <li><a href="#" class="fa-angle-right">Sign Up</a></li>
+                                        <li><a href="#" class="fa-angle-right">গ্যাজেট</a></li>
+                                        <li>
+                                            <a href="#" class="fa-angle-right">শর্তাবলী</a>
+                                        </li>
+                                        <li><a href="#" class="fa-angle-right">ফোরাম</a></li>
+                                        <li>
+                                            <a href="#" class="fa-angle-right">শীর্ষস্থানীয় সংবাদ</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="fa-angle-right">স্পেশাল রেসিপি</a>
+                                        </li>
+                                        <li><a href="#" class="fa-angle-right">সাইন আপ</a></li>
                                     </ul>
                                 </div>
                                 <!-- Links Widget End -->
@@ -598,37 +607,13 @@ $conn->close();
                             <!-- Widget End -->
                         </div>
 
-                        <div class="col-md-3 col-xs-6 col-xxs-12 ptop--30 pbottom--30">
-                            <!-- Widget Start -->
-                            <div class="widget">
-                                <div class="widget--title">
-                                    <h2 class="h4">Advertisements</h2>
 
-                                    <i class="icon fa fa-bullhorn"></i>
-                                </div>
-
-                                <!-- Links Widget Start -->
-                                <div class="links--widget">
-                                    <ul class="nav">
-                                        <li><a href="#" class="fa-angle-right">Post an Add</a></li>
-                                        <li><a href="#" class="fa-angle-right">Adds Renew</a></li>
-                                        <li><a href="#" class="fa-angle-right">Price of Advertisements</a></li>
-                                        <li><a href="#" class="fa-angle-right">Adds Closed</a></li>
-                                        <li><a href="#" class="fa-angle-right">Monthly or Yearly</a></li>
-                                        <li><a href="#" class="fa-angle-right">Trial Adds</a></li>
-                                        <li><a href="#" class="fa-angle-right">Add Making</a></li>
-                                    </ul>
-                                </div>
-                                <!-- Links Widget End -->
-                            </div>
-                            <!-- Widget End -->
-                        </div>
 
                         <div class="col-md-3 col-xs-6 col-xxs-12 ptop--30 pbottom--30">
                             <!-- Widget Start -->
                             <div class="widget">
                                 <div class="widget--title">
-                                    <h2 class="h4">Career</h2>
+                                    <h2 class="h4">ক্যারিয়ার</h2>
 
                                     <i class="icon fa fa-user-o"></i>
                                 </div>
@@ -636,13 +621,25 @@ $conn->close();
                                 <!-- Links Widget Start -->
                                 <div class="links--widget">
                                     <ul class="nav">
-                                        <li><a href="#" class="fa-angle-right">Available Post</a></li>
-                                        <li><a href="#" class="fa-angle-right">Career Details</a></li>
-                                        <li><a href="#" class="fa-angle-right">How to Apply?</a></li>
-                                        <li><a href="#" class="fa-angle-right">Freelence Job</a></li>
-                                        <li><a href="#" class="fa-angle-right">Be a Member</a></li>
-                                        <li><a href="#" class="fa-angle-right">Apply Now</a></li>
-                                        <li><a href="#" class="fa-angle-right">Send Your Resume</a></li>
+                                        <li>
+                                            <a href="#" class="fa-angle-right">উপলব্ধ পোস্ট</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="fa-angle-right">ক্যারিয়ারের বিবরণ</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="fa-angle-right">কিভাবে আবেদন করবেন?</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="fa-angle-right">ফ্রিলান্স জব</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="fa-angle-right">সদস্য হোন</a>
+                                        </li>
+                                        <li><a href="#" class="fa-angle-right">এপ্লাই করুন</a></li>
+                                        <li>
+                                            <a href="#" class="fa-angle-right">রিজুমি পাঠান</a>
+                                        </li>
                                     </ul>
                                 </div>
                                 <!-- Links Widget End -->
@@ -659,20 +656,34 @@ $conn->close();
                 <div class="social--bg bg--color-1"></div>
 
                 <div class="container">
-                    <p class="text float--left">&copy; 2017 <a href="#"> </a>. All Rights Reserved.</p>
+                    <p class="text float--left">
+                        &copy; <span class="copyright-year">২০২৫</span> <a href="#"> </a>.
+                        সর্বস্বত্ব টাইম ভিশন ২৪-এর কাছে সংরক্ষিত।
+
+                    </p>
 
                     <ul class="nav social float--right">
-                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                        <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
+                        <li>
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-google-plus"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-linkedin"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-youtube-play"></i></a>
+                        </li>
                     </ul>
 
                     <ul class="nav links float--right">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Support</a></li>
+                        <li><a href="#">হোম</a></li>
+                        <li><a href="#">এফ.এ.কিউ</a></li>
+                        <li><a href="#">সাপোর্ট</a></li>
                     </ul>
                 </div>
             </div>
@@ -688,43 +699,43 @@ $conn->close();
             <li>
                 <a href="#">
                     <i class="fa fa-facebook"></i>
-                    <span>Follow Us On Facebook</span>
+                    <span>ফেসবুকে ফলো করুন</span>
                 </a>
             </li>
             <li>
                 <a href="#">
                     <i class="fa fa-twitter"></i>
-                    <span>Follow Us On Twitter</span>
+                    <span>টুইটারে ফলো করুন</span>
                 </a>
             </li>
             <li>
                 <a href="#">
                     <i class="fa fa-google-plus"></i>
-                    <span>Follow Us On Google Plus</span>
+                    <span>গুগল প্লাসে ফলো কুরুন</span>
                 </a>
             </li>
             <li>
                 <a href="#">
                     <i class="fa fa-rss"></i>
-                    <span>Follow Us On RSS</span>
+                    <span>আর.এস.এস এ ফলো করুন</span>
                 </a>
             </li>
             <li>
                 <a href="#">
                     <i class="fa fa-vimeo"></i>
-                    <span>Follow Us On Vimeo</span>
+                    <span>ভিমোতে ফলো করুন</span>
                 </a>
             </li>
             <li>
                 <a href="#">
                     <i class="fa fa-youtube-play"></i>
-                    <span>Follow Us On Youtube Play</span>
+                    <span>ইউটিউবে ফলো করুন</span>
                 </a>
             </li>
             <li>
                 <a href="#">
                     <i class="fa fa-linkedin"></i>
-                    <span>Follow Us On LinkedIn</span>
+                    <span>লিংকডিনে ফলো করুন</span>
                 </a>
             </li>
         </ul>

@@ -281,13 +281,19 @@ include_once("./php/fetch_news.php");
                                   }
                                   ?>"
                             alt="" /></a>
-                        <a href="#" class="cat"><?php
-                                                if ($latest_five[1]["news_category"] ?? NULL) {
-                                                  echo $latest_five[1]["news_category"];
-                                                } else {
-                                                  echo "";
-                                                }
-                                                ?></a>
+                        <a href="<?php
+                                  if ($latest_five[1]["news_category"] ?? NULL) {
+                                    echo "./category.php?category=" . $latest_five[1]["news_category"];
+                                  } else {
+                                    echo "";
+                                  }
+                                  ?>" class="cat"><?php
+                                                  if ($latest_five[1]["news_category"] ?? NULL) {
+                                                    echo $latest_five[1]["news_category"];
+                                                  } else {
+                                                    echo "";
+                                                  }
+                                                  ?></a>
                         <a href="#" class="icon"><i class="fa fa-flash"></i></a>
 
                         <div class="post--info">
@@ -354,13 +360,19 @@ include_once("./php/fetch_news.php");
                                   }
                                   ?>"
                             alt="" /></a>
-                        <a href="#" class="cat"><?php
-                                                if ($latest_five[2]["news_category"] ?? NULL) {
-                                                  echo $latest_five[2]["news_category"];
-                                                } else {
-                                                  echo "";
-                                                }
-                                                ?></a>
+                        <a href="<?php
+                                  if ($latest_five[2]["news_category"] ?? NULL) {
+                                    echo "./category.php?category=" . $latest_five[2]["news_category"];
+                                  } else {
+                                    echo "";
+                                  }
+                                  ?>" class="cat"><?php
+                                                  if ($latest_five[2]["news_category"] ?? NULL) {
+                                                    echo $latest_five[2]["news_category"];
+                                                  } else {
+                                                    echo "";
+                                                  }
+                                                  ?></a>
                         <a href="#" class="icon"><i class="fa fa-support"></i></a>
 
                         <div class="post--info">
@@ -429,13 +441,19 @@ include_once("./php/fetch_news.php");
                               }
                               ?>"
                         alt="" /></a>
-                    <a href="#" class="cat"><?php
-                                            if ($latest_five[0]["news_category"] ?? NULL) {
-                                              echo "{$latest_five[0]["news_category"]}";
-                                            } else {
-                                              echo "";
-                                            }
-                                            ?></a>
+                    <a href="<?php
+                              if ($latest_five[0]["news_category"] ?? NULL) {
+                                echo "./category.php?category=" . $latest_five[0]["news_category"];
+                              } else {
+                                echo "";
+                              }
+                              ?>" class="cat"><?php
+                                              if ($latest_five[0]["news_category"] ?? NULL) {
+                                                echo "{$latest_five[0]["news_category"]}";
+                                              } else {
+                                                echo "";
+                                              }
+                                              ?></a>
                     <a href="#" class="icon"><i class="fa fa-star-o"></i></a>
 
                     <div class="post--info">
@@ -502,13 +520,19 @@ include_once("./php/fetch_news.php");
                                   }
                                   ?>"
                             alt="" /></a>
-                        <a href="#" class="cat"><?php
-                                                if ($latest_five[3]["news_category"] ?? NULL) {
-                                                  echo $latest_five[3]["news_category"];
-                                                } else {
-                                                  echo "";
-                                                }
-                                                ?></a>
+                        <a href="<?php
+                                  if ($latest_five[3]["news_category"] ?? NULL) {
+                                    echo "./category.php?category=" . $latest_five[3]["news_category"];
+                                  } else {
+                                    echo "";
+                                  }
+                                  ?>" class="cat"><?php
+                                                  if ($latest_five[3]["news_category"] ?? NULL) {
+                                                    echo $latest_five[3]["news_category"];
+                                                  } else {
+                                                    echo "";
+                                                  }
+                                                  ?></a>
                         <a href="#" class="icon"><i class="fa fa-flash"></i></a>
 
                         <div class="post--info">
@@ -575,13 +599,19 @@ include_once("./php/fetch_news.php");
                                   }
                                   ?>"
                             alt="" /></a>
-                        <a href="#" class="cat"><?php
-                                                if ($latest_five[4]["news_category"] ?? NULL) {
-                                                  echo $latest_five[4]["news_category"];
-                                                } else {
-                                                  echo "";
-                                                }
-                                                ?></a>
+                        <a href="<?php
+                                  if ($latest_five[4]["news_category"] ?? NULL) {
+                                    echo "./category.php?category=" . $latest_five[4]["news_category"];
+                                  } else {
+                                    echo "";
+                                  }
+                                  ?>" class="cat"><?php
+                                                  if ($latest_five[4]["news_category"] ?? NULL) {
+                                                    echo $latest_five[4]["news_category"];
+                                                  } else {
+                                                    echo "";
+                                                  }
+                                                  ?></a>
                         <a href="#" class="icon"><i class="fa fa-book"></i></a>
 
                         <div class="post--info">
@@ -692,7 +722,7 @@ include_once("./php/fetch_news.php");
                                   src='$img_url'
                                   alt=''
                               /></a>
-                              <a href='#' class='cat'>{$int_news["news_category"]}</a>
+                              <a href='./category.php?category={$int_news["news_category"]}' class='cat'>{$int_news["news_category"]}</a>
                               <a href='#' class='icon'
                                 ><i class='fa fa-flash'></i
                               ></a>
@@ -806,7 +836,13 @@ include_once("./php/fetch_news.php");
                                       }
                                       ?>"
                                 alt="" /></a>
-                            <a href="#" class="cat">
+                            <a href="<?php
+                                      if ($latest_five_national_news[0]["news_category"] ?? NULL) {
+                                        echo "./category.php?category=" . $latest_five_national_news[0]["news_category"];
+                                      } else {
+                                        echo "";
+                                      }
+                                      ?>" class="cat">
                               <?php
                               if ($latest_five_national_news[0]["news_category"] ?? NULL) {
                                 echo $latest_five_national_news[0]["news_category"];
@@ -983,7 +1019,13 @@ include_once("./php/fetch_news.php");
                                           }
                                           ?>"
                                     alt="" /></a>
-                                <a href="#" class="cat">
+                                <a href="<?php
+                                          if ($latest_five_politics_news[0]["news_category"] ?? NULL) {
+                                            echo "./category.php?category=" . $latest_five_politics_news[0]["news_category"];
+                                          } else {
+                                            echo "";
+                                          }
+                                          ?>" class="cat">
                                   <?php
                                   if ($latest_five_politics_news[0]["news_category"] ?? NULL) {
                                     echo $latest_five_politics_news[0]["news_category"];
@@ -1167,7 +1209,7 @@ include_once("./php/fetch_news.php");
                                 style='min-height: 180px;max-height:180px'
                                 src='$img_finance'
                                 alt='' /></a>
-                            <a href='#' class='cat'>{$latest_finance["news_category"]}</a>
+                            <a href='./category.php?category={$latest_finance["news_category"]}' class='cat'>{$latest_finance["news_category"]}</a>
                             <a href='#' class='icon'><i class='fa fa-flash'></i></a>
 
                             <div class='post--info'>
@@ -1275,7 +1317,7 @@ include_once("./php/fetch_news.php");
                                 style='min-height: 180px;max-height:180px'
                                 src='$img_education'
                                 alt='' /></a>
-                            <a href='#' class='cat'>{$latest_education["news_category"]}</a>
+                            <a href='./category.php?category={$latest_education["news_category"]}' class='cat'>{$latest_education["news_category"]}</a>
                             <a href='#' class='icon'><i class='fa fa-flash'></i></a>
 
                             <div class='post--info'>
@@ -1652,7 +1694,7 @@ include_once("./php/fetch_news.php");
                                     style='min-height: 175px;max-height:175px'
                                     src='$img_all_bangla'
                                     alt='' /></a>
-                                <a href='#' class='cat'>{$latest_all_bangla["news_category"]}</a>
+                                <a href='./category.php?category={$latest_all_bangla["news_category"]}' class='cat'>{$latest_all_bangla["news_category"]}</a>
                                 <a href='#' class='icon'><i class='fa fa-star-o'></i></a>
                               </div>
                             </div>
@@ -1766,13 +1808,19 @@ include_once("./php/fetch_news.php");
                                       }
                                       ?>"
                                 alt="" /></a>
-                            <a href="#" class="cat"><?php
-                                                    if ($latest_four_entertainment_news[0]["news_category"] ?? NULL) {
-                                                      echo $latest_four_entertainment_news[0]["news_category"];
-                                                    } else {
-                                                      echo "";
-                                                    }
-                                                    ?></a>
+                            <a href="<?php
+                                      if ($latest_four_entertainment_news[0]["news_category"] ?? NULL) {
+                                        echo "./category.php?category=" . $latest_four_entertainment_news[0]["news_category"];
+                                      } else {
+                                        echo "";
+                                      }
+                                      ?>" class="cat"><?php
+                                                      if ($latest_four_entertainment_news[0]["news_category"] ?? NULL) {
+                                                        echo $latest_four_entertainment_news[0]["news_category"];
+                                                      } else {
+                                                        echo "";
+                                                      }
+                                                      ?></a>
                             <a href="#" class="icon"><i class="fa fa-eye"></i></a>
 
                             <div class="post--info">

@@ -148,33 +148,29 @@ if (empty($_SESSION["user"])) {
         <!-- Side bar -->
         <div
             id="sideBar"
-            class="w-[250px] border-r border-r-gray-400 pt-10 h-screen">
-            <div class="flex items-center justify-center flex-col gap-1">
+            class="lg:w-[250px] lg:border-r lg:border-r-gray-400 lg:pt-10 lg:h-screen lg:relative fixed bottom-0 left-0 bg-white lg:z-0 z-50 w-full border-t-2 border-t-red-500 lg:border-t-[0]">
+            <div class="hidden lg:flex items-center justify-center flex-col gap-1">
                 <img
                     class="h-[100px] w-[100px] rounded-full"
                     src="./placeholder.jpg"
                     alt="" />
                 <span class="font-bold text-2xl">এডমিন</span>
             </div>
-            <ul class="flex flex-col gap-2 p-3">
-                <li
-                    class="p-2 shadow-sm border border-slate-200 rounded-sm cursor-pointer">
-                    <a href="./"><i class="fa-solid fa-circle-plus"></i> নিউজ যোগ করুন</a>
-                </li>
-                <li
-                    class="p-2 shadow-sm border border-slate-200 rounded-sm cursor-pointer">
-                    <a href="./">
-                        <i class="fa-solid fa-newspaper"></i>
-                        সকল সংবাদ</a>
-                </li>
+            <ul class="flex lg:flex-col gap-2 p-3 justify-center lg:justify-normal">
+                <a href="./">
+                    <li
+                        class="p-2 shadow-sm border border-slate-200 rounded-sm cursor-pointer">
+                        <i class="fa-solid fa-home"></i> ফিরে যান
+                    </li>
+                </a>
             </ul>
         </div>
-        <div id="mainContainerWraper" class="flex-1">
+        <div id="mainContainerWraper" class="flex-1 lg:max-h-[100vh] lg:overflow-y-auto">
             <!-- Add news -->
             <div
                 id="addNews"
                 class="flex-grow flex justify-center items-center w-full"
-                style="margin-top: 50px">
+                style="margin-top: 0px">
                 <div
                     class="form-container bg-white p-6 md:p-8 lg:p-10 rounded-xl shadow-lg w-full max-w-md md:max-w-lg lg:max-w-2xl my-12">
                     <h2
@@ -190,7 +186,7 @@ if (empty($_SESSION["user"])) {
                         action="php/update_update_news.php"
                         method="post"
                         enctype="multipart/form-data"
-                        class="flex flex-col space-y-5">
+                        class="flex flex-col space-y-5 pb-[50px] lg:pb-0">
                         <div class="form-group">
                             <label
                                 for="imageUpload"

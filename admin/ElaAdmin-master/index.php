@@ -145,19 +145,19 @@ if (empty($_SESSION["user"])) {
   </header>
 
   <!-- Main content wrapper to center the form -->
-  <div id="mainContainer" class="mt-[70px] flex">
+  <div id="mainContainer" class="lg:mt-[70px] flex">
     <!-- Side bar -->
     <div
       id="sideBar"
-      class="w-[250px] border-r border-r-gray-400 pt-10 h-screen">
-      <div class="flex items-center justify-center flex-col gap-1">
+      class="lg:w-[250px] lg:border-r lg:border-r-gray-400 lg:pt-10 lg:h-screen lg:relative fixed bottom-0 left-0 bg-white lg:z-0 z-50 w-full border-t-2 border-t-red-500 lg:border-t-[0]">
+      <div class="hidden lg:flex items-center justify-center flex-col gap-1">
         <img
           class="h-[100px] w-[100px] rounded-full"
           src="./placeholder.jpg"
           alt="" />
         <span class="font-bold text-2xl">এডমিন</span>
       </div>
-      <ul class="flex flex-col gap-2 p-3">
+      <ul class="flex lg:flex-col gap-2 p-3 justify-center lg:justify-normal">
         <li
           onclick="showHide('addNews')"
           class="p-2 shadow-sm border border-slate-200 rounded-sm cursor-pointer">
@@ -171,7 +171,9 @@ if (empty($_SESSION["user"])) {
         </li>
       </ul>
     </div>
-    <div id="mainContainerWraper" class="flex-1">
+
+
+    <div id="mainContainerWraper" class="flex-1 overflow-x-auto lg:max-h-[100vh] lg:overflow-y-auto">
       <!-- Add news -->
       <div
         id="addNews"
@@ -192,7 +194,7 @@ if (empty($_SESSION["user"])) {
             action="php/process_news.php"
             method="post"
             enctype="multipart/form-data"
-            class="flex flex-col space-y-5">
+            class="flex flex-col space-y-5 pb-[50px] lg:pb-0">
             <div class="form-group">
               <label
                 for="imageUpload"
@@ -291,10 +293,10 @@ if (empty($_SESSION["user"])) {
         </div>
       </div>
       <!-- All news -->
-      <div id="allNews" class="p-5 max-h-[85vh] overflow-y-auto mb-5" style="display: none">
-        <h1 class="text-2xl font-bold">সকল সংবাদ সমূহ</h1>
-        <table class="w-full mt-10  border text-center ">
-          <thead class="sticky top-0 bg-green-700 text-white">
+      <div id="allNews" class="p-1 lg:p-5 lg:pt-0 pt-0 max-h-[80vh] overflow-y-scroll mb-5 mt-[70px] lg:mt-0" style="display: none">
+        <h1 class="text-2xl font-bold pt-5">সকল সংবাদ সমূহ</h1>
+        <table class="w-full mt-10  border text-center min-w-[1000px]">
+          <thead class="sticky top-0 bg-red-800 text-white">
             <tr>
               <th class="border p-2">ক্রমিক</th>
               <th class="border p-2">ছবি</th>
@@ -330,12 +332,12 @@ if (empty($_SESSION["user"])) {
                   $news_editor_choice_button = "<a href='./?removeEditorChoice={$news["id"]}'><button
                     title='Remove from editor choice'
                     class='border border-solid border-gray-300 p-1 rounded-md'>
-                    <i class='fa-solid fa-star-half-stroke' style='color:gray;'></i></button></a>";
+                    <i class='fa-solid fa-star-half-stroke text-sm' style='color:gray;'></i></button></a>";
                 } else {
                   $news_editor_choice_button = "<a href='./?addEditorChoice={$news["id"]}'><button
                     title='Add to editor choice'
                     class='border border-solid border-gray-300 p-1 rounded-md'>
-                    <i class='fa-solid fa-star' style='color:gold;'></i>
+                    <i class='fa-solid fa-star text-sm' style='color:gold;'></i>
                     </button></a>";
                 }
 
@@ -390,7 +392,7 @@ if (empty($_SESSION["user"])) {
         </table>
         <div
           id="deleteAlert"
-          class="fixed left-[50%] top-20 transform-[translate(-50%)] bg-white z-40 p-5 border border-solid border-gray-400 rounded flex-col gap-5 hidden">
+          class="fixed left-[50%] top-20 transform-[translate(-50%)] bg-white z-40 p-5 border border-solid border-gray-400 rounded flex-col gap-5 hidden  text-center">
           আপনি কি এই নিউজটি ডিলিট করতে চান?
           <p style="text-align: center;">নিউজ আইডিঃ <span id="newsId"></span></p>
           <div class="flex items-center justify-center gap-2">
@@ -418,11 +420,11 @@ if (empty($_SESSION["user"])) {
   <!-- News action status -->
   <div
     id=""
-    class="fixed left-[50%] top-20 transform-[translate(-50%)] bg-white z-40 p-5 border border-solid border-gray-400 rounded flex-col gap-5 <?php if ($action_message) {
-                                                                                                                                              echo "flex";
-                                                                                                                                            } else {
-                                                                                                                                              echo "hidden";
-                                                                                                                                            } ?>">
+    class="fixed left-[50%] top-20 transform-[translate(-50%)] bg-white z-40 p-5 border border-solid border-gray-400 rounded flex-col text-center gap-5 <?php if ($action_message) {
+                                                                                                                                                          echo "flex";
+                                                                                                                                                        } else {
+                                                                                                                                                          echo "hidden";
+                                                                                                                                                        } ?>">
     <div class="flex items-center justify-center gap-2 flex-col">
       <?php echo $action_message ?>
       <form action="" method="get">

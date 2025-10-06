@@ -1,5 +1,6 @@
 <?php
 include_once("./php/fetch_news.php");
+include_once("./php/bangla_category.php");
 ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
@@ -2433,7 +2434,7 @@ include_once("./php/fetch_news.php");
       const hijri = gregorianToHijri(now);
       const line3 = `${toBanglaDigits(hijri.day)} ${hijriMonthsBn[hijri.month - 1]}, ${toBanglaDigits(hijri.year)} হিজরি`;
 
-      document.getElementById("banglaDateDiv").innerHTML = `${line1} <br/> ${line2} ${line3}`;
+      document.getElementById("banglaDateDiv").innerHTML = `${line1} <br/> ${line2} <br/> ${line3}`;
     }
 
     showBanglaDate();

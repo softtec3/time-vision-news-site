@@ -1,7 +1,7 @@
 <?php
 // Include the database connection file
 require_once 'php/db_connect.php';
-
+require_once("./php/bangla_category.php");
 // Initialize article variable and error message
 $article = null;
 $error_message = '';
@@ -310,11 +310,11 @@ $conn->close();
         <div class="main--breadcrumb">
             <div class="container">
                 <ul class="breadcrumb">
-                    <li><a href="index.php" class="btn-link"><i class="fa fm fa-home"></i>Home</a></li>
+                    <li><a href="index.php" class="btn-link"><i class="fa fm fa-home"></i>হোম</a></li>
                     <?php if ($article): ?>
-                        <li><a href="#" class="btn-link"><?php echo htmlspecialchars($article['news_category']); ?></a></li>
+                        <li><a href="./category.php?category=<?php if ($article["news_category"]) echo $article["news_category"] ?>" class="btn-link"><?php echo banglaCategory(htmlspecialchars($article['news_category'])); ?></a></li>
                         <li class="active">
-                            <span><?php echo htmlspecialchars(substr($article['news_heading'], 0, 70)) . '...'; ?></span>
+                            <span><?php echo htmlspecialchars(substr($article['news_heading'], 0, 50)) . '...'; ?></span>
                         </li>
                     <?php endif; ?>
                 </ul>
@@ -342,18 +342,20 @@ $conn->close();
                                     <div class="post--cats">
                                         <ul class="nav">
                                             <li><span><i class="fa fa-folder-open-o"></i></span></li>
-                                            <li><a href="#"><?php echo htmlspecialchars($article['news_category']); ?></a>
+                                            <li><a href="./category.php?category=<?php
+                                                                                    if ($article["news_category"]) echo $article["news_category"]
+                                                                                    ?>"><?php echo banglaCategory(htmlspecialchars($article['news_category'])); ?></a>
                                             </li>
                                         </ul>
                                     </div>
 
                                     <div class="post--info">
                                         <ul class="nav meta">
-                                            <li><a href="#">Admin</a></li>
+                                            <li><a href="#">এডমিন</a></li>
                                             <li><a href="#"><?php echo htmlspecialchars($article['news_datetime']); ?></a>
                                             </li>
-                                            <li><span><i class="fa fm fa-eye"></i>45k</span></li>
-                                            <li><a href="#"><i class="fa fm fa-comments-o"></i>02</a></li>
+                                            <li><span><i class="fa fm fa-eye"></i>৪৫k</span></li>
+                                            <li><a href="#"><i class="fa fm fa-comments-o"></i>০২</a></li>
                                         </ul>
 
                                         <div class="title">
@@ -438,7 +440,7 @@ $conn->close();
                             <!-- Widget Start -->
                             <div class="widget">
                                 <div class="widget--title">
-                                    <h2 class="h4">Stay Connected</h2>
+                                    <h2 class="h4">সঙ্গে থাকুন</h2>
                                     <i class="icon fa fa-share-alt"></i>
                                 </div>
 
@@ -448,43 +450,43 @@ $conn->close();
                                         <li class="facebook">
                                             <a href="#">
                                                 <span class="icon"><i class="fa fa-facebook-f"></i></span>
-                                                <span class="count">521</span>
-                                                <span class="title">Likes</span>
+                                                <span class="count">৫২১</span>
+                                                <span class="title">লাইকস</span>
                                             </a>
                                         </li>
                                         <li class="twitter">
                                             <a href="#">
                                                 <span class="icon"><i class="fa fa-twitter"></i></span>
-                                                <span class="count">3297</span>
-                                                <span class="title">Followers</span>
+                                                <span class="count">৩২৯৭</span>
+                                                <span class="title">ফলোয়ারস</span>
                                             </a>
                                         </li>
                                         <li class="google-plus">
                                             <a href="#">
                                                 <span class="icon"><i class="fa fa-google-plus"></i></span>
-                                                <span class="count">596282</span>
-                                                <span class="title">Followers</span>
+                                                <span class="count">৫৯৮৫৪</span>
+                                                <span class="title">ফলোয়ারস</span>
                                             </a>
                                         </li>
                                         <li class="rss">
                                             <a href="#">
                                                 <span class="icon"><i class="fa fa-rss"></i></span>
-                                                <span class="count">521</span>
-                                                <span class="title">Subscriber</span>
+                                                <span class="count">৫২১</span>
+                                                <span class="title">সাবস্ক্রাইবার</span>
                                             </a>
                                         </li>
                                         <li class="vimeo">
                                             <a href="#">
                                                 <span class="icon"><i class="fa fa-vimeo"></i></span>
-                                                <span class="count">3297</span>
-                                                <span class="title">Followers</span>
+                                                <span class="count">৩২৯৭</span>
+                                                <span class="title">ফলোয়ারস</span>
                                             </a>
                                         </li>
                                         <li class="youtube">
                                             <a href="#">
                                                 <span class="icon"><i class="fa fa-youtube-square"></i></span>
-                                                <span class="count">596282</span>
-                                                <span class="title">Subscriber</span>
+                                                <span class="count">৫৪২১</span>
+                                                <span class="title">সাবস্ক্রাইবার</span>
                                             </a>
                                         </li>
                                     </ul>
@@ -498,7 +500,7 @@ $conn->close();
                             <!-- Widget Start -->
                             <div class="widget">
                                 <div class="widget--title">
-                                    <h2 class="h4">Advertisement</h2>
+                                    <h2 class="h4">বিজ্ঞাপন</h2>
                                     <i class="icon fa fa-bullhorn"></i>
                                 </div>
 
@@ -874,7 +876,7 @@ $conn->close();
             const hijri = gregorianToHijri(now);
             const line3 = `${toBanglaDigits(hijri.day)} ${hijriMonthsBn[hijri.month - 1]}, ${toBanglaDigits(hijri.year)} হিজরি`;
 
-            document.getElementById("banglaDateDiv").innerHTML = `${line1} <br/> ${line2} ${line3}`;
+            document.getElementById("banglaDateDiv").innerHTML = `${line1} <br/> ${line2} <br/> ${line3}`;
         }
 
         showBanglaDate();

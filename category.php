@@ -1,6 +1,7 @@
 <?php
 include_once("./php/fetch_news.php");
 include_once("./php/fetch_news_by_category.php");
+include_once("./php/bangla_category.php");
 ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
@@ -280,7 +281,7 @@ include_once("./php/fetch_news_by_category.php");
                                     <div class='col-md-6'>
                                         <div class='post--info'>
                                             <ul class='nav meta'>
-                                                <li><a href='#'>Admin</a></li>
+                                                <li><a href='#'>এডমিন</a></li>
                                                 <li><a href='#'>{$cat_news["news_datetime"]}</a></li>
                                             </ul>
 
@@ -679,7 +680,7 @@ include_once("./php/fetch_news_by_category.php");
             const hijri = gregorianToHijri(now);
             const line3 = `${toBanglaDigits(hijri.day)} ${hijriMonthsBn[hijri.month - 1]}, ${toBanglaDigits(hijri.year)} হিজরি`;
 
-            document.getElementById("banglaDateDiv").innerHTML = `${line1} <br/> ${line2} ${line3}`;
+            document.getElementById("banglaDateDiv").innerHTML = `${line1} <br/> ${line2} <br/> ${line3}`;
         }
 
         showBanglaDate();

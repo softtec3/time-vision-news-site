@@ -168,27 +168,27 @@ if (empty($_SESSION["user"])) {
       <ul class="flex lg:flex-col gap-2 p-3 justify-center lg:justify-normal">
         <li
           onclick="showHide('addNews')"
-          class="p-2 shadow-sm border border-slate-200 rounded-sm cursor-pointer">
-          <a href="./"><i class="fa-solid fa-circle-plus"></i> নিউজ যোগ করুন</a>
+          class="p-2 shadow-sm border border-slate-200 rounded-sm cursor-pointer w-full flex items-center justify-center lg:justify-start gap-2">
+          <a href="./"><i class="fa-solid fa-circle-plus"></i> <span class="hidden lg:inline">নিউজ যোগ করুন</span></a>
         </li>
         <li
           onclick="showHide('allNews')"
-          class="p-2 shadow-sm border border-slate-200 rounded-sm cursor-pointer">
+          class="p-2 shadow-sm border border-slate-200 rounded-sm cursor-pointer w-full flex items-center justify-center lg:justify-start gap-2">
           <i class="fa-solid fa-newspaper"></i>
-          সকল সংবাদ
+          <span class="hidden lg:inline">সকল সংবাদ</span>
         </li>
         <li
           onclick="showHide('changePassword')"
-          class="p-2 shadow-sm border border-slate-200 rounded-sm cursor-pointer">
+          class="p-2 shadow-sm border border-slate-200 rounded-sm cursor-pointer w-full flex items-center justify-center lg:justify-start gap-2">
           <i class="fa-solid fa-lock"></i>
 
-          পাসওয়ার্ড পরিবর্তন
+          <span class="hidden lg:inline">পাসওয়ার্ড পরিবর্তন</span>
         </li>
         <li
           onclick="showHide('siteProfile')"
-          class="p-2 shadow-sm border border-slate-200 rounded-sm cursor-pointer">
+          class="p-2 shadow-sm border border-slate-200 rounded-sm cursor-pointer w-full flex items-center justify-center lg:justify-start gap-2">
           <i class="fa-solid fa-globe"></i>
-          সাইট প্রোফাইল
+          <span class="hidden lg:inline">সাইট প্রোফাইল</span>
         </li>
       </ul>
     </div>
@@ -462,7 +462,7 @@ if (empty($_SESSION["user"])) {
 
       </div>
       <!-- Site profile -->
-      <div id="siteProfile" style="display: none;" class="p-2 lg:p-5">
+      <div id="siteProfile" style="display: none;" class="p-2 lg:p-5 mb-[200px] lg:mb-0">
         <form action="" method="post" enctype="multipart/form-data" class="p-4 border border-gray-200 shadow-md rounded flex flex-col gap-2 w-[100%] mt-[70px] lg:mt-0 lg:w-[60%] mx-auto">
           <h2 class="text-center text-xl mb-2 font-bold">সাইট প্রোফাইল আপডেট</h2>
           <div class="flex flex-col gap-1 w-full">
@@ -475,7 +475,7 @@ if (empty($_SESSION["user"])) {
                                                                                                                                                                                 }
                                                                                                                                                                                 ?>">
           </div>
-          <div class="flex gap-2 items-center">
+          <div class="flex lg:flex-row flex-col gap-2 items-center">
 
 
             <img class="min-w-[120px] min-h-[70px] max-w-[120px] max-h-[70px]  rounded-lg object-cover" src="<?php
@@ -497,7 +497,7 @@ if (empty($_SESSION["user"])) {
 
             </div>
           </div>
-          <div class="flex gap-2 items-center">
+          <div class="flex lg:flex-row flex-col gap-2 items-center">
             <!-- Admin Image -->
             <img class="max-w-[120px] max-h-[120px] min-h-[120px] min-w-[120px] rounded-full object-cover" src="<?php
                                                                                                                 if ($site_profile["admin_image"] ?? NULL) {
@@ -521,7 +521,7 @@ if (empty($_SESSION["user"])) {
 
           <div class="flex flex-col gap-1 w-full">
             <label for="about" class="text-base">সাইট সম্পর্কে</label>
-            <textarea name="about" id="about" class="outline-none p-1 border border-gray-200 rounded text-base resize-none"><?php
+            <textarea name="about" id="about" class="outline-none min-h-[100px] p-1 border border-gray-200 rounded text-base resize-none"><?php
                                                                                                                             if ($site_profile["about"] ?? NULL) {
                                                                                                                               echo $site_profile["about"];
                                                                                                                             } else {
@@ -541,7 +541,7 @@ if (empty($_SESSION["user"])) {
                                                                                                                                                                         ?>">
           </div>
 
-          <div class="flex items-center gap-2 w-full">
+          <div class="flex lg:flex-row flex-col items-center gap-2 w-full">
             <div class="flex flex-col gap-1 w-full">
               <label for="email" class="text-base">ইমেইল</label>
               <input type="email" name="email" id="email" class="outline-none p-1 border border-gray-200 rounded text-base" placeholder="ইমেইল এড্রেস লিখুন" required value="<?php
@@ -564,7 +564,7 @@ if (empty($_SESSION["user"])) {
             </div>
           </div>
           <h3 class="text-base font-semibold mt-5">সামাজিক যোগাযোগ মাধ্যম</h3>
-          <div class="flex items-center gap-2 w-full">
+          <div class="flex items-center gap-2 w-full lg:flex-row flex-col">
             <div class="flex flex-col gap-1 w-full">
               <label for="facebook" class="text-base">ফেসবুক লিঙ্ক</label>
               <input type="text" name="facebook" id="facebook" class="outline-none p-1 border border-gray-200 rounded text-base" placeholder="ফেসবুকে পেজ/আইডির লিংক দিন" value="<?php
@@ -586,7 +586,7 @@ if (empty($_SESSION["user"])) {
                                                                                                                                                                                                   ?>">
             </div>
           </div>
-          <div class="flex items-center gap-2 w-full">
+          <div class="flex items-center gap-2 w-full lg:flex-row flex-col">
             <div class="flex flex-col gap-1 w-full">
               <label for="twitter" class="text-base">টুইটার লিঙ্ক</label>
               <input type="text" name="twitter" id="twitter" class="outline-none p-1 border border-gray-200 rounded text-base" placeholder="টুইটার পেজ/আইডির লিংক দিন" value="<?php
@@ -608,7 +608,7 @@ if (empty($_SESSION["user"])) {
                                                                                                                                                                                                 ?>">
             </div>
           </div>
-          <div class="flex items-center gap-2 w-full">
+          <div class="flex items-center gap-2 w-full lg:flex-row flex-col">
             <div class="flex flex-col gap-1 w-full">
               <label for="google_plus" class="text-base">গুগল প্লাস লিঙ্ক</label>
               <input type="text" name="google_plus" id="google_plus" class="outline-none p-1 border border-gray-200 rounded text-base" placeholder="গুগল প্লাস পেজ/আইডির লিংক দিন" value="<?php
@@ -630,7 +630,7 @@ if (empty($_SESSION["user"])) {
                                                                                                                                                                                                             ?>">
             </div>
           </div>
-          <div class="flex items-center gap-2 w-full">
+          <div class="flex items-center gap-2 w-full lg:flex-row flex-col">
             <div class="flex flex-col gap-1 w-full">
               <label for="linkedin" class="text-base">লিংকডিন লিঙ্ক</label>
               <input type="text" name="linkedin" id="linkedin" class="outline-none p-1 border border-gray-200 rounded text-base" placeholder="লিংকডিন পেজ/আইডির লিংক দিন" value="<?php
@@ -652,7 +652,7 @@ if (empty($_SESSION["user"])) {
                                                                                                                                                                                                   ?>">
             </div>
           </div>
-          <div class="flex items-center gap-2 w-full">
+          <div class="flex items-center gap-2 w-full lg:flex-row flex-col">
             <div class="flex flex-col gap-1 w-full">
               <label for="youtube" class="text-base">ইউটিউব লিঙ্ক</label>
               <input type="text" name="youtube" id="youtube" class="outline-none p-1 border border-gray-200 rounded text-base" placeholder="ইউটিউব চ্যানেল লিংক দিন" value="<?php

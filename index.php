@@ -2381,19 +2381,37 @@ include_once("./php/site_basic_info.php");
   <div id="stickySocial" class="sticky--right">
     <ul class="nav">
       <li>
-        <a href="#">
+        <a href="<?php
+    if($site_info["facebook"] ?? NULL){
+      echo $site_info["facebook"];
+    }else{
+      echo "";
+    }
+  ?>">
           <i class="fa fa-facebook"></i>
           <span>ফেসবুকে ফলো করুন</span>
         </a>
       </li>
       <li>
-        <a href="#">
+        <a href="<?php
+    if($site_info["twitter"] ?? NULL){
+      echo $site_info["twitter"];
+    }else{
+      echo "";
+    }
+  ?>">
           <i class="fa fa-twitter"></i>
           <span>টুইটারে ফলো করুন</span>
         </a>
       </li>
       <li>
-        <a href="#">
+        <a href="<?php
+    if($site_info["google_plus"] ?? NULL){
+      echo $site_info["google_plus"];
+    }else{
+      echo "";
+    }
+  ?>">
           <i class="fa fa-google-plus"></i>
           <span>গুগল প্লাসে ফলো কুরুন</span>
         </a>
@@ -2411,13 +2429,25 @@ include_once("./php/site_basic_info.php");
         </a>
       </li>
       <li>
-        <a href="#">
+        <a href="<?php
+    if($site_info["youtube"] ?? NULL){
+      echo $site_info["youtube"];
+    }else{
+      echo "";
+    }
+  ?>">
           <i class="fa fa-youtube-play"></i>
           <span>ইউটিউবে ফলো করুন</span>
         </a>
       </li>
       <li>
-        <a href="#">
+        <a href="<?php
+    if($site_info["linkedin"] ?? NULL){
+      echo $site_info["linkedin"];
+    }else{
+      echo "";
+    }
+  ?>">
           <i class="fa fa-linkedin"></i>
           <span>লিংকডিনে ফলো করুন</span>
         </a>

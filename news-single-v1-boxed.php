@@ -831,54 +831,84 @@ $conn->close();
     </div>
     <!-- Wrapper End -->
 
-    <!-- Sticky Social Start -->
-    <div id="stickySocial" class="sticky--right">
-        <ul class="nav">
-            <li>
-                <a href="#">
-                    <i class="fa fa-facebook"></i>
-                    <span>ফেসবুকে ফলো করুন</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="fa fa-twitter"></i>
-                    <span>টুইটারে ফলো করুন</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="fa fa-google-plus"></i>
-                    <span>গুগল প্লাসে ফলো কুরুন</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="fa fa-rss"></i>
-                    <span>আর.এস.এস এ ফলো করুন</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="fa fa-vimeo"></i>
-                    <span>ভিমোতে ফলো করুন</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="fa fa-youtube-play"></i>
-                    <span>ইউটিউবে ফলো করুন</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="fa fa-linkedin"></i>
-                    <span>লিংকডিনে ফলো করুন</span>
-                </a>
-            </li>
-        </ul>
-    </div>
-    <!-- Sticky Social End -->
+  <!-- Sticky Social Start -->
+  <div id="stickySocial" class="sticky--right">
+    <ul class="nav">
+      <li>
+        <a href="<?php
+    if($site_info["facebook"] ?? NULL){
+      echo $site_info["facebook"];
+    }else{
+      echo "";
+    }
+  ?>">
+          <i class="fa fa-facebook"></i>
+          <span>ফেসবুকে ফলো করুন</span>
+        </a>
+      </li>
+      <li>
+        <a href="<?php
+    if($site_info["twitter"] ?? NULL){
+      echo $site_info["twitter"];
+    }else{
+      echo "";
+    }
+  ?>">
+          <i class="fa fa-twitter"></i>
+          <span>টুইটারে ফলো করুন</span>
+        </a>
+      </li>
+      <li>
+        <a href="<?php
+    if($site_info["google_plus"] ?? NULL){
+      echo $site_info["google_plus"];
+    }else{
+      echo "";
+    }
+  ?>">
+          <i class="fa fa-google-plus"></i>
+          <span>গুগল প্লাসে ফলো কুরুন</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fa fa-rss"></i>
+          <span>আর.এস.এস এ ফলো করুন</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fa fa-vimeo"></i>
+          <span>ভিমোতে ফলো করুন</span>
+        </a>
+      </li>
+      <li>
+        <a href="<?php
+    if($site_info["youtube"] ?? NULL){
+      echo $site_info["youtube"];
+    }else{
+      echo "";
+    }
+  ?>">
+          <i class="fa fa-youtube-play"></i>
+          <span>ইউটিউবে ফলো করুন</span>
+        </a>
+      </li>
+      <li>
+        <a href="<?php
+    if($site_info["linkedin"] ?? NULL){
+      echo $site_info["linkedin"];
+    }else{
+      echo "";
+    }
+  ?>">
+          <i class="fa fa-linkedin"></i>
+          <span>লিংকডিনে ফলো করুন</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <!-- Sticky Social End -->
 
     <!-- Back To Top Button Start -->
     <div id="backToTop">

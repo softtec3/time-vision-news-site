@@ -4,20 +4,16 @@ require_once("../php/db_connect.php");
 if (isset($_POST["user_name"])) {
     $user_name = $_POST["user_name"];
     $password = $_POST["password"];
-    if ($user_name !== "adadmin") {
-        echo "<script>
-                alert('Username not matched');
-            </script>";
-    }
-    $finding_user = $conn->query("SELECT password, user_name FROM users WHERE user_name='$user_name'");
+    $finding_user = $conn->query("SELECT password, user_name, role FROM users WHERE user_name='$user_name'");
     $found_user = $finding_user->fetch_assoc();
     if ($found_user && $found_user["password"]) {
-        if ($found_user["password"] == $password) {
+        if (($found_user["password"] == $password && $found_user["role"] == "admin")) {
             $_SESSION["advertise_admin"] = $found_user["user_name"];
+            $_SESSION["advertise_role"] = $found_user["role"];
             header("Location: ./advertise.php");
         } else {
             echo "<script>
-                alert('Wrong password');
+                alert('Wrong credential');
             </script>";
         }
     }

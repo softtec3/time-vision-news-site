@@ -7,7 +7,8 @@ require_once("../php/db_connect.php");
 $table_sql = "CREATE TABLE IF NOT EXISTS advertise(
     id INT PRIMARY KEY AUTO_INCREMENT,
     square_ad VARCHAR(255) DEFAULT NULL,
-    long_ad VARCHAR(255) DEFAULT NULL
+    long_ad VARCHAR(255) DEFAULT NULL,
+    role VARCHAR(100) DEFAULT 'user'
 )";
 if ($conn->query($table_sql) === TRUE) {
 } else {

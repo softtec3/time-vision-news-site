@@ -3,6 +3,7 @@ session_start();
 require_once("./php/fetch_all_news.php");
 require_once("./php/news_operation.php");
 require_once("./php/change_password.php");
+require_once("./php/update_site_profile.php");
 if (empty($_SESSION["user"])) {
   header("Location: /login-boxed.php");
 }
@@ -153,8 +154,14 @@ if (empty($_SESSION["user"])) {
       class="lg:w-[250px] lg:border-r lg:border-r-gray-400 lg:pt-10 lg:h-screen lg:relative fixed bottom-0 left-0 bg-white lg:z-0 z-50 w-full border-t-2 border-t-red-500 lg:border-t-[0]">
       <div class="hidden lg:flex items-center justify-center flex-col gap-1">
         <img
-          class="h-[100px] w-[100px] rounded-full"
-          src="./placeholder.jpg"
+          class="min-h-[100px] min-w-[100px] max-h-[100px] max-w-[100px] rounded-full object-cover"
+          src="<?php
+            if($site_profile["admin_image"]){
+              echo "./uploads/" . $site_profile["admin_image"];
+            }else{
+              echo "./placeholder.jpg";
+            }
+          ?>"
           alt="" />
         <span class="font-bold text-2xl">এডমিন</span>
       </div>
@@ -176,6 +183,12 @@ if (empty($_SESSION["user"])) {
           <i class="fa-solid fa-lock"></i>
 
           পাসওয়ার্ড পরিবর্তন
+        </li>
+        <li
+          onclick="showHide('siteProfile')"
+          class="p-2 shadow-sm border border-slate-200 rounded-sm cursor-pointer">
+          <i class="fa-solid fa-globe"></i>
+          সাইট প্রোফাইল
         </li>
       </ul>
     </div>
@@ -448,6 +461,224 @@ if (empty($_SESSION["user"])) {
         </form>
 
       </div>
+      <!-- Site profile -->
+      <div id="siteProfile" style="display: none;" class="p-2 lg:p-5">
+        <form action="" method="post" enctype="multipart/form-data" class="p-4 border border-gray-200 shadow-md rounded flex flex-col gap-2 w-[100%] mt-[70px] lg:mt-0 lg:w-[60%] mx-auto">
+          <h2 class="text-center text-xl mb-2 font-bold">সাইট প্রোফাইল আপডেট</h2>
+          <div class="flex flex-col gap-1 w-full">
+            <label for="site_name" class="text-base">সাইটের নাম</label>
+            <input type="text" name="site_name" id="site_name" class="outline-none p-1 border border-gray-200 rounded text-base" placeholder="সাইটের নাম লিখুন" required value="<?php
+                                                                                                                                                                                if ($site_profile["site_name"] ?? NULL) {
+                                                                                                                                                                                  echo $site_profile["site_name"];
+                                                                                                                                                                                } else {
+                                                                                                                                                                                  echo "";
+                                                                                                                                                                                }
+                                                                                                                                                                                ?>">
+          </div>
+          <div class="flex gap-2 items-center">
+
+
+            <img class="min-w-[120px] min-h-[70px] max-w-[120px] max-h-[70px]  rounded-lg object-cover" src="<?php
+                                                                                                              if ($site_profile["site_logo"] ?? NULL) {
+                                                                                                                echo "./uploads/" . $site_profile["site_logo"];
+                                                                                                              } else {
+                                                                                                                echo "";
+                                                                                                              }
+                                                                                                              ?>" alt="">
+            <div class="flex flex-col gap-1 w-full">
+              <label for="site_logo" class="text-base">সাইটের লোগো</label>
+              <input type="file" name="site_logo" id="site_logo" class="outline-none p-1 border border-gray-200 rounded text-sm" <?php
+                                                                                                                                  if ($site_profile["site_logo"] ?? NULL) {
+                                                                                                                                    echo "";
+                                                                                                                                  } else {
+                                                                                                                                    echo "required";
+                                                                                                                                  }
+                                                                                                                                  ?>>
+
+            </div>
+          </div>
+          <div class="flex gap-2 items-center">
+            <!-- Admin Image -->
+            <img class="max-w-[120px] max-h-[120px] min-h-[120px] min-w-[120px] rounded-full object-cover" src="<?php
+                                                                                                                if ($site_profile["admin_image"] ?? NULL) {
+                                                                                                                  echo "./uploads/" . $site_profile["admin_image"];
+                                                                                                                } else {
+                                                                                                                  echo "";
+                                                                                                                }
+                                                                                                                ?>" alt="">
+
+            <div class="flex flex-col gap-1 w-full">
+              <label for="admin_image" class="text-base">এডমিন ইমেজ</label>
+              <input type="file" name="admin_image" id="admin_image" class="outline-none p-1 border border-gray-200 rounded text-sm" placeholder="সাইটের নাম লিখুন" <?php
+                                                                                                                                                                    if ($site_profile["admin_image"] ?? NULL) {
+                                                                                                                                                                      echo "";
+                                                                                                                                                                    } else {
+                                                                                                                                                                      echo "required";
+                                                                                                                                                                    }
+                                                                                                                                                                    ?>>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-1 w-full">
+            <label for="about" class="text-base">সাইট সম্পর্কে</label>
+            <textarea name="about" id="about" class="outline-none p-1 border border-gray-200 rounded text-base resize-none"><?php
+                                                                                                                            if ($site_profile["about"] ?? NULL) {
+                                                                                                                              echo $site_profile["about"];
+                                                                                                                            } else {
+                                                                                                                              echo "সাইট সম্পর্কে লিখুন";
+                                                                                                                            }
+                                                                                                                            ?></textarea>
+          </div>
+
+          <div class="flex flex-col gap-1 w-full">
+            <label for="address" class="text-base">ঠিকানা</label>
+            <input type="text" name="address" id="address" class="outline-none p-1 border border-gray-200 rounded text-base" placeholder="ঠিকানা লিখুন" required value="<?php
+                                                                                                                                                                        if ($site_profile["address"] ?? NULL) {
+                                                                                                                                                                          echo $site_profile["address"];
+                                                                                                                                                                        } else {
+                                                                                                                                                                          echo "";
+                                                                                                                                                                        }
+                                                                                                                                                                        ?>">
+          </div>
+
+          <div class="flex items-center gap-2 w-full">
+            <div class="flex flex-col gap-1 w-full">
+              <label for="email" class="text-base">ইমেইল</label>
+              <input type="email" name="email" id="email" class="outline-none p-1 border border-gray-200 rounded text-base" placeholder="ইমেইল এড্রেস লিখুন" required value="<?php
+                                                                                                                                                                              if ($site_profile["email"] ?? NULL) {
+                                                                                                                                                                                echo $site_profile["email"];
+                                                                                                                                                                              } else {
+                                                                                                                                                                                echo "";
+                                                                                                                                                                              }
+                                                                                                                                                                              ?>">
+            </div>
+            <div class="flex flex-col gap-1 w-full">
+              <label for="phone" class="text-base">ফোন নাম্বার</label>
+              <input type="text" name="phone" id="phone" class="outline-none p-1 border border-gray-200 rounded text-base" placeholder="ফোন নাম্বার লিখুন" required value="<?php
+                                                                                                                                                                            if ($site_profile["phone"] ?? NULL) {
+                                                                                                                                                                              echo $site_profile["phone"];
+                                                                                                                                                                            } else {
+                                                                                                                                                                              echo "";
+                                                                                                                                                                            }
+                                                                                                                                                                            ?>">
+            </div>
+          </div>
+          <h3 class="text-base font-semibold mt-5">সামাজিক যোগাযোগ মাধ্যম</h3>
+          <div class="flex items-center gap-2 w-full">
+            <div class="flex flex-col gap-1 w-full">
+              <label for="facebook" class="text-base">ফেসবুক লিঙ্ক</label>
+              <input type="text" name="facebook" id="facebook" class="outline-none p-1 border border-gray-200 rounded text-base" placeholder="ফেসবুকে পেজ/আইডির লিংক দিন" value="<?php
+                                                                                                                                                                                  if ($site_profile["facebook"] ?? NULL) {
+                                                                                                                                                                                    echo $site_profile["facebook"];
+                                                                                                                                                                                  } else {
+                                                                                                                                                                                    echo "";
+                                                                                                                                                                                  }
+                                                                                                                                                                                  ?>">
+            </div>
+            <div class="flex flex-col gap-1 w-full">
+              <label for="facebook_followers" class="text-base">ফেসবুক ফলোয়ারস</label>
+              <input type="number" name="facebook_followers" id="facebook_followers" class="outline-none p-1 border border-gray-200 rounded text-base" placeholder="ফেসবুক ফলোয়ার সংখ্যা" value="<?php
+                                                                                                                                                                                                  if ($site_profile["facebook_followers"] ?? NULL) {
+                                                                                                                                                                                                    echo $site_profile["facebook_followers"];
+                                                                                                                                                                                                  } else {
+                                                                                                                                                                                                    echo "";
+                                                                                                                                                                                                  }
+                                                                                                                                                                                                  ?>">
+            </div>
+          </div>
+          <div class="flex items-center gap-2 w-full">
+            <div class="flex flex-col gap-1 w-full">
+              <label for="twitter" class="text-base">টুইটার লিঙ্ক</label>
+              <input type="text" name="twitter" id="twitter" class="outline-none p-1 border border-gray-200 rounded text-base" placeholder="টুইটার পেজ/আইডির লিংক দিন" value="<?php
+                                                                                                                                                                              if ($site_profile["twitter"] ?? NULL) {
+                                                                                                                                                                                echo $site_profile["twitter"];
+                                                                                                                                                                              } else {
+                                                                                                                                                                                echo "";
+                                                                                                                                                                              }
+                                                                                                                                                                              ?>">
+            </div>
+            <div class="flex flex-col gap-1 w-full">
+              <label for="twitter_followers" class="text-base">টুইটার ফলোয়ারস</label>
+              <input type="number" name="twitter_followers" id="twitter_followers" class="outline-none p-1 border border-gray-200 rounded text-base" placeholder="টুইটার ফলোয়ার সংখ্যা" value="<?php
+                                                                                                                                                                                                if ($site_profile["twitter_followers"] ?? NULL) {
+                                                                                                                                                                                                  echo $site_profile["twitter_followers"];
+                                                                                                                                                                                                } else {
+                                                                                                                                                                                                  echo "";
+                                                                                                                                                                                                }
+                                                                                                                                                                                                ?>">
+            </div>
+          </div>
+          <div class="flex items-center gap-2 w-full">
+            <div class="flex flex-col gap-1 w-full">
+              <label for="google_plus" class="text-base">গুগল প্লাস লিঙ্ক</label>
+              <input type="text" name="google_plus" id="google_plus" class="outline-none p-1 border border-gray-200 rounded text-base" placeholder="গুগল প্লাস পেজ/আইডির লিংক দিন" value="<?php
+                                                                                                                                                                                          if ($site_profile["google_plus"] ?? NULL) {
+                                                                                                                                                                                            echo $site_profile["google_plus"];
+                                                                                                                                                                                          } else {
+                                                                                                                                                                                            echo "";
+                                                                                                                                                                                          }
+                                                                                                                                                                                          ?>">
+            </div>
+            <div class="flex flex-col gap-1 w-full">
+              <label for="goggle_plus_followres" class="text-base">গুগল প্লাস ফলোয়ারস</label>
+              <input type="number" name="goggle_plus_followres" id="goggle_plus_followres" class="outline-none p-1 border border-gray-200 rounded text-base" placeholder="গুগল প্লাস ফলোয়ার সংখ্যা" value="<?php
+                                                                                                                                                                                                            if ($site_profile["goggle_plus_followres"] ?? NULL) {
+                                                                                                                                                                                                              echo $site_profile["goggle_plus_followres"];
+                                                                                                                                                                                                            } else {
+                                                                                                                                                                                                              echo "";
+                                                                                                                                                                                                            }
+                                                                                                                                                                                                            ?>">
+            </div>
+          </div>
+          <div class="flex items-center gap-2 w-full">
+            <div class="flex flex-col gap-1 w-full">
+              <label for="linkedin" class="text-base">লিংকডিন লিঙ্ক</label>
+              <input type="text" name="linkedin" id="linkedin" class="outline-none p-1 border border-gray-200 rounded text-base" placeholder="লিংকডিন পেজ/আইডির লিংক দিন" value="<?php
+                                                                                                                                                                                  if ($site_profile["linkedin"] ?? NULL) {
+                                                                                                                                                                                    echo $site_profile["linkedin"];
+                                                                                                                                                                                  } else {
+                                                                                                                                                                                    echo "";
+                                                                                                                                                                                  }
+                                                                                                                                                                                  ?>">
+            </div>
+            <div class="flex flex-col gap-1 w-full">
+              <label for="linkedin_followers" class="text-base">লিংকডিন ফলোয়ারস</label>
+              <input type="number" name="linkedin_followers" id="linkedin_followers" class="outline-none p-1 border border-gray-200 rounded text-base" placeholder="লিংকডিন ফলোয়ার সংখ্যা" value="<?php
+                                                                                                                                                                                                  if ($site_profile["linkedin_followers"] ?? NULL) {
+                                                                                                                                                                                                    echo $site_profile["linkedin_followers"];
+                                                                                                                                                                                                  } else {
+                                                                                                                                                                                                    echo "";
+                                                                                                                                                                                                  }
+                                                                                                                                                                                                  ?>">
+            </div>
+          </div>
+          <div class="flex items-center gap-2 w-full">
+            <div class="flex flex-col gap-1 w-full">
+              <label for="youtube" class="text-base">ইউটিউব লিঙ্ক</label>
+              <input type="text" name="youtube" id="youtube" class="outline-none p-1 border border-gray-200 rounded text-base" placeholder="ইউটিউব চ্যানেল লিংক দিন" value="<?php
+                                                                                                                                                                            if ($site_profile["youtube"] ?? NULL) {
+                                                                                                                                                                              echo $site_profile["youtube"];
+                                                                                                                                                                            } else {
+                                                                                                                                                                              echo "";
+                                                                                                                                                                            }
+                                                                                                                                                                            ?>">
+            </div>
+            <div class="flex flex-col gap-1 w-full">
+              <label for="youtube_followers" class="text-base">ইউটিউব সাবস্ক্রাইবারস</label>
+              <input type="number" name="youtube_followers" id="youtube_followers" class="outline-none p-1 border border-gray-200 rounded text-base" placeholder="ইউটিউব সাবস্ক্রাইবারস সংখ্যা" value="<?php
+                                                                                                                                                                                                        if ($site_profile["youtube_followers"] ?? NULL) {
+                                                                                                                                                                                                          echo $site_profile["youtube_followers"];
+                                                                                                                                                                                                        } else {
+                                                                                                                                                                                                          echo "";
+                                                                                                                                                                                                        }
+                                                                                                                                                                                                        ?>">
+            </div>
+          </div>
+          <div class="flex flex-col gap-1 w-full">
+            <button class="p-2 rounded text-white bg-red-600 font-semibold mt-5">আপডেট করুন</button>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
   <!-- News action status -->
@@ -680,8 +911,9 @@ if (empty($_SESSION["user"])) {
     const addNews = document.getElementById("addNews");
     const allNews = document.getElementById("allNews");
     const changePassword = document.getElementById("changePassword");
+    const siteProfile = document.getElementById("siteProfile");
     const showHide = (id) => {
-      [addNews, allNews, changePassword].forEach(
+      [addNews, allNews, changePassword, siteProfile].forEach(
         (section) => (section.style.display = "none")
       );
       if (id == "addNews") {
@@ -690,6 +922,8 @@ if (empty($_SESSION["user"])) {
         allNews.style.display = "block";
       } else if (id == "changePassword") {
         changePassword.style.display = "flex";
+      } else if (id == "siteProfile") {
+        siteProfile.style.display = "block";
       }
     };
     // Get current URL

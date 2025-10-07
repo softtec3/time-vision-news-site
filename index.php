@@ -1,7 +1,9 @@
 <?php
 include_once("./php/fetch_news.php");
 include_once("./php/bangla_category.php");
+include_once("./php/site_basic_info.php");
 ?>
+
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -11,7 +13,13 @@ include_once("./php/bangla_category.php");
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <!-- ==== Document Title ==== -->
-  <title>Time Vision 24 - সংবাদ মাধ্যম</title>
+  <title><?php
+    if($site_info["site_name"] ?? NULL){
+      echo $site_info["site_name"];
+    }else{
+      echo "";
+    }
+  ?></title>
 
   <!-- ==== Document Meta ==== -->
   <meta name="author" content="" />
@@ -144,7 +152,13 @@ include_once("./php/bangla_category.php");
             <h1 class="h1">
               <a href="./index.php" class="btn-link">
                 <img
-                  src="img/logo.png"
+                  src="<?php
+                    if($site_info["site_logo"] ?? NULL){
+                      echo "./admin/ElaAdmin-master/uploads/". $site_info["site_logo"];
+                    }else{
+                      echo "";
+                    }
+                  ?>"
                   alt="  Logo"
                   height="100px"
                   width="230px" />
@@ -1418,44 +1432,92 @@ include_once("./php/bangla_category.php");
                 <div class="social--widget style--1">
                   <ul class="nav">
                     <li class="facebook">
-                      <a href="#">
+                      <a href="<?php
+                      if($site_info["facebook"] ?? NULL){
+                        echo $site_info["facebook"];
+                      }else{
+                        echo "";
+                      }
+                    ?>">
                         <span class="icon"><i class="fa fa-facebook-f"></i></span>
-                        <span class="count">৫১২</span>
+                        <span class="count"><?php
+    if($site_info["facebook_followers"] ?? NULL){
+      echo $site_info["facebook_followers"];
+    }else{
+      echo "";
+    }
+  ?></span>
                         <span class="title">লাইকস</span>
                       </a>
                     </li>
                     <li class="twitter">
-                      <a href="#">
+                      <a href="<?php
+    if($site_info["twitter"] ?? NULL){
+      echo $site_info["twitter"];
+    }else{
+      echo "";
+    }
+  ?>">
                         <span class="icon"><i class="fa fa-twitter"></i></span>
-                        <span class="count">৩২৯৭</span>
+                        <span class="count"><?php
+    if($site_info["twitter_followers"] ?? NULL){
+      echo $site_info["twitter_followers"];
+    }else{
+      echo "";
+    }
+  ?></span>
                         <span class="title">ফলোয়ারস</span>
                       </a>
                     </li>
                     <li class="google-plus">
-                      <a href="#">
+                      <a href="<?php
+    if($site_info["google_plus"] ?? NULL){
+      echo $site_info["google_plus"];
+    }else{
+      echo "";
+    }
+  ?>">
                         <span class="icon"><i class="fa fa-google-plus"></i></span>
-                        <span class="count">৫৯৬২৩২</span>
+                        <span class="count"><?php
+    if($site_info["goggle_plus_followres"] ?? NULL){
+      echo $site_info["goggle_plus_followres"];
+    }else{
+      echo "";
+    }
+  ?></span>
                         <span class="title">ফলোয়ারস</span>
                       </a>
                     </li>
                     <li class="rss">
                       <a href="#">
                         <span class="icon"><i class="fa fa-rss"></i></span>
-                        <span class="count">৫২১</span>
+                        <span class="count">521</span>
                         <span class="title">সাবস্ক্রাইবার</span>
                       </a>
                     </li>
                     <li class="vimeo">
                       <a href="#">
                         <span class="icon"><i class="fa fa-vimeo"></i></span>
-                        <span class="count">৩২৯৭</span>
+                        <span class="count">3297</span>
                         <span class="title">ফলোয়ারস</span>
                       </a>
                     </li>
                     <li class="youtube">
-                      <a href="#">
+                      <a href="<?php
+    if($site_info["youtube"] ?? NULL){
+      echo $site_info["youtube"];
+    }else{
+      echo "";
+    }
+  ?>">
                         <span class="icon"><i class="fa fa-youtube-square"></i></span>
-                        <span class="count">৫৯৬৫২</span>
+                        <span class="count"><?php
+    if($site_info["youtube_followers"] ?? NULL){
+      echo $site_info["youtube_followers"];
+    }else{
+      echo "";
+    }
+  ?></span>
                         <span class="title">সাবস্ক্রাইবার</span>
                       </a>
                     </li>
@@ -2102,7 +2164,13 @@ include_once("./php/bangla_category.php");
                 <div class="about--widget">
                   <div class="content">
                     <p>
-                      বস্তুনিষ্ঠ, স্বাধীন ও দলনিরপেক্ষ একটি দৈনিক পত্রিকা হিসেবে এমন এক সময়ে এর যাত্রা শুরু
+                      <?php
+                    if($site_info["about"] ?? NULL){
+                      echo $site_info["about"];
+                    }else{
+                      echo "";
+                    }
+                  ?>
 
 
                     </p>
@@ -2115,15 +2183,45 @@ include_once("./php/bangla_category.php");
                   <ul class="nav">
                     <li>
                       <i class="fa fa-map"></i>
-                      <span>১১২ মনিহার, যশোর , খুলনা</span>
+                      <span><?php
+                        if($site_info["address"] ?? NULL){
+                          echo $site_info["address"];
+                        }else{
+                          echo "";
+                        }
+                      ?></span>
                     </li>
                     <li>
                       <i class="fa fa-envelope-o"></i>
-                      <a href="mailto:example@example.com">example@example.com</a>
+                      <a href="<?php
+                          if($site_info["email"] ?? NULL){
+                            echo "mailto:".$site_info["email"];
+                          }else{
+                            echo "";
+                          }
+                        ?>"><?php
+                            if($site_info["email"] ?? NULL){
+                              echo $site_info["email"];
+                            }else{
+                              echo "";
+                            }
+                          ?></a>
                     </li>
                     <li>
                       <i class="fa fa-phone"></i>
-                      <a href="tel:+123456789">+১২৩৪৫৬৭৮৯</a>
+                      <a href="<?php
+                        if($site_info["phone"] ?? NULL){
+                          echo "tel:".$site_info["phone"];
+                        }else{
+                          echo "";
+                        }
+                      ?>"><?php
+                        if($site_info["phone"] ?? NULL){
+                          echo $site_info["phone"];
+                        }else{
+                          echo "";
+                        }
+                      ?></a>
                     </li>
                   </ul>
                 </div>
@@ -2220,19 +2318,49 @@ include_once("./php/bangla_category.php");
 
           <ul class="nav social float--right">
             <li>
-              <a href="#"><i class="fa fa-facebook"></i></a>
+              <a href="<?php
+                    if($site_info["facebook"] ?? NULL){
+                      echo $site_info["facebook"];
+                    }else{
+                      echo "";
+                    }
+                  ?>" target='_blank'><i class="fa fa-facebook"></i></a>
             </li>
             <li>
-              <a href="#"><i class="fa fa-twitter"></i></a>
+              <a href="<?php
+    if($site_info["twitter"] ?? NULL){
+      echo $site_info["twitter"];
+    }else{
+      echo "";
+    }
+  ?>" target="_blank"><i class="fa fa-twitter"></i></a>
             </li>
             <li>
-              <a href="#"><i class="fa fa-google-plus"></i></a>
+              <a href="<?php
+    if($site_info["google_plus"] ?? NULL){
+      echo $site_info["google_plus"];
+    }else{
+      echo "";
+    }
+  ?>" target="_blank"><i class="fa fa-google-plus"></i></a>
             </li>
             <li>
-              <a href="#"><i class="fa fa-linkedin"></i></a>
+              <a href="<?php
+    if($site_info["linkedin"] ?? NULL){
+      echo $site_info["linkedin"];
+    }else{
+      echo "";
+    }
+  ?>" target="_blank"><i class="fa fa-linkedin"></i></a>
             </li>
             <li>
-              <a href="#"><i class="fa fa-youtube-play"></i></a>
+              <a href="<?php
+    if($site_info["youtube"] ?? NULL){
+      echo $site_info["youtube"];
+    }else{
+      echo "";
+    }
+  ?>" target="_blank"><i class="fa fa-youtube-play"></i></a>
             </li>
           </ul>
 

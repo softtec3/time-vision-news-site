@@ -2,6 +2,7 @@
 // Include the database connection file
 require_once 'php/db_connect.php';
 require_once("./php/bangla_category.php");
+require_once("./php/site_basic_info.php");
 // Initialize article variable and error message
 $article = null;
 $error_message = '';
@@ -453,60 +454,108 @@ $conn->close();
 
                             <!-- Widget Start -->
                             <div class="widget">
-                                <div class="widget--title">
-                                    <h2 class="h4">সঙ্গে থাকুন</h2>
-                                    <i class="icon fa fa-share-alt"></i>
-                                </div>
+                <div class="widget--title">
+                  <h2 class="h4">সঙ্গে থাকুন</h2>
+                  <i class="icon fa fa-share-alt"></i>
+                </div>
 
-                                <!-- Social Widget Start -->
-                                <div class="social--widget style--1">
-                                    <ul class="nav">
-                                        <li class="facebook">
-                                            <a href="#">
-                                                <span class="icon"><i class="fa fa-facebook-f"></i></span>
-                                                <span class="count">৫২১</span>
-                                                <span class="title">লাইকস</span>
-                                            </a>
-                                        </li>
-                                        <li class="twitter">
-                                            <a href="#">
-                                                <span class="icon"><i class="fa fa-twitter"></i></span>
-                                                <span class="count">৩২৯৭</span>
-                                                <span class="title">ফলোয়ারস</span>
-                                            </a>
-                                        </li>
-                                        <li class="google-plus">
-                                            <a href="#">
-                                                <span class="icon"><i class="fa fa-google-plus"></i></span>
-                                                <span class="count">৫৯৮৫৪</span>
-                                                <span class="title">ফলোয়ারস</span>
-                                            </a>
-                                        </li>
-                                        <li class="rss">
-                                            <a href="#">
-                                                <span class="icon"><i class="fa fa-rss"></i></span>
-                                                <span class="count">৫২১</span>
-                                                <span class="title">সাবস্ক্রাইবার</span>
-                                            </a>
-                                        </li>
-                                        <li class="vimeo">
-                                            <a href="#">
-                                                <span class="icon"><i class="fa fa-vimeo"></i></span>
-                                                <span class="count">৩২৯৭</span>
-                                                <span class="title">ফলোয়ারস</span>
-                                            </a>
-                                        </li>
-                                        <li class="youtube">
-                                            <a href="#">
-                                                <span class="icon"><i class="fa fa-youtube-square"></i></span>
-                                                <span class="count">৫৪২১</span>
-                                                <span class="title">সাবস্ক্রাইবার</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <!-- Social Widget End -->
-                            </div>
+                <!-- Social Widget Start -->
+                <div class="social--widget style--1">
+                  <ul class="nav">
+                    <li class="facebook">
+                      <a href="<?php
+                      if($site_info["facebook"] ?? NULL){
+                        echo $site_info["facebook"];
+                      }else{
+                        echo "";
+                      }
+                    ?>">
+                        <span class="icon"><i class="fa fa-facebook-f"></i></span>
+                        <span class="count"><?php
+    if($site_info["facebook_followers"] ?? NULL){
+      echo $site_info["facebook_followers"];
+    }else{
+      echo "";
+    }
+  ?></span>
+                        <span class="title">লাইকস</span>
+                      </a>
+                    </li>
+                    <li class="twitter">
+                      <a href="<?php
+    if($site_info["twitter"] ?? NULL){
+      echo $site_info["twitter"];
+    }else{
+      echo "";
+    }
+  ?>">
+                        <span class="icon"><i class="fa fa-twitter"></i></span>
+                        <span class="count"><?php
+    if($site_info["twitter_followers"] ?? NULL){
+      echo $site_info["twitter_followers"];
+    }else{
+      echo "";
+    }
+  ?></span>
+                        <span class="title">ফলোয়ারস</span>
+                      </a>
+                    </li>
+                    <li class="google-plus">
+                      <a href="<?php
+    if($site_info["google_plus"] ?? NULL){
+      echo $site_info["google_plus"];
+    }else{
+      echo "";
+    }
+  ?>">
+                        <span class="icon"><i class="fa fa-google-plus"></i></span>
+                        <span class="count"><?php
+    if($site_info["goggle_plus_followres"] ?? NULL){
+      echo $site_info["goggle_plus_followres"];
+    }else{
+      echo "";
+    }
+  ?></span>
+                        <span class="title">ফলোয়ারস</span>
+                      </a>
+                    </li>
+                    <li class="rss">
+                      <a href="#">
+                        <span class="icon"><i class="fa fa-rss"></i></span>
+                        <span class="count">521</span>
+                        <span class="title">সাবস্ক্রাইবার</span>
+                      </a>
+                    </li>
+                    <li class="vimeo">
+                      <a href="#">
+                        <span class="icon"><i class="fa fa-vimeo"></i></span>
+                        <span class="count">3297</span>
+                        <span class="title">ফলোয়ারস</span>
+                      </a>
+                    </li>
+                    <li class="youtube">
+                      <a href="<?php
+    if($site_info["youtube"] ?? NULL){
+      echo $site_info["youtube"];
+    }else{
+      echo "";
+    }
+  ?>">
+                        <span class="icon"><i class="fa fa-youtube-square"></i></span>
+                        <span class="count"><?php
+    if($site_info["youtube_followers"] ?? NULL){
+      echo $site_info["youtube_followers"];
+    }else{
+      echo "";
+    }
+  ?></span>
+                        <span class="title">সাবস্ক্রাইবার</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <!-- Social Widget End -->
+              </div>
                             <!-- Widget End -->
 
 
@@ -551,167 +600,233 @@ $conn->close();
         <!-- Main Content Section End -->
 
         <!-- Footer Section Start -->
-        <footer class="footer--section">
-            <!-- Footer Widgets Start -->
-            <div class="footer--widgets pd--30-0 bg--color-2">
-                <div class="container">
-                    <div class="row AdjustRow">
-                        <div class="col-md-3 col-xs-6 col-xxs-12 ptop--30 pbottom--30">
-                            <!-- Widget Start -->
-                            <div class="widget">
-                                <div class="widget--title">
-                                    <h2 class="h4">আমাদের সম্পর্কে</h2>
+<footer class="footer--section">
+      <!-- Footer Widgets Start -->
+      <div class="footer--widgets pd--30-0 bg--color-2">
+        <div class="container">
+          <div class="row AdjustRow">
+            <div class="col-md-3 col-xs-6 col-xxs-12 ptop--30 pbottom--30">
+              <!-- Widget Start -->
+              <div class="widget">
+                <div class="widget--title">
+                  <h2 class="h4">আমাদের সম্পর্কে</h2>
 
-                                    <i class="icon fa fa-exclamation"></i>
-                                </div>
-
-                                <!-- About Widget Start -->
-                                <div class="about--widget">
-                                    <div class="content">
-                                        <p>
-                                            বস্তুনিষ্ঠ, স্বাধীন ও দলনিরপেক্ষ একটি দৈনিক পত্রিকা হিসেবে এমন এক সময়ে এর যাত্রা শুরু
-
-
-                                        </p>
-                                    </div>
-
-                                    <div class="action">
-                                        <a href="#" class="btn-link">আরও পড়ুন<i class="fa flm fa-angle-double-right"></i></a>
-                                    </div>
-
-                                    <ul class="nav">
-                                        <li>
-                                            <i class="fa fa-map"></i>
-                                            <span>১১২ মনিহার, যশোর , খুলনা</span>
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-envelope-o"></i>
-                                            <a href="mailto:example@example.com">example@example.com</a>
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-phone"></i>
-                                            <a href="tel:+123456789">+১২৩৪৫৬৭৮৯</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <!-- About Widget End -->
-                            </div>
-                            <!-- Widget End -->
-                        </div>
-
-                        <div class="col-md-3 col-xs-6 col-xxs-12 ptop--30 pbottom--30">
-                            <!-- Widget Start -->
-                            <div class="widget">
-                                <div class="widget--title">
-                                    <h2 class="h4">দরকারী তথ্যের লিঙ্ক</h2>
-
-                                    <i class="icon fa fa-expand"></i>
-                                </div>
-
-                                <!-- Links Widget Start -->
-                                <div class="links--widget">
-                                    <ul class="nav">
-                                        <li><a href="#" class="fa-angle-right">গ্যাজেট</a></li>
-                                        <li>
-                                            <a href="#" class="fa-angle-right">শর্তাবলী</a>
-                                        </li>
-                                        <li><a href="#" class="fa-angle-right">ফোরাম</a></li>
-                                        <li>
-                                            <a href="#" class="fa-angle-right">শীর্ষস্থানীয় সংবাদ</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="fa-angle-right">স্পেশাল রেসিপি</a>
-                                        </li>
-                                        <li><a href="#" class="fa-angle-right">সাইন আপ</a></li>
-                                    </ul>
-                                </div>
-                                <!-- Links Widget End -->
-                            </div>
-                            <!-- Widget End -->
-                        </div>
-
-
-
-                        <div class="col-md-3 col-xs-6 col-xxs-12 ptop--30 pbottom--30">
-                            <!-- Widget Start -->
-                            <div class="widget">
-                                <div class="widget--title">
-                                    <h2 class="h4">ক্যারিয়ার</h2>
-
-                                    <i class="icon fa fa-user-o"></i>
-                                </div>
-
-                                <!-- Links Widget Start -->
-                                <div class="links--widget">
-                                    <ul class="nav">
-                                        <li>
-                                            <a href="#" class="fa-angle-right">উপলব্ধ পোস্ট</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="fa-angle-right">ক্যারিয়ারের বিবরণ</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="fa-angle-right">কিভাবে আবেদন করবেন?</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="fa-angle-right">ফ্রিলান্স জব</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="fa-angle-right">সদস্য হোন</a>
-                                        </li>
-                                        <li><a href="#" class="fa-angle-right">এপ্লাই করুন</a></li>
-                                        <li>
-                                            <a href="#" class="fa-angle-right">রিজুমি পাঠান</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <!-- Links Widget End -->
-                            </div>
-                            <!-- Widget End -->
-                        </div>
-                    </div>
+                  <i class="icon fa fa-exclamation"></i>
                 </div>
-            </div>
-            <!-- Footer Widgets End -->
 
-            <!-- Footer Copyright Start -->
-            <div class="footer--copyright bg--color-3">
-                <div class="social--bg bg--color-1"></div>
+                <!-- About Widget Start -->
+                <div class="about--widget">
+                  <div class="content">
+                    <p>
+                      <?php
+                    if($site_info["about"] ?? NULL){
+                      echo $site_info["about"];
+                    }else{
+                      echo "";
+                    }
+                  ?>
 
-                <div class="container">
-                    <p class="text float--left">
-                        &copy; <span class="copyright-year">২০২৫</span> <a href="#"> </a>.
-                        সর্বস্বত্ব টাইম ভিশন ২৪-এর কাছে সংরক্ষিত।
 
                     </p>
+                  </div>
 
-                    <ul class="nav social float--right">
-                        <li>
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-google-plus"></i></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-linkedin"></i></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-youtube-play"></i></a>
-                        </li>
-                    </ul>
+                  <div class="action">
+                    <a href="#" class="btn-link">আরও পড়ুন<i class="fa flm fa-angle-double-right"></i></a>
+                  </div>
 
-                    <ul class="nav links float--right">
-                        <li><a href="#">হোম</a></li>
-                        <li><a href="#">এফ.এ.কিউ</a></li>
-                        <li><a href="#">সাপোর্ট</a></li>
-                    </ul>
+                  <ul class="nav">
+                    <li>
+                      <i class="fa fa-map"></i>
+                      <span><?php
+                        if($site_info["address"] ?? NULL){
+                          echo $site_info["address"];
+                        }else{
+                          echo "";
+                        }
+                      ?></span>
+                    </li>
+                    <li>
+                      <i class="fa fa-envelope-o"></i>
+                      <a href="<?php
+                          if($site_info["email"] ?? NULL){
+                            echo "mailto:".$site_info["email"];
+                          }else{
+                            echo "";
+                          }
+                        ?>"><?php
+                            if($site_info["email"] ?? NULL){
+                              echo $site_info["email"];
+                            }else{
+                              echo "";
+                            }
+                          ?></a>
+                    </li>
+                    <li>
+                      <i class="fa fa-phone"></i>
+                      <a href="<?php
+                        if($site_info["phone"] ?? NULL){
+                          echo "tel:".$site_info["phone"];
+                        }else{
+                          echo "";
+                        }
+                      ?>"><?php
+                        if($site_info["phone"] ?? NULL){
+                          echo $site_info["phone"];
+                        }else{
+                          echo "";
+                        }
+                      ?></a>
+                    </li>
+                  </ul>
                 </div>
+                <!-- About Widget End -->
+              </div>
+              <!-- Widget End -->
             </div>
-            <!-- Footer Copyright End -->
-        </footer>
+
+            <div class="col-md-3 col-xs-6 col-xxs-12 ptop--30 pbottom--30">
+              <!-- Widget Start -->
+              <div class="widget">
+                <div class="widget--title">
+                  <h2 class="h4">দরকারী তথ্যের লিঙ্ক</h2>
+
+                  <i class="icon fa fa-expand"></i>
+                </div>
+
+                <!-- Links Widget Start -->
+                <div class="links--widget">
+                  <ul class="nav">
+                    <li><a href="#" class="fa-angle-right">গ্যাজেট</a></li>
+                    <li>
+                      <a href="#" class="fa-angle-right">শর্তাবলী</a>
+                    </li>
+                    <li><a href="#" class="fa-angle-right">ফোরাম</a></li>
+                    <li>
+                      <a href="#" class="fa-angle-right">শীর্ষস্থানীয় সংবাদ</a>
+                    </li>
+                    <li>
+                      <a href="#" class="fa-angle-right">স্পেশাল রেসিপি</a>
+                    </li>
+                    <li><a href="#" class="fa-angle-right">সাইন আপ</a></li>
+                  </ul>
+                </div>
+                <!-- Links Widget End -->
+              </div>
+              <!-- Widget End -->
+            </div>
+
+
+
+            <div class="col-md-3 col-xs-6 col-xxs-12 ptop--30 pbottom--30">
+              <!-- Widget Start -->
+              <div class="widget">
+                <div class="widget--title">
+                  <h2 class="h4">ক্যারিয়ার</h2>
+
+                  <i class="icon fa fa-user-o"></i>
+                </div>
+
+                <!-- Links Widget Start -->
+                <div class="links--widget">
+                  <ul class="nav">
+                    <li>
+                      <a href="#" class="fa-angle-right">উপলব্ধ পোস্ট</a>
+                    </li>
+                    <li>
+                      <a href="#" class="fa-angle-right">ক্যারিয়ারের বিবরণ</a>
+                    </li>
+                    <li>
+                      <a href="#" class="fa-angle-right">কিভাবে আবেদন করবেন?</a>
+                    </li>
+                    <li>
+                      <a href="#" class="fa-angle-right">ফ্রিলান্স জব</a>
+                    </li>
+                    <li>
+                      <a href="#" class="fa-angle-right">সদস্য হোন</a>
+                    </li>
+                    <li><a href="#" class="fa-angle-right">এপ্লাই করুন</a></li>
+                    <li>
+                      <a href="#" class="fa-angle-right">রিজুমি পাঠান</a>
+                    </li>
+                  </ul>
+                </div>
+                <!-- Links Widget End -->
+              </div>
+              <!-- Widget End -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Footer Widgets End -->
+
+      <!-- Footer Copyright Start -->
+      <div class="footer--copyright bg--color-3">
+        <div class="social--bg bg--color-1"></div>
+
+        <div class="container">
+          <p class="text float--left">
+            &copy; <span class="copyright-year">২০২৫</span> <a href="#"> </a>.
+            সর্বস্বত্ব টাইম ভিশন ২৪-এর কাছে সংরক্ষিত।
+
+          </p>
+
+          <ul class="nav social float--right">
+            <li>
+              <a href="<?php
+                    if($site_info["facebook"] ?? NULL){
+                      echo $site_info["facebook"];
+                    }else{
+                      echo "";
+                    }
+                  ?>" target='_blank'><i class="fa fa-facebook"></i></a>
+            </li>
+            <li>
+              <a href="<?php
+    if($site_info["twitter"] ?? NULL){
+      echo $site_info["twitter"];
+    }else{
+      echo "";
+    }
+  ?>" target="_blank"><i class="fa fa-twitter"></i></a>
+            </li>
+            <li>
+              <a href="<?php
+    if($site_info["google_plus"] ?? NULL){
+      echo $site_info["google_plus"];
+    }else{
+      echo "";
+    }
+  ?>" target="_blank"><i class="fa fa-google-plus"></i></a>
+            </li>
+            <li>
+              <a href="<?php
+    if($site_info["linkedin"] ?? NULL){
+      echo $site_info["linkedin"];
+    }else{
+      echo "";
+    }
+  ?>" target="_blank"><i class="fa fa-linkedin"></i></a>
+            </li>
+            <li>
+              <a href="<?php
+    if($site_info["youtube"] ?? NULL){
+      echo $site_info["youtube"];
+    }else{
+      echo "";
+    }
+  ?>" target="_blank"><i class="fa fa-youtube-play"></i></a>
+            </li>
+          </ul>
+
+          <ul class="nav links float--right">
+            <li><a href="#">হোম</a></li>
+            <li><a href="#">এফ.এ.কিউ</a></li>
+            <li><a href="#">সাপোর্ট</a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- Footer Copyright End -->
+    </footer>
         <!-- Footer Section End -->
     </div>
     <!-- Wrapper End -->

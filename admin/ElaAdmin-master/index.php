@@ -2,6 +2,7 @@
 session_start();
 require_once("./php/fetch_all_news.php");
 require_once("./php/news_operation.php");
+require_once("./php/change_password.php");
 if (empty($_SESSION["user"])) {
   header("Location: /login-boxed.php");
 }
@@ -168,6 +169,13 @@ if (empty($_SESSION["user"])) {
           class="p-2 shadow-sm border border-slate-200 rounded-sm cursor-pointer">
           <i class="fa-solid fa-newspaper"></i>
           সকল সংবাদ
+        </li>
+        <li
+          onclick="showHide('changePassword')"
+          class="p-2 shadow-sm border border-slate-200 rounded-sm cursor-pointer">
+          <i class="fa-solid fa-lock"></i>
+
+          পাসওয়ার্ড পরিবর্তন
         </li>
       </ul>
     </div>
@@ -414,7 +422,32 @@ if (empty($_SESSION["user"])) {
         </div>
 
       </div>
+      <!-- Password change -->
+      <div id="changePassword" class="p-5 w-full h-[80vh] flex items-center justify-center" style="display: none;">
 
+        <form action="" method="post" class="p-4 border border-gray-200 shadow-md rounded flex flex-col gap-2 min-w-[350px]">
+          <h2 class="text-center text-xl mb-2 font-bold">পাসওয়ার্ড পরিবর্তন</h2>
+          <div class="flex flex-col gap-1">
+            <label for="oldPassword" class="text-base">পুরোনো পাসওয়ার্ড</label>
+            <input type="password" name="oldPassword" id="oldPassword" class="outline-none p-1 border border-gray-200 rounded text-base" placeholder="পুরোনো পাসওয়ার্ড দিন" required>
+          </div>
+          <div class="flex flex-col gap-1">
+            <label for="newPassword" class="text-base">নতুন পাসওয়ার্ড</label>
+            <input type="password" name="newPassword" id="newPassword" class="outline-none p-1 border border-gray-200 rounded text-base" placeholder="নতুন পাসওয়ার্ড দিন" required>
+          </div>
+          <div class="flex flex-col gap-1">
+            <label for="confirmNewPassword" class="text-base">কনফার্ম নতুন পাসওয়ার্ড</label>
+            <input type="password" name="confirmNewPassword" id="confirmNewPassword" class="outline-none p-1 border border-gray-200 rounded text-base" placeholder="আবার নতুন পাসওয়ার্ড দিন" required>
+          </div>
+          <div class="flex flex-col gap-1">
+            <button id="changePassButton" type="submit" class="bg-red-600 text-white p-1 rounded font-semibold">পরিবর্তন করুন</button>
+          </div>
+          <p id="changePassActionText" class="text-red-600 text-center">
+            <?php if (!empty($change_pass_action_text)) echo $change_pass_action_text; ?>
+          </p>
+        </form>
+
+      </div>
     </div>
   </div>
   <!-- News action status -->
@@ -646,14 +679,17 @@ if (empty($_SESSION["user"])) {
   <script>
     const addNews = document.getElementById("addNews");
     const allNews = document.getElementById("allNews");
+    const changePassword = document.getElementById("changePassword");
     const showHide = (id) => {
-      [addNews, allNews].forEach(
+      [addNews, allNews, changePassword].forEach(
         (section) => (section.style.display = "none")
       );
       if (id == "addNews") {
         addNews.style.display = "flex";
       } else if (id == "allNews") {
         allNews.style.display = "block";
+      } else if (id == "changePassword") {
+        changePassword.style.display = "flex";
       }
     };
     // Get current URL
@@ -686,6 +722,21 @@ if (empty($_SESSION["user"])) {
       .addEventListener("click", () => {
         deleteAlert.classList.replace("flex", "hidden");
       });
+  </script>
+  <!-- Change password -->
+  <script>
+    document.getElementById("changePassButton").disabled = true;
+    document.getElementById("confirmNewPassword").addEventListener("input", (e) => {
+      console.log(document.getElementById("newPassword").value);
+      if (e.target.value !== document.getElementById("newPassword").value) {
+        document.getElementById("changePassButton").disabled = true;
+        document.getElementById("changePassActionText").innerText = "নতুন ও কনফার্ম নতুন পাসওয়ার্ড মিলছে না";
+      } else {
+
+        document.getElementById("changePassButton").disabled = false;
+        document.getElementById("changePassActionText").innerText = "";
+      }
+    })
   </script>
 </body>
 

@@ -16,11 +16,12 @@ if (isset($_POST["username"])) {
     $username = $_POST["username"];
     $password = $_POST["password"];
 
-    $user_finding = $conn->query("SELECT user_name, password FROM users WHERE user_name='$username'");
+    $user_finding = $conn->query("SELECT user_name, password, role FROM users WHERE user_name='$username'");
     $find_user = $user_finding->fetch_assoc();
     if ($find_user) {
         if ($find_user["password"] === $password) {
             $_SESSION["user"] = $find_user["user_name"];
+            $_SESSION["user_role"] = $find_user["role"];
             $login_alert = NULL;
             header("Location: ./admin/ElaAdmin-master");
         } else {
